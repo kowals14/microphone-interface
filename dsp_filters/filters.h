@@ -1,7 +1,33 @@
 #ifndef __FILTERS_H__
 #define __FILTERS_H__
-    double lowpass(double*, double*, double*);
-    double* filter(double*, int, double*, double (double*,double*,double*));
+    #include <math.h>
+    #include <assert.h>
+    #include <string.h>
+
+    typedef int FILTER_TYPE;
+
+    #define FILTER_LOWPASS (FILTER_TYPE) 0
+    #define FILTER_HIGHPASS (FILTER_TYPE) 1
+    #define FILTER_BANDPASS (FILTER_TYPE) 2
+    #define FILTER_NOTCH (FILTER_TYPE) 3
+
+    #define PI 3.14159265358979323846
+
+
+    struct _user_params
+    {
+        FILTER_TYPE type;
+        double Fs;
+        double f0;
+        double dbGain;
+        double BW;
+    } typedef user_params;
+
+    /**
+     * @brief
+     * Returns a struct of user-defined parameters, this is mostly just for testing in python 
+    */
+    user_params get_params(FILTER_TYPE type, double Fs, double f0, double dbGain, double BW);
     
     /**
      * @brief
@@ -19,7 +45,7 @@
      * @note
      * Link: https://webaudio.github.io/Audio-EQ-Cookbook/Audio-EQ-Cookbook.txt
     */
-    double lowpass(double* in_buff, double* out_buff, double* user_params);
+    double lowpass(double* in_buff, double* out_buff, user_params u_p);
 
 
     /**
@@ -27,14 +53,14 @@
      * Applies a specified filter function to the audio buffer. 
      * @param buff 
      * audio buffer
+     * @param buff 
+     * filtered buffer
      * @param size
      * size of the buffer
      * @param user_params
-     * array of user-defined parameters
+     * struct of user-defined parameters
      * @param filter
      * filter function to be applied
-     * @return 
-     * The filtered buffer.
     */
-    double* filter(double* buff, int size, double* user_params, double(*filter)(double*, double*, double*));
+    void filter(double* buff, double* out, int size, user_params u_p);
 #endif

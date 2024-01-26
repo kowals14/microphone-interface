@@ -1,6 +1,5 @@
 #include "fourier.h";
 
-float* dft(float* buff, int len) {
-    float transform[len];
-    return transform;
+double* dft(double* buff, int len) {
+    return 0;
 }

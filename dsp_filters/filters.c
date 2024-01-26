@@ -1,41 +1,53 @@
 #include "filters.h"
-#include <math.h>
-#include <assert.h>
 
-# define PI 3.14159265358979323846
+user_params get_params(FILTER_TYPE type, double Fs, double f0, double dbGain, double BW) {
+    user_params u_p;
+    u_p.type = type;
+    u_p.f0 = f0;
+    u_p.dbGain = dbGain;
+    u_p.BW = BW;
+    return u_p;
+}
 
-double lowpass(double* in_buff, double* out_buff, double* user_params) {
-
-    double Fs = user_params[0];
-    double f0 = user_params[1];
-    double Q = user_params[2];
-
+double lowpass(double* in_buff, double* out_buff, user_params u_p) {
+    double Fs = u_p.Fs;
+    double f0 = u_p.f0;
+    double BW = u_p.BW;
+    
     double w0 = 2*PI*f0/Fs;
-
     double cos_w0 = cos(w0);
     double sin_w0 = sin(w0);
     
-    double alpha = sin_w0/(2*Q);
+    double alpha = sin_w0/(2*BW);
 
-    double b0 =  (1 - cos_w0) / 2;
-    double b1 =   1 - cos_w0;
-    double b2 =  (1 - cos_w0) / 2;
-    double a0 =   1 + alpha;
-    double a1 =  -2 * cos_w0;
-    double a2 =   1 - alpha;
+    double b[3], a[3];
 
-    return in_buff[0]*a2 + in_buff[1]*a1 + in_buff[2]*a0 + out_buff[0]*b2 + out_buff[1]*b1 + out_buff[2]*b0;
+    b[0] =  (1 - cos_w0) / 2;
+    b[1] =   1 - cos_w0;
+    b[2] =  (1 - cos_w0) / 2;
+    a[0] =   1 + alpha;
+    a[1] =  -2 * cos_w0;
+    a[2] =   1 - alpha;
+
+    return in_buff[0]*a[2] + in_buff[1]*a[1] + in_buff[2]*a[0] - out_buff[0]*b[2] - out_buff[1]*b[1] - out_buff[2]*b[0];
 }
 
-
-double* filter(double* buff, int size, double* user_params, double (*filter)(double*, double*, double*)) {
+void filter(double* buff, double* out, int size, user_params u_p) {
     assert(size <= 3 && "Size of buffer too small! Must be at least 3");
-
-    double out[size];
-    memset(out, 0, size*sizeof(double));
 
     double in_buff[3] = {0};
     double out_buff[3] = {0};
+    double(*filter)(double*, double*, user_params);
+
+    switch (u_p.type)
+    {
+    case FILTER_LOWPASS:
+        filter=lowpass;
+        break;
+    default:
+        filter=lowpass; // fix later 
+        break;
+    }
 
     for(int i = 0; i < size; i++) {
         in_buff[0] = in_buff[1];
@@ -48,8 +60,6 @@ double* filter(double* buff, int size, double* user_params, double (*filter)(dou
         if(i > 0);
         out_buff[2] = out[i-1];
 
-        out[i] = (*filter)(in_buff, out_buff, user_params);
+        out[i] = (*filter)(in_buff, out_buff, u_p);
     }
-
-    return out;
 }
