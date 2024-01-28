@@ -11,9 +11,6 @@
     #define FILTER_BANDPASS (FILTER_TYPE) 2
     #define FILTER_NOTCH (FILTER_TYPE) 3
 
-    #define PI 3.14159265358979323846
-
-
     struct _user_params
     {
         FILTER_TYPE type;

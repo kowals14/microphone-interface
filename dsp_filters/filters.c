@@ -3,6 +3,7 @@
 user_params get_params(FILTER_TYPE type, double Fs, double f0, double dbGain, double BW) {
     user_params u_p;
     u_p.type = type;
+    u_p.Fs = Fs;
     u_p.f0 = f0;
     u_p.dbGain = dbGain;
     u_p.BW = BW;
@@ -10,11 +11,11 @@ user_params get_params(FILTER_TYPE type, double Fs, double f0, double dbGain, do
 }
 
 double lowpass(double* in_buff, double* out_buff, user_params u_p) {
-    double Fs = u_p.Fs;
+    double Fs = u_p.Fs; 
     double f0 = u_p.f0;
     double BW = u_p.BW;
     
-    double w0 = 2*PI*f0/Fs;
+    double w0 = 2*M_PI*f0/Fs;
     double cos_w0 = cos(w0);
     double sin_w0 = sin(w0);
     
