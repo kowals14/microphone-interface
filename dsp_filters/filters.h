@@ -1,8 +1,11 @@
 #ifndef __FILTERS_H__
 #define __FILTERS_H__
     #include <math.h>
+    // #include <cmath.h>
     #include <assert.h>
     #include <string.h>
+    
+    #define M_PI 3.14159265358979323846
 
     typedef int FILTER_TYPE;
 
