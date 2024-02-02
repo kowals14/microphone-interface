@@ -58,25 +58,28 @@ double highpass(double* in_buff, double* out_buff, user_params u_p) {
     return (-out_buff[0]*a[1] - out_buff[1]*a[2] + in_buff[0]*b[0] + in_buff[1]*b[1] + in_buff[2]*b[2])/a[0];
 }
 
-double bandpass(double* in_buff, double* out_buff, user_params u_p) {
+double peaking(double* in_buff, double* out_buff, user_params u_p) {
     double Fs = u_p.Fs; 
     double f0 = u_p.f0;
     double BW = u_p.BW;
+    double dbGain = u_p.dbGain;
     
     double w0 = 2 * M_PI * f0 / Fs;
     double cos_w0 = cos(w0);
     double sin_w0 = sin(w0);
+    double A = pow(10, (dbGain / 40));
     
     double alpha = sin_w0/(2*BW);
 
     double b[3], a[3];
 
-    b[0] =   BW*alpha;
-    b[1] =   0;
-    b[2] =  -BW*alpha;
-    a[0] =   1 + alpha;
+    b[0] =   1 + alpha * A;
+    b[1] =  -2 * cos_w0;
+    b[2] =   1 - alpha * A;
+    
+    a[0] =   1 + alpha / A;
     a[1] =  -2 * cos_w0;
-    a[2] =   1 - alpha;
+    a[2] =   1 - alpha / A;
 
     return (-out_buff[0]*a[1] - out_buff[1]*a[2] + in_buff[0]*b[0] + in_buff[1]*b[1] + in_buff[2]*b[2])/a[0];
 }
@@ -100,8 +103,8 @@ void filter(double* buff, double* out, int size, user_params u_p) {
     case FILTER_HIGHPASS:
         filter=highpass;
         break;
-    case FILTER_BANDPASS:
-        filter=bandpass;
+    case FILTER_PEAKING:
+        filter=peaking;
         break;
     default:
         filter=passthrough; // no filter applied 
