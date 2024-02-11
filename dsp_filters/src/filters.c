@@ -1,27 +1,27 @@
 #include "filters.h"
 
-user_params get_params(FILTER_TYPE type, double Fs, double f0, double dbGain, double BW) {
+user_params get_params(FILTER_TYPE type, int f0, int dbGain, float BW) {
     user_params u_p;
     u_p.type = type;
-    u_p.Fs = Fs;
     u_p.f0 = f0;
     u_p.dbGain = dbGain;
     u_p.BW = BW;
     return u_p;
 }
 
-double lowpass(double* in_buff, double* out_buff, user_params u_p) {
-    double Fs = u_p.Fs; 
-    double f0 = u_p.f0;
-    double BW = u_p.BW;
-    
-    double w0 = 2 * M_PI * f0 / Fs;
-    double cos_w0 = cos(w0);
-    double sin_w0 = sin(w0);
-    
-    double alpha = sin_w0/(2*BW);
+const float* lut_cos[32];
 
-    double b[3], a[3];
+float lowpass(float* in_buff, float* out_buff, user_params u_p) {
+    int f0 = u_p.f0;
+    float BW = u_p.BW;
+    
+    float w0 = 2 * M_PI * f0 / CFG_SAMPLE_RATE;
+    float cos_w0 = cos(w0);
+    float sin_w0 = sin(w0);
+    
+    float alpha = sin_w0/(2*BW);
+
+    float b[3], a[3];
 
     b[0] =  (1 - cos_w0) / 2;
     b[1] =   1 - cos_w0;
@@ -34,18 +34,17 @@ double lowpass(double* in_buff, double* out_buff, user_params u_p) {
     return (-out_buff[0]*a[1] - out_buff[1]*a[2] + in_buff[0]*b[0] + in_buff[1]*b[1] + in_buff[2]*b[2])/a[0];
 }
 
-double highpass(double* in_buff, double* out_buff, user_params u_p) {
-    double Fs = u_p.Fs; 
-    double f0 = u_p.f0;
-    double BW = u_p.BW;
+float highpass(float* in_buff, float* out_buff, user_params u_p) {
+    float f0 = u_p.f0;
+    float BW = u_p.BW;
     
-    double w0 = 2 * M_PI * f0 / Fs;
-    double cos_w0 = cos(w0);
-    double sin_w0 = sin(w0);
+    float w0 = 2 * M_PI * f0 / CFG_SAMPLE_RATE;
+    float cos_w0 = cos(w0);
+    float sin_w0 = sin(w0);
     
-    double alpha = sin_w0/(2*BW);
+    float alpha = sin_w0/(2*BW);
 
-    double b[3], a[3];
+    float b[3], a[3];
 
     b[0] =  (1 + cos_w0)/2;
     b[1] = -(1 + cos_w0);
@@ -58,20 +57,19 @@ double highpass(double* in_buff, double* out_buff, user_params u_p) {
     return (-out_buff[0]*a[1] - out_buff[1]*a[2] + in_buff[0]*b[0] + in_buff[1]*b[1] + in_buff[2]*b[2])/a[0];
 }
 
-double peaking(double* in_buff, double* out_buff, user_params u_p) {
-    double Fs = u_p.Fs; 
-    double f0 = u_p.f0;
-    double BW = u_p.BW;
-    double dbGain = u_p.dbGain;
+float peaking(float* in_buff, float* out_buff, user_params u_p) {
+    float f0 = u_p.f0;
+    float BW = u_p.BW;
+    float dbGain = u_p.dbGain;
     
-    double w0 = 2 * M_PI * f0 / Fs;
-    double cos_w0 = cos(w0);
-    double sin_w0 = sin(w0);
-    double A = pow(10, (dbGain / 40));
+    float w0 = 2 * M_PI * f0 / CFG_SAMPLE_RATE;
+    float cos_w0 = cos(w0);
+    float sin_w0 = sin(w0);
+    float A = pow(10, (dbGain / 40));
     
-    double alpha = sin_w0/(2*BW);
+    float alpha = sin_w0/(2*BW);
 
-    double b[3], a[3];
+    float b[3], a[3];
 
     b[0] =   1 + alpha * A;
     b[1] =  -2 * cos_w0;
@@ -84,16 +82,16 @@ double peaking(double* in_buff, double* out_buff, user_params u_p) {
     return (-out_buff[0]*a[1] - out_buff[1]*a[2] + in_buff[0]*b[0] + in_buff[1]*b[1] + in_buff[2]*b[2])/a[0];
 }
 
-double passthrough(double* in_buff, double* out_buff, user_params u_p) {
+float passthrough(float* in_buff, float* out_buff, user_params u_p) {
     return in_buff[0];
 }
 
-void filter(double* buff, double* out, int size, user_params u_p) {
+void filter(float* buff, float* out, int size, user_params u_p) {
     assert(size >= 3 && "Size of buffer too small! Must be at least 3");
 
-    double in_buff[3] = {0};
-    double out_buff[2] = {0};
-    double(*filter)(double*, double*, user_params);
+    float in_buff[3] = {0};
+    float out_buff[2] = {0};
+    float(*filter)(float*, float*, user_params);
 
     switch (u_p.type)
     {
