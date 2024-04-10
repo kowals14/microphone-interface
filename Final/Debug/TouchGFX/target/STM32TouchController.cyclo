@@ -1,0 +1,13 @@
+../Middlewares/ST/touchgfx/framework/include/platform/driver/touch/TouchController.hpp:30:13:touchgfx::TouchController::~TouchController()	1
+../Middlewares/ST/touchgfx/framework/include/platform/driver/touch/TouchController.hpp:30:13:virtual touchgfx::TouchController::~TouchController()	1
+../TouchGFX/target/STM32TouchController.cpp:36:6:virtual void STM32TouchController::init()	1
+../TouchGFX/target/STM32TouchController.cpp:49:6:virtual bool STM32TouchController::sampleTouch(int32_t&, int32_t&)	3
+../TouchGFX/target/STM32TouchController.cpp:82:13:void I2Cx_Error(I2C_HandleTypeDef*, uint8_t)	1
+../TouchGFX/target/STM32TouchController.cpp:101:26:HAL_StatusTypeDef I2Cx_ReadMultiple(I2C_HandleTypeDef*, uint8_t, uint16_t, uint16_t, uint8_t*, uint16_t)	2
+../TouchGFX/target/STM32TouchController.cpp:132:26:HAL_StatusTypeDef I2Cx_WriteMultiple(I2C_HandleTypeDef*, uint8_t, uint16_t, uint16_t, uint8_t*, uint16_t)	2
+../TouchGFX/target/STM32TouchController.cpp:159:6:void TS_IO_Write(uint8_t, uint8_t, uint8_t)	1
+../TouchGFX/target/STM32TouchController.cpp:170:10:uint16_t TS_IO_ReadMultiple(uint8_t, uint8_t, uint8_t*, uint16_t)	1
+../TouchGFX/target/STM32TouchController.cpp:177:9:uint8_t TS_IO_Read(uint8_t, uint8_t)	1
+../TouchGFX/target/STM32TouchController.cpp:191:6:void TS_IO_Delay(uint32_t)	1
+../TouchGFX/target/STM32TouchController.hpp:38:7:STM32TouchController::~STM32TouchController()	1
+../TouchGFX/target/STM32TouchController.hpp:38:7:virtual STM32TouchController::~STM32TouchController()	1

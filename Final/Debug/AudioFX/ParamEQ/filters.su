@@ -1,0 +1,5 @@
+../AudioFX/ParamEQ/filters.c:10:6:FILTERS_Coef_LPF	48	static
+../AudioFX/ParamEQ/filters.c:30:6:FILTERS_Coef_HPF	48	static
+../AudioFX/ParamEQ/filters.c:50:6:FILTERS_Coef_PKNG	72	static
+../AudioFX/ParamEQ/filters.c:72:6:FILTERS_Update	16	static
+../AudioFX/ParamEQ/filters.c:88:6:FILTERS_Apply	32	static

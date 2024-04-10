@@ -1,0 +1,7 @@
+../Drivers/Codec/wm8731.c:16:13:SAIx_Error	1
+../Drivers/Codec/wm8731.c:21:13:I2Cx_Error	1
+../Drivers/Codec/wm8731.c:27:6:WM8731I2CCommand	2
+../Drivers/Codec/wm8731.c:38:6:WM8731_Init	1
+../Drivers/Codec/wm8731.c:57:6:WM8731_In_Vol	1
+../Drivers/Codec/wm8731.c:61:6:WM8731_In_Mute	1
+../Drivers/Codec/wm8731.c:65:6:WM8731_Out_Vol	1

@@ -1,0 +1,6 @@
+../AudioFX/audioFX.c:13:6:AUDIOFX_Chain_Init	24	static
+../AudioFX/audioFX.c:25:6:AUDIOFX_Chain_SwitchFX	24	static
+../AudioFX/audioFX.c:54:6:AUDIOFX_Chain_Add	24	static
+../AudioFX/audioFX.c:67:6:AUDIOFX_UserParams_Init	16	static
+../AudioFX/audioFX.c:146:6:AUDIOFX_UserParams_Calculate	24	static
+../AudioFX/audioFX.c:223:6:AUDIOFX_Apply_FX_Chain	4144	static
