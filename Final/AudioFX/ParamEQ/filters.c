@@ -101,7 +101,7 @@ void FILTERS_Apply(int16_t* audio_in, int16_t* audio_out, AUDIOFX_UserParams* u_
         }
 
         audio_out[i] = (int16_t) (((-u_p->out_buff[0] * u_p->a[1] 
-									- u_p->out_buff[1] * u_p->a[2] 
+									- u_p->out_buff[1] * u_p->a[2]
 									+ u_p->in_buff[0] * u_p->b[0] 
 									+ u_p->in_buff[1] * u_p->b[1] 
 									+ u_p->in_buff[2] * u_p->b[2]) / u_p->a[0]) * FLOAT_TO_INT16);

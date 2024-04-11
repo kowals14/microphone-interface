@@ -45,6 +45,7 @@ RM := rm -rf
 -include Core/Src/subdir.mk
 -include AudioFX/ParamEQ/subdir.mk
 -include AudioFX/LUTs/subdir.mk
+-include AudioFX/Delay/subdir.mk
 -include AudioFX/subdir.mk
 -include objects.mk
 

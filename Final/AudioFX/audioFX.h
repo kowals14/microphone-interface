@@ -20,6 +20,9 @@ typedef int8_t AUDIOFX_Type;
 #define AUDIOFX_DELAY		(AUDIOFX_Type) 5
 #define AUDIOFX_DISTORTION	(AUDIOFX_Type) 6
 
+#define  AUDIOFX_MAX_DELAY	(1)
+#define  AUDIOFX_DELAY_LINE_SIZE	(int) (AUDIOFX_SAMPLING_RATE * AUDIOFX_MAX_DELAY)
+
 typedef struct __AUDIOFX_UserParams
 {
 	/**
@@ -52,15 +55,13 @@ typedef struct __AUDIOFX_UserParams
 	 * Delay specific variables
 	 */
 
-//	float wet_mix;
-//	float delay_ms;
+	float delay_mix[2];
+	float delay_feedback;
+	uint32_t delay_sample_len;
 
-
-	/**
-	 * Distortion specific variables
-	 */
-
-	//TODO: Define Variables
+	float temp_delay_mix[2];
+	float temp_delay_feedback;
+	uint32_t temp_delay_sample_len;
 
 } AUDIOFX_UserParams;
 

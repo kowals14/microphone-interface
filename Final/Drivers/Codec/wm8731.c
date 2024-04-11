@@ -20,8 +20,9 @@ static void SAIx_Error(SAI_HandleTypeDef* hsai) {
 
 static void I2Cx_Error(I2C_HandleTypeDef* i2c_handler, uint8_t Addr)
 {
-    HAL_I2C_DeInit(i2c_handler);
-    HAL_I2C_Init(i2c_handler);
+	  HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_14);
+//    HAL_I2C_DeInit(i2c_handler);
+//    HAL_I2C_Init(i2c_handler);
 }
 
 void WM8731I2CCommand(uint8_t reg, uint16_t cmd) {

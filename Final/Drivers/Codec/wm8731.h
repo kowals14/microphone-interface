@@ -13,7 +13,7 @@
 #endif
 #include "main.h" // Hardware setting
 
-#define WM8731_ADDRESS              (uint8_t) 0x1B << 1 // WM8731 chip address on I2C bus
+#define WM8731_ADDRESS              (uint8_t) 0x1A << 1 // WM8731 chip address on I2C bus
 
 #define WM8731_REG_LLINE            (uint8_t) 0x00  // Left line input
 #define WM8731_REG_RLINE            (uint8_t) 0x01  // Right line input

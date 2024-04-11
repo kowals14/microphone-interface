@@ -1,3 +1,4 @@
+"./AudioFX/Delay/delay.o"
 "./AudioFX/LUTs/trig_functions.o"
 "./AudioFX/ParamEQ/filters.o"
 "./AudioFX/audioFX.o"

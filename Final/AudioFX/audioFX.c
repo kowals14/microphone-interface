@@ -6,6 +6,10 @@
  */
 #include "audioFX.h"
 #include "filters.h"
+#include "delay.h"
+
+extern float delay_line[AUDIOFX_DELAY_LINE_SIZE];
+extern uint32_t delay_line_index;
 
 /**
  * Initialize the FX chain as empty
@@ -128,6 +132,24 @@ void AUDIOFX_UserParams_Init(AUDIOFX_UserParams* u_p, AUDIOFX_Type type) {
 
 		    break;
 		}
+		case AUDIOFX_DELAY:
+		{
+			u_p->params[0] = 0.3; // feedback
+			u_p->params[1] = 0.5; // mix
+			u_p->params[2] = 1.0; // delay time (s)
+
+			for(int i = 0; i < AUDIOFX_DELAY_LINE_SIZE; i++) {
+				delay_line[i] = 0;
+			}
+
+			delay_line_index = 0;
+
+			u_p->delay_mix[0] = 0.5;
+			u_p->delay_mix[1] = 0.5;
+			u_p->delay_sample_len = (uint32_t) (1.0 * AUDIOFX_SAMPLING_RATE);
+
+			break;
+		}
 		default:
 		{
 			u_p->b[0] =   1;
@@ -195,6 +217,18 @@ void AUDIOFX_UserParams_Calculate(AUDIOFX_UserParams* u_p, float p0, float p1, f
 			FILTERS_Coef_LPF(u_p->temp_b, u_p->temp_a, u_p->params);
 			break;
 		}
+		case AUDIOFX_DELAY:
+		{
+			u_p->params[0] = 1.0 - (p0 / (1.0f * AUDIOFX_CNTR_SIZE)) * 1.0; // feedback
+			u_p->params[1] = (p1 / (1.0f * AUDIOFX_CNTR_SIZE)) * 1.0; 		// mix
+			u_p->params[2] = 1.0 - (p0 / (1.0f * AUDIOFX_CNTR_SIZE)) * 1.0; // delay time (s)
+
+			u_p->temp_delay_mix[0] = u_p->params[1];
+			u_p->temp_delay_mix[1] = 1.0f - u_p->temp_delay_mix[0];
+			u_p->temp_delay_sample_len = (uint32_t) (u_p->params[2] * AUDIOFX_SAMPLING_RATE);
+
+			break;
+		}
 		default:
 		{
 			// save the parameter values for returning to effect later
@@ -234,6 +268,10 @@ void AUDIOFX_Apply_FX_Chain(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
 	case AUDIOFX_PKNG3:
 		dsp_fx = FILTERS_Apply;
 		update = FILTERS_Update;
+		break;
+	case AUDIOFX_DELAY:
+		dsp_fx = DELAY_Apply;
+		update = DELAY_Update;
 		break;
 	default:
 		dsp_fx = FILTERS_Apply;

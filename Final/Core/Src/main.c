@@ -74,7 +74,7 @@ int ConfT = 250;
 
 // FX structures
 AUDIOFX_Chain_HandleTypeDef hfxchn1;
-AUDIOFX_UserParams up[5];
+AUDIOFX_UserParams up[6];
 
 // DMA buffers
 int16_t audio_in[AUDIOFX_BUFF_SIZE];
@@ -89,6 +89,12 @@ uint8_t change_pg_flag;
 
 // parameter change variables
 uint16_t prev_count[3];
+
+// delay line
+volatile float delay_line[AUDIOFX_DELAY_LINE_SIZE];
+uint32_t delay_line_index;
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -214,21 +220,23 @@ int main(void)
 
   // initialize all the FX
   AUDIOFX_Chain_Init(&hfxchn1);
-
-  AUDIOFX_UserParams_Init(&up[0], AUDIOFX_HPF);
-  AUDIOFX_UserParams_Init(&up[1], AUDIOFX_PKNG1);
-  AUDIOFX_UserParams_Init(&up[2], AUDIOFX_PKNG2);
-  AUDIOFX_UserParams_Init(&up[3], AUDIOFX_PKNG3);
+//
+//  AUDIOFX_UserParams_Init(&up[0], AUDIOFX_HPF);
+//  AUDIOFX_UserParams_Init(&up[1], AUDIOFX_PKNG1);
+//  AUDIOFX_UserParams_Init(&up[2], AUDIOFX_PKNG2);
+//  AUDIOFX_UserParams_Init(&up[3], AUDIOFX_PKNG3);
   AUDIOFX_UserParams_Init(&up[4], AUDIOFX_LPF);
-
-  AUDIOFX_Chain_Add(&hfxchn1, &up[0]);
-  AUDIOFX_Chain_Add(&hfxchn1, &up[1]);
-  AUDIOFX_Chain_Add(&hfxchn1, &up[2]);
-  AUDIOFX_Chain_Add(&hfxchn1, &up[3]);
+//  AUDIOFX_UserParams_Init(&up[5], AUDIOFX_DELAY);
+//
+//  AUDIOFX_Chain_Add(&hfxchn1, &up[0]);
+//  AUDIOFX_Chain_Add(&hfxchn1, &up[1]);
+//  AUDIOFX_Chain_Add(&hfxchn1, &up[2]);
+//  AUDIOFX_Chain_Add(&hfxchn1, &up[3]);
   AUDIOFX_Chain_Add(&hfxchn1, &up[4]);
+//  AUDIOFX_Chain_Add(&hfxchn1, &up[5]);
 
   ILI9341_Init();
-//  WM8731_Init();
+  WM8731_Init();
 
   HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_11);
 
