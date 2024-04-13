@@ -49,23 +49,27 @@ void FILTERS_Update(FILTERS_Params* f_p) {
 
 void FILTERS_Apply(int16_t* audio_in, int16_t* audio_out, FILTERS_Params* f_p) {
 	float in_sample;
+	float out_sample;
 
-	for(int i = 0; i < (AUDIOFX_BUFF_SIZE/2); i++) {
-    	in_sample = (INT16_TO_FLOAT * audio_in[i]);
 
-        f_p->in_buff[2] = f_p->in_buff[1];
-        f_p->in_buff[1] = f_p->in_buff[0];
-        f_p->in_buff[0] = in_sample;
+	in_sample = (INT16_TO_FLOAT * (*audio_in));
 
-        if(i > 0) {
-        	f_p->out_buff[1] = f_p->out_buff[0];
-        	f_p->out_buff[0] = (INT16_TO_FLOAT * audio_out[i-1]);
-        }
+	out_sample = (int16_t) (((-f_p->out_buff[0] 	* f_p->a[1]
+								- f_p->out_buff[1] 	* f_p->a[2]
+								+ f_p->in_buff[0] 	* f_p->b[0]
+								+ f_p->in_buff[1] 	* f_p->b[1]
+								+ f_p->in_buff[2] 	* f_p->b[2]) / f_p->a[0]) * FLOAT_TO_INT16);
 
-        audio_out[i] = (int16_t) (((-f_p->out_buff[0] 	* f_p->a[1]
-									- f_p->out_buff[1] 	* f_p->a[2]
-									+ f_p->in_buff[0] 	* f_p->b[0]
-									+ f_p->in_buff[1] 	* f_p->b[1]
-									+ f_p->in_buff[2] 	* f_p->b[2]) / f_p->a[0]) * FLOAT_TO_INT16);
-    }
+	// Update the previous input/output buffers
+
+	f_p->in_buff[2] = f_p->in_buff[1];
+	f_p->in_buff[1] = f_p->in_buff[0];
+	f_p->in_buff[0] = in_sample;
+
+	f_p->out_buff[1] = f_p->out_buff[0];
+	f_p->out_buff[0] = out_sample;
+
+	// store the output in the output address
+
+	*audio_out = out_sample;
 }

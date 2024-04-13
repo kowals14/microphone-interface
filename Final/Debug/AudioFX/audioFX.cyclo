@@ -6,5 +6,5 @@
 ../AudioFX/audioFX.c:90:6:AUDIOFX_UserParams_Init	8
 ../AudioFX/audioFX.c:156:6:AUDIOFX_UserParams_SetParams	3
 ../AudioFX/audioFX.c:184:13:AUDIOFX_Apply	3
-../AudioFX/audioFX.c:198:13:AUDIOFX_Update	3
-../AudioFX/audioFX.c:215:6:AUDIOFX_Apply_FX_Chain	5
+../AudioFX/audioFX.c:198:13:AUDIOFX_Update	6
+../AudioFX/audioFX.c:225:6:AUDIOFX_Apply_FX_Chain	4

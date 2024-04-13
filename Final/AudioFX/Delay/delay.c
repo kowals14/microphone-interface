@@ -27,19 +27,15 @@ void DELAY_Update(DELAY_Params* d_p) {
 }
 
 void DELAY_Apply(int16_t* audio_in, int16_t* audio_out, DELAY_Params* d_p) {
-	for (int i = 0; i < AUDIOFX_BUFF_SIZE; i++) {
+	float delayed_sample = d_p->delay_line[d_p->delay_line_index];
+	float in_sample = INT16_TO_FLOAT * (*audio_in);
 
-		float delayed_sample = d_p->delay_line[d_p->delay_line_index];
-		float in_sample = INT16_TO_FLOAT * audio_in[i];
+	*audio_out = (int16_t) FLOAT_TO_INT16 * ((in_sample * d_p->delay_mix[1]) + (delayed_sample * d_p->delay_mix[0]));
 
-		audio_out[i] = (int16_t) FLOAT_TO_INT16 * ((in_sample * d_p->delay_mix[1]) + (delayed_sample * d_p->delay_mix[0]));
+	d_p->delay_line[d_p->delay_line_index] = d_p->delay_feedback * (delayed_sample + in_sample);
 
-		d_p->delay_line[d_p->delay_line_index] = d_p->delay_feedback * (delayed_sample + in_sample);
-
-		// Finally, update the delay line index
-		if (d_p->delay_line_index++ >= d_p->delay_sample_len) {
-			d_p->delay_line_index = 0;
-		}
-
+	// Finally, update the delay line index
+	if (d_p->delay_line_index++ >= d_p->delay_sample_len) {
+		d_p->delay_line_index = 0;
 	}
 }

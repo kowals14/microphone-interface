@@ -154,9 +154,9 @@ void AUDIOFX_UserParams_Init(AUDIOFX_UserParams* u_p, AUDIOFX_Type type, void* f
 }
 
 void AUDIOFX_UserParams_SetParams(AUDIOFX_UserParams* u_p, float t0, float t1, float t2) {
-	u_p->params[0] = (1.0f - (t0 / (1.0f * AUDIOFX_CNTR_SIZE))) * u_p->max_params[0];
-	u_p->params[1] = (t1 / (1.0f * AUDIOFX_CNTR_SIZE)) * u_p->max_params[1];
-	u_p->params[2] = (1.0f - (t0 / (1.0f * AUDIOFX_CNTR_SIZE))) * u_p->max_params[2];
+	u_p->params[0] = (1.0f - (t0 / (1.0f * AUDIOFX_CNTR_SIZE)));
+	u_p->params[1] = (t1 / (1.0f * AUDIOFX_CNTR_SIZE));
+	u_p->params[2] = (1.0f - (t0 / (1.0f * AUDIOFX_CNTR_SIZE)));
 
 	switch (u_p->type)
 	{
@@ -195,17 +195,27 @@ static void AUDIOFX_Apply(int16_t* audio_in, int16_t* audio_out, AUDIOFX_UserPar
 	}
 }
 
-static void AUDIOFX_Update(AUDIOFX_UserParams* u_p) {
-	switch(u_p->type) {
-		case AUDIOFX_DELAY:
-			DELAY_Update((DELAY_Params*) u_p->fx_params);
-			break;
-		case AUDIOFX_DISTORTION:
-			DISTORT_Update((DISTORT_Params*) u_p->fx_params);
-			break;
-		default:	// EQ
-			FILTERS_Update((FILTERS_Params*) u_p->fx_params);
-			break;
+static void AUDIOFX_Update(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
+	AUDIOFX_UserParams* u_p;
+
+	for(size_t i = 0; i < hfxchn->fx_count; i++) {				// Go through each effect in the chain
+		if((u_p = hfxchn->fx_chain[i])) {						// Check if valid
+			// update the coefficients for current fx before processing
+			if(u_p->param_change_flag) {
+				switch(u_p->type) {
+						case AUDIOFX_DELAY:
+							DELAY_Update((DELAY_Params*) u_p->fx_params);
+							break;
+						case AUDIOFX_DISTORTION:
+							DISTORT_Update((DISTORT_Params*) u_p->fx_params);
+							break;
+						default:	// EQ
+							FILTERS_Update((FILTERS_Params*) u_p->fx_params);
+							break;
+					}
+				u_p->param_change_flag = 0;
+			}
+		}
 	}
 }
 
@@ -215,34 +225,24 @@ static void AUDIOFX_Update(AUDIOFX_UserParams* u_p) {
 void AUDIOFX_Apply_FX_Chain(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
 	AUDIOFX_UserParams* u_p;
 
-	int16_t buff[AUDIOFX_BUFF_SIZE/2] = {0};
+	int16_t* audio_in;
+	int16_t* audio_out;
 
-	int16_t* audio_in = (hfxchn->p_in_buff);
-	int16_t* audio_out = buff;
-	int16_t* temp;
+	AUDIOFX_Update(hfxchn); // Update all the effect's parameters
 
-	for(size_t i = 0; i < hfxchn->fx_count; i++) {				// Go through each effect in the chain
-		if((u_p = hfxchn->fx_chain[i])) {						// Check if valid
+	for(int i = 0; i < AUDIOFX_BUFF_SIZE; i++) {
+		audio_in 	= &hfxchn->p_in_buff[i];				// Initialize the input as the sample from the input DMA buffer
 
-			// update the coefficients for current fx before processing
-			if(u_p->param_change_flag) {
-				AUDIOFX_Update(u_p);
-				u_p->param_change_flag = 0;
+		for(size_t i = 0; i < hfxchn->fx_count; i++) {		// Go through each effect in the chain
+			if((u_p = hfxchn->fx_chain[i])) {				// Check if valid
+				AUDIOFX_Apply(audio_in, audio_out, u_p);	// Apply effect to data in and store in audio_out
+				audio_in = audio_out;						// Next input is the previous output
 			}
-
-			// for the last effect, we want the output to go into our DMA output buffer
-			if(i == hfxchn->fx_count - 1) {
-				audio_out = (hfxchn->p_out_buff);
-			}
-
-			AUDIOFX_Apply(audio_in, audio_out, u_p);	// Apply effect to data in and store in audio_out
-
-			// swap the buffers so that the last output becomes the new input and vice versa
-			temp 		= audio_out;
-			audio_out 	= audio_in;
-			audio_in 	= temp;
 		}
+
+		hfxchn->p_out_buff[i] = audio_out;					// Store the final output into the output DMA buffer
 	}
+
 }
 
 
