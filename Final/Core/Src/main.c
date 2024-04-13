@@ -26,6 +26,8 @@
 #include "stdio.h"
 #include "audioFX.h"
 #include "filters.h"
+#include "delay.h"
+#include "distort.h"
 #include "ili9341.h"
 /* USER CODE END Includes */
 
@@ -90,10 +92,9 @@ uint8_t change_pg_flag;
 // parameter change variables
 uint16_t prev_count[3];
 
-// delay line
-volatile float delay_line[AUDIOFX_DELAY_LINE_SIZE];
-uint32_t delay_line_index;
-
+FILTERS_Params* f_p[5];
+DELAY_Params* dly_p;
+DISTORT_Params* dstr_p;
 
 /* USER CODE END PV */
 
@@ -134,8 +135,6 @@ void HAL_SAI_RxHalfCpltCallback(SAI_HandleTypeDef *hsai) {
 		hfxchn1.p_out_buff 	= &audio_out[0];
 
 		AUDIOFX_Apply_FX_Chain(&hfxchn1);
-
-//		data_ready_flag = 1;
 	}
 }
 
@@ -144,9 +143,7 @@ void HAL_SAI_RxCpltCallback(SAI_HandleTypeDef *hsai) {
 		hfxchn1.p_in_buff	= &audio_in[AUDIOFX_BUFF_SIZE/2];
 		hfxchn1.p_out_buff 	= &audio_out[AUDIOFX_BUFF_SIZE/2];
 
-		AUDIOFX_Apply_FX_Chain(&hfxchn1);
-
-//		data_ready_flag = 1;
+		AUDIOFX_Apply_FX_Chain(&hfxchn1);\
 	}
 }
 
@@ -154,7 +151,7 @@ void Param_Change(AUDIOFX_Chain_HandleTypeDef* hfxchn){
 	if(TIM1->CNT != prev_count[0] || TIM3->CNT != prev_count[1] || TIM4->CNT != prev_count[2]) {
 
 	  // call the calc function to get new coefficients, update the current parameter values
-	  AUDIOFX_UserParams_Calculate(hfxchn->curr_fx, (float) TIM1->CNT, (float) TIM3->CNT, (float) TIM4->CNT);
+	  AUDIOFX_UserParams_SetParams(hfxchn->curr_fx, (float) TIM1->CNT, (float) TIM3->CNT, (float) TIM4->CNT);
 
 	  // save previous counter values
 	  prev_count[0] = TIM1->CNT;
@@ -220,20 +217,25 @@ int main(void)
 
   // initialize all the FX
   AUDIOFX_Chain_Init(&hfxchn1);
-//
-//  AUDIOFX_UserParams_Init(&up[0], AUDIOFX_HPF);
-//  AUDIOFX_UserParams_Init(&up[1], AUDIOFX_PKNG1);
-//  AUDIOFX_UserParams_Init(&up[2], AUDIOFX_PKNG2);
-//  AUDIOFX_UserParams_Init(&up[3], AUDIOFX_PKNG3);
-  AUDIOFX_UserParams_Init(&up[4], AUDIOFX_LPF);
-//  AUDIOFX_UserParams_Init(&up[5], AUDIOFX_DELAY);
-//
-//  AUDIOFX_Chain_Add(&hfxchn1, &up[0]);
-//  AUDIOFX_Chain_Add(&hfxchn1, &up[1]);
-//  AUDIOFX_Chain_Add(&hfxchn1, &up[2]);
-//  AUDIOFX_Chain_Add(&hfxchn1, &up[3]);
+
+
+  AUDIOFX_UserParams_Init(&up[0], AUDIOFX_PKNG0, f_p[0]);
+  AUDIOFX_UserParams_Init(&up[1], AUDIOFX_PKNG1, f_p[1]);
+  AUDIOFX_UserParams_Init(&up[2], AUDIOFX_PKNG2, f_p[2]);
+  AUDIOFX_UserParams_Init(&up[3], AUDIOFX_PKNG3, f_p[3]);
+  AUDIOFX_UserParams_Init(&up[4], AUDIOFX_PKNG4, f_p[4]);
+
+//  AUDIOFX_UserParams_Init(&up[5], AUDIOFX_DELAY, dly_p);
+//  AUDIOFX_UserParams_Init(&up[6], AUDIOFX_DISTORTION, dstr_p);
+
+  AUDIOFX_Chain_Add(&hfxchn1, &up[0]);
+  AUDIOFX_Chain_Add(&hfxchn1, &up[1]);
+  AUDIOFX_Chain_Add(&hfxchn1, &up[2]);
+  AUDIOFX_Chain_Add(&hfxchn1, &up[3]);
   AUDIOFX_Chain_Add(&hfxchn1, &up[4]);
+
 //  AUDIOFX_Chain_Add(&hfxchn1, &up[5]);
+//  AUDIOFX_Chain_Add(&hfxchn1, &up[6]);
 
   ILI9341_Init();
   WM8731_Init();

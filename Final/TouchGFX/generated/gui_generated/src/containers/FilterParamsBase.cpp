@@ -9,7 +9,7 @@ FilterParamsBase::FilterParamsBase()
 {
     setWidth(96);
     setHeight(45);
-    f0.setPosition(21, 0, 75, 15);
+    f0.setPosition(6, 0, 84, 15);
     f0.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     f0.setLinespacing(0);
     Unicode::snprintf(f0Buffer, F0_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());
@@ -17,21 +17,21 @@ FilterParamsBase::FilterParamsBase()
     f0.setTypedText(touchgfx::TypedText(T___SINGLEUSE_TDSP));
     add(f0);
 
-    dbGain.setPosition(0, 15, 96, 15);
-    dbGain.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    dbGain.setLinespacing(0);
-    Unicode::snprintf(dbGainBuffer, DBGAIN_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());
-    dbGain.setWildcard(dbGainBuffer);
-    dbGain.setTypedText(touchgfx::TypedText(T___SINGLEUSE_VOJG));
-    add(dbGain);
+    G.setPosition(12, 15, 84, 15);
+    G.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    G.setLinespacing(0);
+    Unicode::snprintf(GBuffer, G_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());
+    G.setWildcard(GBuffer);
+    G.setTypedText(touchgfx::TypedText(T___SINGLEUSE_VOJG));
+    add(G);
 
-    Q.setPosition(24, 30, 72, 15);
-    Q.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    Q.setLinespacing(0);
-    Unicode::snprintf(QBuffer, Q_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());
-    Q.setWildcard(QBuffer);
-    Q.setTypedText(touchgfx::TypedText(T___SINGLEUSE_87CS));
-    add(Q);
+    BW.setPosition(6, 30, 72, 15);
+    BW.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    BW.setLinespacing(0);
+    Unicode::snprintf(BWBuffer, BW_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());
+    BW.setWildcard(BWBuffer);
+    BW.setTypedText(touchgfx::TypedText(T___SINGLEUSE_87CS));
+    add(BW);
 }
 
 FilterParamsBase::~FilterParamsBase()

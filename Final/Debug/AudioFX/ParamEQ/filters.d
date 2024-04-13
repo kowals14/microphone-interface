@@ -33,7 +33,6 @@ AudioFX/ParamEQ/filters.o: ../AudioFX/ParamEQ/filters.c \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h \
- C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audioFX.h \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h
 ../AudioFX/ParamEQ/filters.h:
 ../Core/Inc/main.h:
@@ -70,5 +69,4 @@ AudioFX/ParamEQ/filters.o: ../AudioFX/ParamEQ/filters.c \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi_ex.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h:
-C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audioFX.h:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h:

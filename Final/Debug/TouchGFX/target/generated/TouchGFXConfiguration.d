@@ -96,6 +96,13 @@ TouchGFX/target/generated/TouchGFXConfiguration.o: \
  ../TouchGFX/gui/include/gui/containers/FilterParams.hpp \
  ../TouchGFX/generated/gui_generated/include/gui_generated/containers/FilterParamsBase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
+ ../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp \
+ ../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp \
+ ../TouchGFX/gui/include/gui/containers/DelayParams.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/DelayParamsBase.hpp \
+ ../TouchGFX/gui/include/gui/containers/DistortionParams.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/DistortionParamsBase.hpp \
  ../TouchGFX/generated/images/include/BitmapDatabase.hpp \
  ../TouchGFX/generated/images/include/images/BitmapDatabase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/platform/driver/lcd/LCD16bpp.hpp \
@@ -202,6 +209,13 @@ TouchGFX/target/generated/TouchGFXConfiguration.o: \
 ../TouchGFX/gui/include/gui/containers/FilterParams.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/containers/FilterParamsBase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
+../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp:
+../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp:
+../TouchGFX/gui/include/gui/containers/DelayParams.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/DelayParamsBase.hpp:
+../TouchGFX/gui/include/gui/containers/DistortionParams.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/DistortionParamsBase.hpp:
 ../TouchGFX/generated/images/include/BitmapDatabase.hpp:
 ../TouchGFX/generated/images/include/images/BitmapDatabase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/platform/driver/lcd/LCD16bpp.hpp:

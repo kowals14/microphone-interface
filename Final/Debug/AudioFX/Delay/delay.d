@@ -1,5 +1,4 @@
 AudioFX/Delay/delay.o: ../AudioFX/Delay/delay.c ../AudioFX/Delay/delay.h \
- C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audiofx.h \
  ../Core/Inc/main.h ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../Core/Inc/stm32f7xx_hal_conf.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h \
@@ -34,7 +33,6 @@ AudioFX/Delay/delay.o: ../AudioFX/Delay/delay.c ../AudioFX/Delay/delay.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h
 ../AudioFX/Delay/delay.h:
-C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audiofx.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../Core/Inc/stm32f7xx_hal_conf.h:

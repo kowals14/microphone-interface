@@ -28,23 +28,23 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::BoxWithBorder HPF_Box;
+    touchgfx::BoxWithBorder PKNG0_Box;
     touchgfx::BoxWithBorder Title_Box;
-    touchgfx::BoxWithBorder LPF_Box;
+    touchgfx::BoxWithBorder PKNG4_Box;
     touchgfx::BoxWithBorder PKNG1_Box;
     touchgfx::BoxWithBorder PKNG2_Box;
     touchgfx::BoxWithBorder PKNG3_Box;
-    touchgfx::TextArea Subtitle1;
+    touchgfx::TextArea Subtitle2_3;
+    touchgfx::TextArea Subtitle2_3_1_1;
+    touchgfx::TextArea Subtitle2_3_1_1_1;
+    touchgfx::TextArea Subtitle2_3_1_1_1_1;
     touchgfx::TextArea Subtitle2;
     touchgfx::TextArea Subtitle2_2;
     FilterParams peaking_filter_1;
-    FilterParams highpass_filter;
-    touchgfx::TextArea Subtitle2_1;
+    FilterParams peaking_filter_0;
     FilterParams peaking_filter_2;
-    touchgfx::TextArea Subtitle1_1_1;
     FilterParams peaking_filter_3;
-    touchgfx::TextArea Subtitle1_1_1_1;
-    FilterParams lowpass_filter;
+    FilterParams peaking_filter_4;
 
 private:
 

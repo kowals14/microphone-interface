@@ -26,6 +26,13 @@
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\FilterParams.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\FilterParamsBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\DelayParams.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\DelayParamsBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\DistortionParams.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\DistortionParamsBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\screen2_screen\Screen2Presenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\screen2_screen\Screen2View.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen2_screen\Screen2ViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -181,6 +188,13 @@
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\FilterParams.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\FilterParamsBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\DelayParams.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DelayParamsBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\DistortionParams.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DistortionParamsBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2Presenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2View.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen2_screen\Screen2ViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

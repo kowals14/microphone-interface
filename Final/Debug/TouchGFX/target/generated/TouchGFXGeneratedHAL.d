@@ -95,6 +95,13 @@ TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
  ../TouchGFX/gui/include/gui/containers/FilterParams.hpp \
  ../TouchGFX/generated/gui_generated/include/gui_generated/containers/FilterParamsBase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
+ ../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp \
+ ../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp \
+ ../TouchGFX/gui/include/gui/containers/DelayParams.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/DelayParamsBase.hpp \
+ ../TouchGFX/gui/include/gui/containers/DistortionParams.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/DistortionParamsBase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintImpl.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Paint.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintRGB565Impl.hpp \
@@ -195,6 +202,13 @@ TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
 ../TouchGFX/gui/include/gui/containers/FilterParams.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/containers/FilterParamsBase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
+../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp:
+../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp:
+../TouchGFX/gui/include/gui/containers/DelayParams.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/DelayParamsBase.hpp:
+../TouchGFX/gui/include/gui/containers/DistortionParams.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/DistortionParamsBase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintImpl.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Paint.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintRGB565Impl.hpp:

@@ -1,6 +1,10 @@
-../AudioFX/audioFX.c:17:6:AUDIOFX_Chain_Init	24	static
-../AudioFX/audioFX.c:29:6:AUDIOFX_Chain_SwitchFX	24	static
-../AudioFX/audioFX.c:58:6:AUDIOFX_Chain_Add	24	static
-../AudioFX/audioFX.c:71:6:AUDIOFX_UserParams_Init	24	static
-../AudioFX/audioFX.c:168:6:AUDIOFX_UserParams_Calculate	24	static
-../AudioFX/audioFX.c:257:6:AUDIOFX_Apply_FX_Chain	4144	static
+../AudioFX/audioFX.c:15:6:AUDIOFX_Chain_Init	24	static
+../AudioFX/audioFX.c:27:6:AUDIOFX_Chain_Add	24	static
+../AudioFX/audioFX.c:43:6:AUDIOFX_Chain_SwitchFX	24	static
+../AudioFX/audioFX.c:69:13:FILTERS_Init	24	static
+../AudioFX/audioFX.c:80:13:DELAY_Init	24	static
+../AudioFX/audioFX.c:90:6:AUDIOFX_UserParams_Init	24	static
+../AudioFX/audioFX.c:156:6:AUDIOFX_UserParams_SetParams	24	static
+../AudioFX/audioFX.c:184:13:AUDIOFX_Apply	24	static
+../AudioFX/audioFX.c:198:13:AUDIOFX_Update	16	static
+../AudioFX/audioFX.c:215:6:AUDIOFX_Apply_FX_Chain	4136	static

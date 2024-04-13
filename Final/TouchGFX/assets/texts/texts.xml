@@ -6,35 +6,59 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_EWXA" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Threshold: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_HYF8" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">High Gain: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_19YG" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Low Gain: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_H4VD" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">Distortion</Translation>
+      </Text>
+      <Text Id="__SingleUse_75SP" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">Delay</Translation>
+      </Text>
+      <Text Id="__SingleUse_UMYH" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">Time: &lt;value&gt; ms</Translation>
+      </Text>
+      <Text Id="__SingleUse_U823" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">Feedback: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_01P3" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">  Wet Mix: &lt;value&gt; %</Translation>
+      </Text>
+      <Text Id="__SingleUse_S08W" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">Band 3</Translation>
+      </Text>
+      <Text Id="__SingleUse_AZKU" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">Band 4</Translation>
+      </Text>
+      <Text Id="__SingleUse_UCK5" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">Band 5</Translation>
+      </Text>
+      <Text Id="__SingleUse_2VZQ" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">Band 2</Translation>
+      </Text>
       <Text Id="__SingleUse_OG3J" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">Parametric EQ</Translation>
       </Text>
       <Text Id="ResourceId1" Alignment="Center" TypographyId="Typography_00">
         <Translation Language="GB">0.0</Translation>
       </Text>
-      <Text Id="__SingleUse_QGT5" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Lowpass Filter</Translation>
-      </Text>
-      <Text Id="__SingleUse_C0O9" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Peaking Filter</Translation>
-      </Text>
-      <Text Id="__SingleUse_CO5R" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Peaking Filter</Translation>
-      </Text>
       <Text Id="__SingleUse_TDSP" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB"> f0: &lt;value&gt;</Translation>
+        <Translation Language="GB">  f0: &lt;value&gt; Hz</Translation>
       </Text>
       <Text Id="__SingleUse_VOJG" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">dbGain: &lt;value&gt;</Translation>
+        <Translation Language="GB">G: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_87CS" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">Q: &lt;value&gt;</Translation>
+        <Translation Language="GB">BW: &lt;value&gt; Hz</Translation>
       </Text>
       <Text Id="__SingleUse_G3P0" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Highpass Filter</Translation>
-      </Text>
-      <Text Id="__SingleUse_JO14" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Peaking Filter</Translation>
+        <Translation Language="GB">Band 1</Translation>
       </Text>
     </TextGroup>
   </Texts>

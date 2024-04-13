@@ -19,12 +19,12 @@ void FilterParams::setBuffer(int param, float val) {
         Unicode::snprintfFloat(f0Buffer, sizeof(f0Buffer), "%.1f", val);
         break;
     case 1:
-        memset(&dbGainBuffer, val, sizeof(dbGainBuffer));
-        Unicode::snprintfFloat(dbGainBuffer, sizeof(dbGainBuffer), "%.1f", val);
+        memset(&GBuffer, val, sizeof(GBuffer));
+        Unicode::snprintfFloat(GBuffer, sizeof(GBuffer), "%.1f", val);
         break;
     case 2:
-        memset(&QBuffer, val, sizeof(QBuffer));
-        Unicode::snprintfFloat(QBuffer, sizeof(QBuffer), "%.1f", val);
+        memset(&BWBuffer, val, sizeof(BWBuffer));
+        Unicode::snprintfFloat(BWBuffer, sizeof(BWBuffer), "%.1f", val);
         break;
     default:
         break;

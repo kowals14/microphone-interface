@@ -7,9 +7,7 @@
 #include "audioFX.h"
 #include "filters.h"
 #include "delay.h"
-
-extern float delay_line[AUDIOFX_DELAY_LINE_SIZE];
-extern uint32_t delay_line_index;
+#include "distort.h"
 
 /**
  * Initialize the FX chain as empty
@@ -20,6 +18,22 @@ void AUDIOFX_Chain_Init(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
 	for(uint8_t i = 0; i < AUDIOFX_MAX_CHAIN; i++) {
 		// initialize each function pointer as a NULL to indicate empty FX slot
 		hfxchn->fx_chain[i] = NULL;						
+	}
+}
+
+/**
+ * Add and effect to the FX chain
+ */
+void AUDIOFX_Chain_Add(AUDIOFX_Chain_HandleTypeDef* hfxchn, AUDIOFX_UserParams* hfx) {
+
+	for(uint8_t i = 0; i < AUDIOFX_MAX_CHAIN; i++) {
+		// find first available slot in the chain
+		if(!(hfxchn->fx_chain[i])) {
+			hfxchn->fx_chain[i] = hfx;
+			hfxchn->fx_count++;
+			hfxchn->curr_fx = hfx;
+			return;
+		}
 	}
 }
 
@@ -45,205 +59,120 @@ void AUDIOFX_Chain_SwitchFX(AUDIOFX_Chain_HandleTypeDef* hfxchn, uint8_t dir) {
 
 	hfxchn->curr_fx = hfxchn->fx_chain[idx];
 
-	TIM1->CNT = (uint32_t) (hfxchn->curr_fx->params[0] * AUDIOFX_CNTR_SIZE / (hfxchn->curr_fx->max_param[0]));
-	TIM3->CNT = (uint32_t) (hfxchn->curr_fx->params[1] * AUDIOFX_CNTR_SIZE / (hfxchn->curr_fx->max_param[1]));
-	TIM4->CNT = (uint32_t) (hfxchn->curr_fx->params[2] * AUDIOFX_CNTR_SIZE / (hfxchn->curr_fx->max_param[2]));
+	TIM1->CNT = (uint32_t) (hfxchn->curr_fx->params[0] * AUDIOFX_CNTR_SIZE);
+	TIM3->CNT = (uint32_t) (hfxchn->curr_fx->params[1] * AUDIOFX_CNTR_SIZE);
+	TIM4->CNT = (uint32_t) (hfxchn->curr_fx->params[2] * AUDIOFX_CNTR_SIZE);
 
 	hfxchn->fx_change_flag = 1;
 }
 
-/**
- * Add and effect to the FX chain
- */
-void AUDIOFX_Chain_Add(AUDIOFX_Chain_HandleTypeDef* hfxchn, AUDIOFX_UserParams* hfx) {
+static void FILTERS_Init(AUDIOFX_UserParams* u_p) {
+	FILTERS_Params* f_p = (FILTERS_Params*) u_p->fx_params;
 
-	for(uint8_t i = 0; i < AUDIOFX_MAX_CHAIN; i++) {
-		// find first available slot in the chain
-		if(!(hfxchn->fx_chain[i])) {
-			(hfxchn->fx_chain)[i] = hfx;
-			hfxchn->fx_count++;
-			hfxchn->curr_fx = hfx;
-			return;
-		}
-	}
+	f_p->in_buff[2] = 0;
+	f_p->in_buff[1] = 0;
+	f_p->in_buff[0] = 0;
+
+	f_p->out_buff[1] = 0;
+	f_p->out_buff[0] = 0;
 }
 
-void AUDIOFX_UserParams_Init(AUDIOFX_UserParams* u_p, AUDIOFX_Type type) {
-	u_p->type = type;
+static void DELAY_Init(AUDIOFX_UserParams* u_p) {
+	DELAY_Params* d_p = (DELAY_Params*) u_p->fx_params;
 
-	u_p->in_buff[2] = 0;
-	u_p->in_buff[1] = 0;
-	u_p->in_buff[0] = 0;
+	for(int i = 0; i < DELAY_LINE_SIZE; i++) {
+		d_p->delay_line[i] = 0;
+	}
 
-	u_p->out_buff[1] = 0;
-	u_p->out_buff[0] = 0;
+	d_p->delay_line_index = 0;
+}
 
-	u_p->param_change_flag = 0;
+void AUDIOFX_UserParams_Init(AUDIOFX_UserParams* u_p, AUDIOFX_Type type, void* fx_params) {
+	u_p->type 				= type;
+	u_p->param_change_flag 	= 0;
+	u_p->fx_params 			= fx_params;
 
     switch (type)
     {
-		case AUDIOFX_HPF:
+		case AUDIOFX_DELAY:
 		{
-			u_p->params[0] = 1000.0;
-			u_p->params[1] = 0;
-			u_p->params[2] = 0.5;
+			u_p->params[0] = 0.0f / 1.0f; // feedback
+			u_p->params[1] = 0.0f / 1.0f; // mix
+			u_p->params[2] = 0.0f / 1.0f; // delay time (s)
 
-			FILTERS_Coef_HPF(u_p->b, u_p->a, u_p->params);
+			DELAY_Init(u_p);
+			DELAY_SetParams((DELAY_Params*) u_p->fx_params, u_p->params);
 
 			break;
+		}
+		case AUDIOFX_DISTORTION:
+		{
+			u_p->params[0] = 0.0f / 1.0f;
+			u_p->params[1] = 0.0f / 1.0f;
+			u_p->params[2] = 0.0f / 1.0f;
+
+			DISTORT_SetParams((DISTORT_Params*) u_p->fx_params, u_p->params);
+			break;
+		}
+		case AUDIOFX_PKNG0:
+		{
+			u_p->params[0] = 6000.0f / 20000.0f;
+			u_p->params[1] = 0.0f / 2.0f;
+			u_p->params[2] = 25.0f / 1000.0f;
 		}
 		case AUDIOFX_PKNG1:
 		{
-			u_p->params[0] = 5000.0;
-			u_p->params[1] = 0;
-			u_p->params[2] = 0.5;
-
-			FILTERS_Coef_PKNG(u_p->b, u_p->a, u_p->params);
-
-			break;
+			u_p->params[0] = 8000.0f / 20000.0f;
+			u_p->params[1] = 0.0f / 2.0f;
+			u_p->params[2] = 25.0f / 1000.0f;
 		}
 		case AUDIOFX_PKNG2:
 		{
-			u_p->params[0] = 10000.0;
-			u_p->params[1] = 0;
-			u_p->params[2] = 0.5;
-
-			FILTERS_Coef_PKNG(u_p->b, u_p->a, u_p->params);
-
-			break;
+			u_p->params[0] = 10000.0f / 20000.0f;
+			u_p->params[1] = 0.0f / 2.0f;
+			u_p->params[2] = 25.0f / 1000.0f;
 		}
 		case AUDIOFX_PKNG3:
 		{
-			u_p->params[0] = 15000.0;
-			u_p->params[1] = 0;
-			u_p->params[2] = 0.5;
-
-			FILTERS_Coef_PKNG(u_p->b, u_p->a, u_p->params);
-
-			break;
+			u_p->params[0] = 12000.0f / 20000.0f;
+			u_p->params[1] = 0.0f / 2.0f;
+			u_p->params[2] = 25.0f / 1000.0f;
 		}
-		case AUDIOFX_LPF:
+		case AUDIOFX_PKNG4:
 		{
-			u_p->params[0] = 20000.0;
-			u_p->params[1] = 0;
-			u_p->params[2] = 0.5;
-
-			FILTERS_Coef_LPF(u_p->b, u_p->a, u_p->params);
-
-		    break;
+			u_p->params[0] = 14000.0f / 20000.0f;
+			u_p->params[1] = 0.0f / 2.0f;
+			u_p->params[2] = 25.0f / 1000.0f;
 		}
-		case AUDIOFX_DELAY:
+		default: // EQ Bands
 		{
-			u_p->params[0] = 0.3; // feedback
-			u_p->params[1] = 0.5; // mix
-			u_p->params[2] = 1.0; // delay time (s)
-
-			for(int i = 0; i < AUDIOFX_DELAY_LINE_SIZE; i++) {
-				delay_line[i] = 0;
-			}
-
-			delay_line_index = 0;
-
-			u_p->delay_mix[0] = 0.5;
-			u_p->delay_mix[1] = 0.5;
-			u_p->delay_sample_len = (uint32_t) (1.0 * AUDIOFX_SAMPLING_RATE);
-
-			break;
-		}
-		default:
-		{
-			u_p->b[0] =   1;
-			u_p->b[1] =   0;
-			u_p->b[2] =   0;
-
-			u_p->a[0] =   1;
-			u_p->a[1] =   0;
-			u_p->a[2] =   0;
-
+			FILTERS_Init(u_p);
+			FILTERS_SetParams((FILTERS_Params*) u_p->fx_params, u_p->params);
 			break;
 		}
     }
 }
 
-void AUDIOFX_UserParams_Calculate(AUDIOFX_UserParams* u_p, float p0, float p1, float p2) {
+void AUDIOFX_UserParams_SetParams(AUDIOFX_UserParams* u_p, float t0, float t1, float t2) {
+	u_p->params[0] = (1.0f - (t0 / (1.0f * AUDIOFX_CNTR_SIZE))) * u_p->max_params[0];
+	u_p->params[1] = (t1 / (1.0f * AUDIOFX_CNTR_SIZE)) * u_p->max_params[1];
+	u_p->params[2] = (1.0f - (t0 / (1.0f * AUDIOFX_CNTR_SIZE))) * u_p->max_params[2];
 
-	// calculate all the coefficients and store them in temporary variables
 	switch (u_p->type)
 	{
-		case AUDIOFX_HPF:
-		{
-			if(!p0)
-				p0 = 0.001;
-			if(!p2)
-				p2 = 0.001;
-
-			// save the parameter values for returning to effect later
-			u_p->params[0] = 20000.0 - (p0 / (1.0f * AUDIOFX_CNTR_SIZE)) * 20000.0;
-			u_p->params[1] = (p1 / (1.0f * AUDIOFX_CNTR_SIZE)) * 40.0;
-			u_p->params[2] = 2.0 - (p2 / (1.0f * AUDIOFX_CNTR_SIZE)) * 2.0;
-
-			FILTERS_Coef_HPF(u_p->temp_b, u_p->temp_a, u_p->params);
-			break;
-		}
-		case AUDIOFX_PKNG1:
-		case AUDIOFX_PKNG2:
-		case AUDIOFX_PKNG3:
-		{
-			if(!p0)
-				p0 = 0.001;
-			if(!p2)
-				p2 = 0.001;
-
-			// save the parameter values for returning to effect later
-			u_p->params[0] = 20000.0 - (p0 / (1.0f * AUDIOFX_CNTR_SIZE)) * 20000.0;
-			u_p->params[1] = (p1 / (1.0f * AUDIOFX_CNTR_SIZE)) * 40.0;
-			u_p->params[2] = 2.0 - (p2 / (1.0f * AUDIOFX_CNTR_SIZE)) * 2.0;
-
-			FILTERS_Coef_PKNG(u_p->temp_b, u_p->temp_a, u_p->params);
-			break;
-		}
-		case AUDIOFX_LPF:
-		{
-			if(!p0)
-				p0 = 0.001;
-			if(!p2)
-				p2 = 0.001;
-
-			// save the parameter values for returning to effect later
-			u_p->params[0] = 20000.0 - (p0 / (1.0f * AUDIOFX_CNTR_SIZE)) * 20000.0;
-			u_p->params[1] = (p1 / (1.0f * AUDIOFX_CNTR_SIZE)) * 40.0;
-			u_p->params[2] = 2.0 - (p2 / (1.0f * AUDIOFX_CNTR_SIZE)) * 2.0;
-
-			FILTERS_Coef_LPF(u_p->temp_b, u_p->temp_a, u_p->params);
-			break;
-		}
 		case AUDIOFX_DELAY:
 		{
-			u_p->params[0] = 1.0 - (p0 / (1.0f * AUDIOFX_CNTR_SIZE)) * 1.0; // feedback
-			u_p->params[1] = (p1 / (1.0f * AUDIOFX_CNTR_SIZE)) * 1.0; 		// mix
-			u_p->params[2] = 1.0 - (p0 / (1.0f * AUDIOFX_CNTR_SIZE)) * 1.0; // delay time (s)
-
-			u_p->temp_delay_mix[0] = u_p->params[1];
-			u_p->temp_delay_mix[1] = 1.0f - u_p->temp_delay_mix[0];
-			u_p->temp_delay_sample_len = (uint32_t) (u_p->params[2] * AUDIOFX_SAMPLING_RATE);
-
+			DELAY_SetParams((DELAY_Params*) u_p->fx_params, u_p->params);
 			break;
 		}
-		default:
+		case AUDIOFX_DISTORTION:
 		{
-			// save the parameter values for returning to effect later
-			u_p->params[0] = (p0 / (1.0f * AUDIOFX_CNTR_SIZE)) * 20000.0;
-			u_p->params[1] = (p1 / (1.0f * AUDIOFX_CNTR_SIZE)) * 40.0;
-			u_p->params[2] = (p2 / (1.0f * AUDIOFX_CNTR_SIZE)) * 2.0;
-
-			u_p->temp_b[0] =   1;
-			u_p->temp_b[1] =   0;
-			u_p->temp_b[2] =   0;
-
-			u_p->temp_a[0] =   1;
-			u_p->temp_a[1] =   0;
-			u_p->temp_a[2] =   0;
-
+			DISTORT_SetParams((DISTORT_Params*) u_p->fx_params, u_p->params);
+			break;
+		}
+		default:	// EQ bands
+		{
+			FILTERS_SetParams((FILTERS_Params*) u_p->fx_params, u_p->params);
 			break;
 		}
 	}
@@ -251,33 +180,40 @@ void AUDIOFX_UserParams_Calculate(AUDIOFX_UserParams* u_p, float p0, float p1, f
     u_p->param_change_flag = 1;
 }
 
+
+static void AUDIOFX_Apply(int16_t* audio_in, int16_t* audio_out, AUDIOFX_UserParams* u_p) {
+	switch(u_p->type) {
+		case AUDIOFX_DELAY:
+			DELAY_Apply(audio_in, audio_out,(DELAY_Params*) u_p->fx_params);
+			break;
+		case AUDIOFX_DISTORTION:
+			DISTORT_Apply(audio_in, audio_out,(DISTORT_Params*) u_p->fx_params);
+			break;
+		default:	// EQ
+			FILTERS_Apply(audio_in, audio_out,(FILTERS_Params*) u_p->fx_params);
+			break;
+	}
+}
+
+static void AUDIOFX_Update(AUDIOFX_UserParams* u_p) {
+	switch(u_p->type) {
+		case AUDIOFX_DELAY:
+			DELAY_Update((DELAY_Params*) u_p->fx_params);
+			break;
+		case AUDIOFX_DISTORTION:
+			DISTORT_Update((DISTORT_Params*) u_p->fx_params);
+			break;
+		default:	// EQ
+			FILTERS_Update((FILTERS_Params*) u_p->fx_params);
+			break;
+	}
+}
+
 /**
  * Apply each effect in the chain to the input signal
  */
 void AUDIOFX_Apply_FX_Chain(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
-	AUDIOFX_UserParams* hfx = hfxchn->curr_fx;
-
-	void(*dsp_fx)(int16_t*, int16_t*, AUDIOFX_UserParams*);
-	void(*update)(AUDIOFX_UserParams*);
-
-	switch(hfx->type) {
-	case AUDIOFX_HPF:
-	case AUDIOFX_LPF:
-	case AUDIOFX_PKNG1:
-	case AUDIOFX_PKNG2:
-	case AUDIOFX_PKNG3:
-		dsp_fx = FILTERS_Apply;
-		update = FILTERS_Update;
-		break;
-	case AUDIOFX_DELAY:
-		dsp_fx = DELAY_Apply;
-		update = DELAY_Update;
-		break;
-	default:
-		dsp_fx = FILTERS_Apply;
-		update = FILTERS_Update;
-		break;
-	}
+	AUDIOFX_UserParams* u_p;
 
 	int16_t buff[AUDIOFX_BUFF_SIZE/2] = {0};
 
@@ -286,17 +222,20 @@ void AUDIOFX_Apply_FX_Chain(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
 	int16_t* temp;
 
 	for(size_t i = 0; i < hfxchn->fx_count; i++) {				// Go through each effect in the chain
-		if((hfx = hfxchn->fx_chain[i])) {						// Check if valid function pointer
+		if((u_p = hfxchn->fx_chain[i])) {						// Check if valid
 
 			// update the coefficients for current fx before processing
-			update(hfx);
+			if(u_p->param_change_flag) {
+				AUDIOFX_Update(u_p);
+				u_p->param_change_flag = 0;
+			}
 
 			// for the last effect, we want the output to go into our DMA output buffer
 			if(i == hfxchn->fx_count - 1) {
 				audio_out = (hfxchn->p_out_buff);
 			}
 
-			dsp_fx(audio_in, audio_out, hfx);	// Apply effect to data in and store in audio_out
+			AUDIOFX_Apply(audio_in, audio_out, u_p);	// Apply effect to data in and store in audio_out
 
 			// swap the buffers so that the last output becomes the new input and vice versa
 			temp 		= audio_out;

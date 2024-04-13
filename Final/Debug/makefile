@@ -11,12 +11,14 @@ RM := rm -rf
 -include sources.mk
 -include TouchGFX/target/generated/subdir.mk
 -include TouchGFX/target/subdir.mk
+-include TouchGFX/gui/src/screen2_screen/subdir.mk
 -include TouchGFX/gui/src/screen1_screen/subdir.mk
 -include TouchGFX/gui/src/model/subdir.mk
 -include TouchGFX/gui/src/containers/subdir.mk
 -include TouchGFX/gui/src/common/subdir.mk
 -include TouchGFX/generated/texts/src/subdir.mk
 -include TouchGFX/generated/images/src/subdir.mk
+-include TouchGFX/generated/gui_generated/src/screen2_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/screen1_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/containers/subdir.mk
 -include TouchGFX/generated/gui_generated/src/common/subdir.mk
@@ -45,6 +47,7 @@ RM := rm -rf
 -include Core/Src/subdir.mk
 -include AudioFX/ParamEQ/subdir.mk
 -include AudioFX/LUTs/subdir.mk
+-include AudioFX/Distort/subdir.mk
 -include AudioFX/Delay/subdir.mk
 -include AudioFX/subdir.mk
 -include objects.mk

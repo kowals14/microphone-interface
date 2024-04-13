@@ -1,0 +1,3 @@
+../AudioFX/Distort/distort.c:30:6:DISTORT_SetParams	1
+../AudioFX/Distort/distort.c:38:6:DISTORT_Update	1
+../AudioFX/Distort/distort.c:46:6:DISTORT_Apply	8

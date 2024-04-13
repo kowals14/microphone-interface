@@ -13,11 +13,6 @@ extern SAI_HandleTypeDef hsai_BlockA1;
 extern SAI_HandleTypeDef hsai_BlockB1;
 extern void MX_SAI1_Init();
 
-static void SAIx_Error(SAI_HandleTypeDef* hsai) {
-	HAL_SAI_DeInit(hsai);
-	HAL_SAI_Init(hsai);
-}
-
 static void I2Cx_Error(I2C_HandleTypeDef* i2c_handler, uint8_t Addr)
 {
 	  HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_14);

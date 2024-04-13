@@ -11,11 +11,11 @@ Screen1ViewBase::Screen1ViewBase()
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    HPF_Box.setPosition(1, 120, 106, 120);
-    HPF_Box.setColor(touchgfx::Color::getColorFromRGB(41, 34, 34));
-    HPF_Box.setBorderColor(touchgfx::Color::getColorFromRGB(31, 25, 25));
-    HPF_Box.setBorderSize(5);
-    add(HPF_Box);
+    PKNG0_Box.setPosition(1, 120, 106, 120);
+    PKNG0_Box.setColor(touchgfx::Color::getColorFromRGB(41, 34, 34));
+    PKNG0_Box.setBorderColor(touchgfx::Color::getColorFromRGB(31, 25, 25));
+    PKNG0_Box.setBorderSize(5);
+    add(PKNG0_Box);
 
     Title_Box.setPosition(107, 120, 106, 120);
     Title_Box.setColor(touchgfx::Color::getColorFromRGB(41, 34, 34));
@@ -23,11 +23,11 @@ Screen1ViewBase::Screen1ViewBase()
     Title_Box.setBorderSize(5);
     add(Title_Box);
 
-    LPF_Box.setPosition(213, 120, 106, 120);
-    LPF_Box.setColor(touchgfx::Color::getColorFromRGB(41, 34, 34));
-    LPF_Box.setBorderColor(touchgfx::Color::getColorFromRGB(31, 25, 25));
-    LPF_Box.setBorderSize(5);
-    add(LPF_Box);
+    PKNG4_Box.setPosition(213, 120, 106, 120);
+    PKNG4_Box.setColor(touchgfx::Color::getColorFromRGB(41, 34, 34));
+    PKNG4_Box.setBorderColor(touchgfx::Color::getColorFromRGB(31, 25, 25));
+    PKNG4_Box.setBorderSize(5);
+    add(PKNG4_Box);
 
     PKNG1_Box.setPosition(1, 0, 106, 120);
     PKNG1_Box.setColor(touchgfx::Color::getColorFromRGB(41, 34, 34));
@@ -47,13 +47,31 @@ Screen1ViewBase::Screen1ViewBase()
     PKNG3_Box.setBorderSize(5);
     add(PKNG3_Box);
 
-    Subtitle1.setPosition(16, 7, 76, 15);
-    Subtitle1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    Subtitle1.setLinespacing(0);
-    Subtitle1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JO14));
-    add(Subtitle1);
+    Subtitle2_3.setPosition(36, 6, 39, 15);
+    Subtitle2_3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    Subtitle2_3.setLinespacing(0);
+    Subtitle2_3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2VZQ));
+    add(Subtitle2_3);
 
-    Subtitle2.setPosition(16, 127, 76, 15);
+    Subtitle2_3_1_1.setPosition(248, 127, 39, 15);
+    Subtitle2_3_1_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    Subtitle2_3_1_1.setLinespacing(0);
+    Subtitle2_3_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_UCK5));
+    add(Subtitle2_3_1_1);
+
+    Subtitle2_3_1_1_1.setPosition(248, 6, 39, 15);
+    Subtitle2_3_1_1_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    Subtitle2_3_1_1_1.setLinespacing(0);
+    Subtitle2_3_1_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_AZKU));
+    add(Subtitle2_3_1_1_1);
+
+    Subtitle2_3_1_1_1_1.setPosition(141, 6, 39, 15);
+    Subtitle2_3_1_1_1_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    Subtitle2_3_1_1_1_1.setLinespacing(0);
+    Subtitle2_3_1_1_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_S08W));
+    add(Subtitle2_3_1_1_1_1);
+
+    Subtitle2.setPosition(36, 127, 39, 15);
     Subtitle2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     Subtitle2.setLinespacing(0);
     Subtitle2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_G3P0));
@@ -68,35 +86,17 @@ Screen1ViewBase::Screen1ViewBase()
     peaking_filter_1.setXY(7, 38);
     add(peaking_filter_1);
 
-    highpass_filter.setXY(7, 158);
-    add(highpass_filter);
-
-    Subtitle2_1.setPosition(122, 7, 76, 15);
-    Subtitle2_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    Subtitle2_1.setLinespacing(0);
-    Subtitle2_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CO5R));
-    add(Subtitle2_1);
+    peaking_filter_0.setXY(7, 158);
+    add(peaking_filter_0);
 
     peaking_filter_2.setXY(113, 38);
     add(peaking_filter_2);
 
-    Subtitle1_1_1.setPosition(228, 7, 76, 15);
-    Subtitle1_1_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    Subtitle1_1_1.setLinespacing(0);
-    Subtitle1_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_C0O9));
-    add(Subtitle1_1_1);
-
     peaking_filter_3.setXY(219, 38);
     add(peaking_filter_3);
 
-    Subtitle1_1_1_1.setPosition(228, 127, 76, 15);
-    Subtitle1_1_1_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    Subtitle1_1_1_1.setLinespacing(0);
-    Subtitle1_1_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_QGT5));
-    add(Subtitle1_1_1_1);
-
-    lowpass_filter.setXY(219, 158);
-    add(lowpass_filter);
+    peaking_filter_4.setXY(219, 158);
+    add(peaking_filter_4);
 }
 
 Screen1ViewBase::~Screen1ViewBase()
@@ -107,8 +107,8 @@ Screen1ViewBase::~Screen1ViewBase()
 void Screen1ViewBase::setupScreen()
 {
     peaking_filter_1.initialize();
-    highpass_filter.initialize();
+    peaking_filter_0.initialize();
     peaking_filter_2.initialize();
     peaking_filter_3.initialize();
-    lowpass_filter.initialize();
+    peaking_filter_4.initialize();
 }

@@ -39,6 +39,7 @@ CPP_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 AudioFX/Delay \
+AudioFX/Distort \
 AudioFX/LUTs \
 AudioFX/ParamEQ \
 AudioFX \
@@ -68,12 +69,14 @@ TouchGFX/generated/fonts/src \
 TouchGFX/generated/gui_generated/src/common \
 TouchGFX/generated/gui_generated/src/containers \
 TouchGFX/generated/gui_generated/src/screen1_screen \
+TouchGFX/generated/gui_generated/src/screen2_screen \
 TouchGFX/generated/images/src \
 TouchGFX/generated/texts/src \
 TouchGFX/gui/src/common \
 TouchGFX/gui/src/containers \
 TouchGFX/gui/src/model \
 TouchGFX/gui/src/screen1_screen \
+TouchGFX/gui/src/screen2_screen \
 TouchGFX/target \
 TouchGFX/target/generated \
 
