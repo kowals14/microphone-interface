@@ -43,23 +43,23 @@ void DISTORT_Update(DISTORT_Params* d_p){
 
 }
 
-void DISTORT_Apply(int16_t* audio_in, int16_t* audio_out, DISTORT_Params* d_p){
-	float in_sample 		= INT16_TO_FLOAT * (*audio_in);
+float DISTORT_Apply(int16_t audio_in, DISTORT_Params* d_p){
+	float in_sample 		= INT16_TO_FLOAT * audio_in;
 	float threshold_lower 	= in_sample - (d_p->thrshld_gap/2);
 	float threshold_higher	= in_sample + (d_p->thrshld_gap/2);
 	float threshold_noise	= 2000000.0f;
 	float gain 				= 2.0f;
 
 	if(d_p->thrshld_gap == 0 && d_p->l_gain == 0 && d_p->h_gain == 0) {	// no distortion being applied
-		*audio_out = in_sample * FLOAT_TO_INT16;
+		return in_sample;
 	}
 	else if (fabs(in_sample) < threshold_lower && fabs(in_sample) > threshold_noise ){
-		*audio_out = (int16_t) (gain * (in_sample*d_p->l_gain) * FLOAT_TO_INT16);
+		return gain * in_sample * d_p->l_gain;
 	}
 	else if (fabs(in_sample) > threshold_higher){
-		*audio_out = (int16_t) (gain * (in_sample*d_p->h_gain) * FLOAT_TO_INT16);
+		return gain * in_sample * d_p->h_gain;
 	}
 	else{
-		*audio_out = (int16_t) (gain * in_sample * FLOAT_TO_INT16);
+		return gain * in_sample;
 	}
 }

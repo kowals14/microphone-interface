@@ -26,16 +26,15 @@ void DELAY_Update(DELAY_Params* d_p) {
 
 }
 
-void DELAY_Apply(int16_t* audio_in, int16_t* audio_out, DELAY_Params* d_p) {
+float DELAY_Apply(int16_t audio_in, DELAY_Params* d_p) {
 	float delayed_sample = d_p->delay_line[d_p->delay_line_index];
-	float in_sample = INT16_TO_FLOAT * (*audio_in);
-
-	*audio_out = (int16_t) FLOAT_TO_INT16 * ((in_sample * d_p->delay_mix[1]) + (delayed_sample * d_p->delay_mix[0]));
+	float in_sample = INT16_TO_FLOAT * audio_in;
 
 	d_p->delay_line[d_p->delay_line_index] = d_p->delay_feedback * (delayed_sample + in_sample);
 
-	// Finally, update the delay line index
 	if (d_p->delay_line_index++ >= d_p->delay_sample_len) {
 		d_p->delay_line_index = 0;
 	}
+
+	return (in_sample * d_p->delay_mix[1]) + (delayed_sample * d_p->delay_mix[0]);
 }

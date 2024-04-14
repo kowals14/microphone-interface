@@ -5,6 +5,6 @@
 ../AudioFX/audioFX.c:80:13:DELAY_Init	24	static
 ../AudioFX/audioFX.c:90:6:AUDIOFX_UserParams_Init	24	static
 ../AudioFX/audioFX.c:156:6:AUDIOFX_UserParams_SetParams	24	static
-../AudioFX/audioFX.c:184:13:AUDIOFX_Apply	24	static
-../AudioFX/audioFX.c:198:13:AUDIOFX_Update	24	static
-../AudioFX/audioFX.c:225:6:AUDIOFX_Apply_FX_Chain	40	static
+../AudioFX/audioFX.c:184:16:AUDIOFX_Apply	16	static
+../AudioFX/audioFX.c:195:13:AUDIOFX_Update	24	static
+../AudioFX/audioFX.c:222:6:AUDIOFX_Apply_FX_Chain	32	static

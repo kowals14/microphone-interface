@@ -47,29 +47,29 @@ void FILTERS_Update(FILTERS_Params* f_p) {
 
 }
 
-void FILTERS_Apply(int16_t* audio_in, int16_t* audio_out, FILTERS_Params* f_p) {
+float FILTERS_Apply(int16_t audio_in, FILTERS_Params* f_p) {
 	float in_sample;
 	float out_sample;
 
+	in_sample = (INT16_TO_FLOAT * audio_in);
 
-	in_sample = (INT16_TO_FLOAT * (*audio_in));
-
-	out_sample = (int16_t) (((-f_p->out_buff[0] 	* f_p->a[1]
-								- f_p->out_buff[1] 	* f_p->a[2]
-								+ f_p->in_buff[0] 	* f_p->b[0]
-								+ f_p->in_buff[1] 	* f_p->b[1]
-								+ f_p->in_buff[2] 	* f_p->b[2]) / f_p->a[0]) * FLOAT_TO_INT16);
-
-	// Update the previous input/output buffers
+	// Update the previous input buffer
 
 	f_p->in_buff[2] = f_p->in_buff[1];
 	f_p->in_buff[1] = f_p->in_buff[0];
 	f_p->in_buff[0] = in_sample;
 
+	out_sample = ((-f_p->out_buff[0] 	* f_p->a[1]
+					- f_p->out_buff[1] 	* f_p->a[2]
+					+ f_p->in_buff[0] 	* f_p->b[0]
+					+ f_p->in_buff[1] 	* f_p->b[1]
+					+ f_p->in_buff[2] 	* f_p->b[2]) / f_p->a[0]);
+
+
+	// Update the previous outbut puffer
+
 	f_p->out_buff[1] = f_p->out_buff[0];
 	f_p->out_buff[0] = out_sample;
 
-	// store the output in the output address
-
-	*audio_out = out_sample;
+	return out_sample;
 }

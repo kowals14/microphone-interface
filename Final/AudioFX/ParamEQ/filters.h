@@ -42,7 +42,7 @@ void FILTERS_SetParams(FILTERS_Params* f_p, float* params);
 
 void FILTERS_Update(FILTERS_Params* f_p);
 
-void FILTERS_Apply(int16_t* audio_in, int16_t* audio_out, FILTERS_Params* u_p);
+float FILTERS_Apply(int16_t audio_in, FILTERS_Params* u_p);
 
 #ifdef __cplusplus
 }

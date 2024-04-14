@@ -240,7 +240,7 @@ int main(void)
   ILI9341_Init();
   WM8731_Init();
 
-  HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_11);
+//  HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_11);
 
   HAL_SAI_Receive_DMA(&hsai_BlockA1, (uint8_t*) audio_in, AUDIOFX_BUFF_SIZE);
   HAL_SAI_Transmit_DMA(&hsai_BlockB1, (uint8_t*) audio_out, AUDIOFX_BUFF_SIZE);

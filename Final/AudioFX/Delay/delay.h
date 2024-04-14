@@ -42,7 +42,7 @@ void DELAY_SetParams(DELAY_Params* d_p, float* params);
 
 void DELAY_Update(DELAY_Params* d_p);
 
-void DELAY_Apply(int16_t* audio_in, int16_t* audio_out, DELAY_Params* d_p);
+float DELAY_Apply(int16_t audio_in, DELAY_Params* d_p);
 
 #ifdef __cplusplus
 }

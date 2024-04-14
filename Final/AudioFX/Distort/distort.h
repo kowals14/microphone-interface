@@ -36,7 +36,7 @@ void DISTORT_SetParams(DISTORT_Params* d_p, float* params);
 
 void DISTORT_Update(DISTORT_Params* d_p);
 
-void DISTORT_Apply(int16_t* audio_in, int16_t* audio_out, DISTORT_Params* d_p);
+float DISTORT_Apply(int16_t audio_in, DISTORT_Params* d_p);
 
 #ifdef __cplusplus
 }

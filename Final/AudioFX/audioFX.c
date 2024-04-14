@@ -24,14 +24,14 @@ void AUDIOFX_Chain_Init(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
 /**
  * Add and effect to the FX chain
  */
-void AUDIOFX_Chain_Add(AUDIOFX_Chain_HandleTypeDef* hfxchn, AUDIOFX_UserParams* hfx) {
+void AUDIOFX_Chain_Add(AUDIOFX_Chain_HandleTypeDef* hfxchn, AUDIOFX_UserParams* u_p) {
 
 	for(uint8_t i = 0; i < AUDIOFX_MAX_CHAIN; i++) {
 		// find first available slot in the chain
 		if(!(hfxchn->fx_chain[i])) {
-			hfxchn->fx_chain[i] = hfx;
+			hfxchn->fx_chain[i] = u_p;
 			hfxchn->fx_count++;
-			hfxchn->curr_fx = hfx;
+			hfxchn->curr_fx = u_p;
 			return;
 		}
 	}
@@ -181,17 +181,14 @@ void AUDIOFX_UserParams_SetParams(AUDIOFX_UserParams* u_p, float t0, float t1, f
 }
 
 
-static void AUDIOFX_Apply(int16_t* audio_in, int16_t* audio_out, AUDIOFX_UserParams* u_p) {
+static int16_t AUDIOFX_Apply(int16_t audio_in, AUDIOFX_UserParams* u_p) {
 	switch(u_p->type) {
 		case AUDIOFX_DELAY:
-			DELAY_Apply(audio_in, audio_out,(DELAY_Params*) u_p->fx_params);
-			break;
+			return DELAY_Apply(audio_in,(DELAY_Params*) u_p->fx_params);
 		case AUDIOFX_DISTORTION:
-			DISTORT_Apply(audio_in, audio_out,(DISTORT_Params*) u_p->fx_params);
-			break;
+			return DISTORT_Apply(audio_in,(DISTORT_Params*) u_p->fx_params);
 		default:	// EQ
-			FILTERS_Apply(audio_in, audio_out,(FILTERS_Params*) u_p->fx_params);
-			break;
+			return FILTERS_Apply(audio_in,(FILTERS_Params*) u_p->fx_params);
 	}
 }
 
@@ -225,22 +222,20 @@ static void AUDIOFX_Update(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
 void AUDIOFX_Apply_FX_Chain(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
 	AUDIOFX_UserParams* u_p;
 
-	int16_t* audio_in;
-	int16_t* audio_out;
+	int16_t in_sample;
 
 	AUDIOFX_Update(hfxchn); // Update all the effect's parameters
 
 	for(int i = 0; i < AUDIOFX_BUFF_SIZE/2; i++) {
-		audio_in 	= &hfxchn->p_in_buff[i];				// Initialize the input as the sample from the input DMA buffer
+		in_sample = hfxchn->p_in_buff[i];							// Initialize the input as the sample from the input DMA buffer
 
-		for(size_t i = 0; i < hfxchn->fx_count; i++) {		// Go through each effect in the chain
-			if((u_p = hfxchn->fx_chain[i])) {				// Check if valid
-				AUDIOFX_Apply(audio_in, audio_out, u_p);	// Apply effect to data in and store in audio_out
-				audio_in = audio_out;						// Next input is the previous output
+		for(int j = 0; j < hfxchn->fx_count; j++) {					// Go through each effect in the chain
+			if((u_p = hfxchn->fx_chain[j])) {						// Check if valid
+				in_sample = AUDIOFX_Apply(in_sample, u_p);			// Apply effect to data in and store it back in the same variable for the next effect to use
 			}
 		}
 
-		hfxchn->p_out_buff[i] = audio_out;					// Store the final output into the output DMA buffer
+		hfxchn->p_out_buff[i] = in_sample;							// Store the processed sample into the output DMA buffer
 	}
 
 }
