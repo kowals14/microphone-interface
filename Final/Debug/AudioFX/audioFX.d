@@ -33,9 +33,9 @@ AudioFX/audioFX.o: ../AudioFX/audioFX.c ../AudioFX/audioFX.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/ParamEQ/filters.h \
- C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Delay/delay.h \
- C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Distort/distort.h
+ C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Distort/distort.h \
+ C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h
 ../AudioFX/audioFX.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -72,6 +72,6 @@ AudioFX/audioFX.o: ../AudioFX/audioFX.c ../AudioFX/audioFX.h \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/ParamEQ/filters.h:
-C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Delay/delay.h:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Distort/distort.h:
+C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h:

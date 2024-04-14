@@ -15,34 +15,26 @@
 #include "main.h"
 
 #define  DELAY_MAX	(1.0f)
-//#define  DELAY_LINE_SIZE	(int) (AUDIOFX_SAMPLING_RATE * DELAY_MAX)
-#define  DELAY_LINE_SIZE	(int) (48000.0f)
+#define  DELAY_LINE_SIZE (int) (AUDIOFX_SAMPLING_RATE * DELAY_MAX)
 
 /**
  * Delay specific variables
  */
 struct __DELAY_Params_ {
+	float mix;		// wet mix
+	float feedback;
 
-	// delay_mix[0] = wet, delay_mix[1] = dry
-	float delay_mix[2];
-	float delay_feedback;
-	uint32_t delay_sample_len;
-
-	float temp_delay_mix[2];
-	float temp_delay_feedback;
-	uint32_t temp_delay_sample_len;
-
-	// delay line
-	float delay_line[DELAY_LINE_SIZE];
+	uint32_t sample_len;
 	uint32_t delay_line_index;
 
+	float delay_line[DELAY_LINE_SIZE];
 } typedef DELAY_Params;
 
-void DELAY_SetParams(DELAY_Params* d_p, float* params);
+void DELAY_SetParams(DELAY_Params* d_p, float, float, uint32_t);
 
-void DELAY_Update(DELAY_Params* d_p);
+void DELAY_Init(DELAY_Params* d_p);
 
-float DELAY_Apply(int16_t audio_in, DELAY_Params* d_p);
+float DELAY_Apply(float audio_in, DELAY_Params* d_p);
 
 #ifdef __cplusplus
 }

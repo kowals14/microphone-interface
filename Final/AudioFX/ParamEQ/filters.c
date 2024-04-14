@@ -7,69 +7,51 @@
 
 #include "filters.h"
 
-void FILTERS_SetParams(FILTERS_Params* f_p, float* params) {
+void FILTERS_SetParams(FILTERS_Params* f_p, float f0, float BW, float G) {
 
-	f_p->f0 = params[0] * 20000;	// center frequency in Hz
-	f_p->G 	= params[1] * 2.0;		// boost/cut
-	f_p->BW = params[2] * 1000.0;	// bandwidth in Hz
+	f_p->f0 = f0;
+	f_p->BW = BW;
+	f_p->G = G;
 
-	float f0 		= f_p->f0;
-	float G			= f_p->G;
-	float BW_Q 		= f_p->BW;
+	float wcT = 2.0f * tanf( M_PI* f0 * f_p->sampleTime_s);
+	float Q = f0/BW;
 
-	float w0 		= 2 * M_PI * f0 / AUDIOFX_SAMPLING_RATE;
-	float A 	 	= pow(10, (G / 40));
-	float cos_w0 	= cos(w0);
-	float sin_w0 	= sin(w0);
-	float alpha;
+	f_p->a[0] = 4.0f + 2.0f * (G  / Q) * wcT + wcT * wcT;
+	f_p->a[1] = 2.0f * wcT * wcT - 8.0f;
+	f_p->a[2] = 4.0f - 2.0f * (G  / Q) * wcT + wcT * wcT;
 
-	alpha = sin_w0 * sinh(log(2)/2 * BW_Q * w0 / sin_w0);
-
-	f_p->temp_b[0] =   1 + alpha * A;
-	f_p->temp_b[1] =  -2 * cos_w0;
-	f_p->temp_b[2] =   1 - alpha * A;
-
-	f_p->temp_a[0] =   1 + alpha / A;
-	f_p->temp_a[1] =  -2 * cos_w0;
-	f_p->temp_a[2] =   1 - alpha / A;
+	f_p->b[0] = 1.0f / (4.0f + 2.0f / Q * wcT + wcT * wcT);
+	f_p->b[1] = -(2.0f * wcT * wcT - 8.0f);
+	f_p->b[2] = -(4.0f - 2.0f / Q * wcT + wcT * wcT);
 
 }
 
-void FILTERS_Update(FILTERS_Params* f_p) {
+void FILTERS_Init(FILTERS_Params* f_p) {
+	f_p->sampleTime_s = 1.0f / AUDIOFX_SAMPLING_RATE;
 
-		f_p->b[0] = f_p->temp_b[0];
-		f_p->b[1] = f_p->temp_b[1];
-		f_p->b[2] = f_p->temp_b[2];
+	for (uint8_t n = 0; n < 3; n++) {
+		f_p->x[n] = 0.0f;
+		f_p->y[n] = 0.0f;
+	}
 
-		f_p->a[0] = f_p->temp_a[0];
-		f_p->a[1] = f_p->temp_a[1];
-		f_p->a[2] = f_p->temp_a[2];
-
+	FILTERS_SetParams(f_p, 1.0f, 0.0f, 1.0f);
 }
 
-float FILTERS_Apply(int16_t audio_in, FILTERS_Params* f_p) {
-	float in_sample;
-	float out_sample;
 
-	in_sample = (INT16_TO_FLOAT * audio_in);
 
+float FILTERS_Apply(float in_sample, FILTERS_Params* f_p) {
 	// Update the previous input buffer
-
-	f_p->in_buff[2] = f_p->in_buff[1];
-	f_p->in_buff[1] = f_p->in_buff[0];
-	f_p->in_buff[0] = in_sample;
-
-	out_sample = ((-f_p->out_buff[0] 	* f_p->a[1]
-					- f_p->out_buff[1] 	* f_p->a[2]
-					+ f_p->in_buff[0] 	* f_p->b[0]
-					+ f_p->in_buff[1] 	* f_p->b[1]
-					+ f_p->in_buff[2] 	* f_p->b[2]) / f_p->a[0]);
-
+	f_p->x[2] = f_p->x[1];
+	f_p->x[1] = f_p->x[0];
+	f_p->x[0] = in_sample;
 
 	// Update the previous outbut puffer
 
-	f_p->out_buff[1] = f_p->out_buff[0];
-	f_p->out_buff[0] = out_sample;
+	f_p->y[2] = f_p->y[1];
+	f_p->y[1] = f_p->y[0];
 
-	return out_sample;
+	f_p->y[0] = (f_p->a[0] * f_p->x[0] + f_p->a[1] * f_p->x[1] + f_p->a[2] * f_p->x[2]
+			  + 						(f_p->b[1] * f_p->y[1] + f_p->b[2] * f_p->y[2])) * f_p->b[0];
+
+	return (f_p->y[0]);
 }

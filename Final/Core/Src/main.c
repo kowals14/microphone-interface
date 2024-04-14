@@ -74,17 +74,12 @@ int tDelay[3] = {50,50,50}; //Delays from Counters
 int ConfLvl[2] = {0,0};
 int ConfT = 250;
 
-// FX structures
-AUDIOFX_Chain_HandleTypeDef hfxchn1;
-AUDIOFX_UserParams up[6];
-
 // DMA buffers
 int16_t audio_in[AUDIOFX_BUFF_SIZE];
 int16_t audio_out[AUDIOFX_BUFF_SIZE];
 
-// ping pong buffer flags
-uint8_t data_ready_flag;
-uint8_t param_change_flag;
+int16_t* p_in_buff;
+int16_t* p_out_buff;
 
 // change page flag
 uint8_t change_pg_flag;
@@ -92,10 +87,17 @@ uint8_t change_pg_flag;
 // parameter change variables
 uint16_t prev_count[3];
 
-FILTERS_Params* f_p[5];
-DELAY_Params* dly_p;
-DISTORT_Params* dstr_p;
+FILTERS_Params f_p0;
+FILTERS_Params f_p1;
+FILTERS_Params f_p2;
+FILTERS_Params f_p3;
+FILTERS_Params f_p4;
 
+DELAY_Params dl_p;
+
+DISTORT_Params ds_p;
+
+AUDIOFX_Type curr_fx;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -131,27 +133,27 @@ int _write(int file, char *ptr, int len)
 /* USER CODE BEGIN 0 */
 void HAL_SAI_RxHalfCpltCallback(SAI_HandleTypeDef *hsai) {
 	if(hsai->Instance == SAI1_Block_A){
-		hfxchn1.p_in_buff	= &audio_in[0];
-		hfxchn1.p_out_buff 	= &audio_out[0];
+		p_in_buff	= &audio_in[0];
+		p_out_buff 	= &audio_out[0];
 
-		AUDIOFX_Apply_FX_Chain(&hfxchn1);
+		AUDIOFX_Apply_FX_Chain();
 	}
 }
 
 void HAL_SAI_RxCpltCallback(SAI_HandleTypeDef *hsai) {
 	if(hsai->Instance == SAI1_Block_A){
-		hfxchn1.p_in_buff	= &audio_in[AUDIOFX_BUFF_SIZE/2];
-		hfxchn1.p_out_buff 	= &audio_out[AUDIOFX_BUFF_SIZE/2];
+		p_in_buff	= &audio_in[AUDIOFX_BUFF_SIZE/2];
+		p_out_buff 	= &audio_out[AUDIOFX_BUFF_SIZE/2];
 
-		AUDIOFX_Apply_FX_Chain(&hfxchn1);\
+		AUDIOFX_Apply_FX_Chain();
 	}
 }
 
-void Param_Change(AUDIOFX_Chain_HandleTypeDef* hfxchn){
+void Param_Change(){
 	if(TIM1->CNT != prev_count[0] || TIM3->CNT != prev_count[1] || TIM4->CNT != prev_count[2]) {
 
 	  // call the calc function to get new coefficients, update the current parameter values
-	  AUDIOFX_UserParams_SetParams(hfxchn->curr_fx, (float) TIM1->CNT, (float) TIM3->CNT, (float) TIM4->CNT);
+	  AUDIOFX_UserParams_SetParams(curr_fx, (float) TIM1->CNT, (float) TIM3->CNT, (float) TIM4->CNT);
 
 	  // save previous counter values
 	  prev_count[0] = TIM1->CNT;
@@ -160,15 +162,16 @@ void Param_Change(AUDIOFX_Chain_HandleTypeDef* hfxchn){
 	}
 }
 
-void FX_Change(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
+void FX_Change() {
 	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_2) == 1){
-		AUDIOFX_Chain_SwitchFX(hfxchn, 0);
+		AUDIOFX_Chain_SwitchFX(0);
 
 	}
 	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_3) == 1){
-		AUDIOFX_Chain_SwitchFX(hfxchn, 1);
+		AUDIOFX_Chain_SwitchFX(1);
 	}
 }
+
 /* USER CODE END 0 */
 
 /**
@@ -215,27 +218,16 @@ int main(void)
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
-  // initialize all the FX
-  AUDIOFX_Chain_Init(&hfxchn1);
+  curr_fx = AUDIOFX_PKNG0;
 
+  FILTERS_Init(&f_p0);
+  FILTERS_Init(&f_p1);
+  FILTERS_Init(&f_p2);
+  FILTERS_Init(&f_p3);
+  FILTERS_Init(&f_p4);
 
-  AUDIOFX_UserParams_Init(&up[0], AUDIOFX_PKNG0, f_p[0]);
-  AUDIOFX_UserParams_Init(&up[1], AUDIOFX_PKNG1, f_p[1]);
-  AUDIOFX_UserParams_Init(&up[2], AUDIOFX_PKNG2, f_p[2]);
-  AUDIOFX_UserParams_Init(&up[3], AUDIOFX_PKNG3, f_p[3]);
-  AUDIOFX_UserParams_Init(&up[4], AUDIOFX_PKNG4, f_p[4]);
-
-//  AUDIOFX_UserParams_Init(&up[5], AUDIOFX_DELAY, dly_p);
-//  AUDIOFX_UserParams_Init(&up[6], AUDIOFX_DISTORTION, dstr_p);
-
-  AUDIOFX_Chain_Add(&hfxchn1, &up[0]);
-  AUDIOFX_Chain_Add(&hfxchn1, &up[1]);
-  AUDIOFX_Chain_Add(&hfxchn1, &up[2]);
-  AUDIOFX_Chain_Add(&hfxchn1, &up[3]);
-  AUDIOFX_Chain_Add(&hfxchn1, &up[4]);
-
-//  AUDIOFX_Chain_Add(&hfxchn1, &up[5]);
-//  AUDIOFX_Chain_Add(&hfxchn1, &up[6]);
+  DELAY_Init(&dl_p);
+  DISTORT_Init(&ds_p);
 
   ILI9341_Init();
   WM8731_Init();
@@ -252,7 +244,6 @@ int main(void)
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
   HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_ALL);
 
-
   prev_count[0] = TIM1->CNT;
   prev_count[1] = TIM3->CNT;
   prev_count[2] = TIM4->CNT;
@@ -266,8 +257,8 @@ int main(void)
 
   MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
-  FX_Change(&hfxchn1);
-  Param_Change(&hfxchn1);
+  FX_Change();
+  Param_Change();
   }
   /* USER CODE END 3 */
 }
@@ -294,10 +285,17 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 12;
-  RCC_OscInitStruct.PLL.PLLN = 72;
+  RCC_OscInitStruct.PLL.PLLN = 108;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Activate the Over-Drive mode
+  */
+  if (HAL_PWREx_EnableOverDrive() != HAL_OK)
   {
     Error_Handler();
   }
@@ -311,7 +309,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
   {
     Error_Handler();
   }
@@ -392,7 +390,7 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x00301739;
+  hi2c1.Init.Timing = 0x6000030D;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -440,7 +438,7 @@ static void MX_I2C2_Init(void)
 
   /* USER CODE END I2C2_Init 1 */
   hi2c2.Instance = I2C2;
-  hi2c2.Init.Timing = 0x00808CD2;
+  hi2c2.Init.Timing = 0x20404768;
   hi2c2.Init.OwnAddress1 = 0;
   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -629,7 +627,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 108-1;
+  htim2.Init.Prescaler = 72-1;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 16667-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;

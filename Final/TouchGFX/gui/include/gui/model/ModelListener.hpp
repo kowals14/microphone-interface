@@ -17,8 +17,6 @@ public:
         model = m;
     }
 
-    virtual void updateParameters(AUDIOFX_Chain_HandleTypeDef*) = 0;
-    virtual void changeFX(AUDIOFX_Chain_HandleTypeDef*) = 0;
 protected:
     Model* model;
 };

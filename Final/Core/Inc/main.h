@@ -85,13 +85,12 @@ void Error_Handler(void);
 #define SPI5_MOSI_GPIO_Port GPIOF
 #define SPI5_MOSI_Pin 9
 
-#define INT16_TO_FLOAT (1.0f / (32768.0f))
+#define INT16_TO_FLOAT (1.0f / 32768.0f)
 #define FLOAT_TO_INT16 (32768.0f)
 
-#define AUDIOFX_SAMPLING_RATE 	48000.0f
-#define AUDIOFX_BUFF_SIZE	 	4096
-#define AUDIOFX_MAX_CHAIN 		5
-#define AUDIOFX_CNTR_SIZE		400
+#define AUDIOFX_SAMPLING_RATE 		48000.0f
+#define AUDIOFX_SAMPLING_TIME_MS 	(10.0)
+#define AUDIOFX_BUFF_SIZE	 		(int) ((AUDIOFX_SAMPLING_TIME_MS / 1000.0) * AUDIOFX_SAMPLING_RATE)
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

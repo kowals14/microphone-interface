@@ -1,3 +1,3 @@
 ../AudioFX/ParamEQ/filters.c:10:6:FILTERS_SetParams	1
-../AudioFX/ParamEQ/filters.c:38:6:FILTERS_Update	1
-../AudioFX/ParamEQ/filters.c:50:7:FILTERS_Apply	1
+../AudioFX/ParamEQ/filters.c:29:6:FILTERS_Init	2
+../AudioFX/ParamEQ/filters.c:42:7:FILTERS_Apply	1

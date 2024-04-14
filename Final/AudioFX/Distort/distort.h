@@ -23,20 +23,18 @@
 struct __DISTORT_Params_ {
 
 	float thrshld_gap;
+	float thrshld_noise;
 	float h_gain;
 	float l_gain;
-
-	float temp_thrshld_gap;
-	float temp_h_gain;
-	float temp_l_gain;
+	float gain;
 
 } typedef DISTORT_Params;
 
-void DISTORT_SetParams(DISTORT_Params* d_p, float* params);
+void DISTORT_SetParams(DISTORT_Params* d_p, float, float, float);
 
-void DISTORT_Update(DISTORT_Params* d_p);
+void DISTORT_Init(DISTORT_Params* d_p);
 
-float DISTORT_Apply(int16_t audio_in, DISTORT_Params* d_p);
+float DISTORT_Apply(float audio_in, DISTORT_Params* d_p);
 
 #ifdef __cplusplus
 }

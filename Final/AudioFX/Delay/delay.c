@@ -6,35 +6,38 @@
  *      Derivded from: https://wiki.analog.com/resources/tools-software/sharc-audio-module/baremetal/delay-effect-tutorial
  */
 
+
 #include "delay.h"
 
-void DELAY_SetParams(DELAY_Params* d_p, float* params) {
-
-	d_p->temp_delay_mix[0] 		= params[1];
-	d_p->temp_delay_mix[1] 		= 1.0f - params[1];
-	d_p->temp_delay_sample_len 	= (uint32_t) params[2] * AUDIOFX_SAMPLING_RATE;
-	d_p->temp_delay_feedback 	= params[0];
+void DELAY_SetParams(DELAY_Params* d_p, float mix, float feedback, uint32_t sample_len) {
+	d_p->mix	 		= mix;
+	d_p->sample_len 	= sample_len;
+	d_p->feedback		= feedback;
 
 }
 
-void DELAY_Update(DELAY_Params* d_p) {
+void DELAY_Init(DELAY_Params* d_p) {
+	d_p->mix	 			= 0;
+	d_p->sample_len 		= 0;
+	d_p->feedback			= 0;
+	d_p->delay_line_index	= 0;
 
-	d_p->delay_mix[0] 		= d_p->temp_delay_mix[0];
-	d_p->delay_mix[1] 		= d_p->temp_delay_mix[1];
-	d_p->delay_sample_len 	= d_p->temp_delay_sample_len;
-	d_p->delay_feedback		= d_p->temp_delay_feedback;
-
+	for(int i = 0; i < DELAY_LINE_SIZE; i++) {
+		d_p->delay_line[i] = 0;
+	}
 }
 
-float DELAY_Apply(int16_t audio_in, DELAY_Params* d_p) {
+float DELAY_Apply(float in_sample, DELAY_Params* d_p) {
 	float delayed_sample = d_p->delay_line[d_p->delay_line_index];
-	float in_sample = INT16_TO_FLOAT * audio_in;
+	float out_sample 	 = 0;
 
-	d_p->delay_line[d_p->delay_line_index] = d_p->delay_feedback * (delayed_sample + in_sample);
+	d_p->delay_line[d_p->delay_line_index] = d_p->feedback * (delayed_sample + in_sample);
 
-	if (d_p->delay_line_index++ >= d_p->delay_sample_len) {
+	if (d_p->delay_line_index++ >= d_p->sample_len) {
 		d_p->delay_line_index = 0;
 	}
 
-	return (in_sample * d_p->delay_mix[1]) + (delayed_sample * d_p->delay_mix[0]);
+	out_sample = (in_sample * (1.0 - d_p->mix)) + (delayed_sample * d_p->mix);
+
+	return out_sample;
 }

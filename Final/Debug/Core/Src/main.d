@@ -36,9 +36,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Drivers/Codec/wm8731.h \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audioFX.h \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/ParamEQ/filters.h \
- C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Delay/delay.h \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Distort/distort.h \
+ C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Drivers/TouchScreenLCD/ili9341.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -78,7 +78,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Drivers/Codec/wm8731.h:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audioFX.h:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/ParamEQ/filters.h:
-C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Delay/delay.h:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Distort/distort.h:
+C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/LUTs/trig_functions.h:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Drivers/TouchScreenLCD/ili9341.h:

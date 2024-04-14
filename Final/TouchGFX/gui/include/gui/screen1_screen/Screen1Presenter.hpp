@@ -25,9 +25,6 @@ public:
      */
     virtual void deactivate();
 
-    void updateParameters(AUDIOFX_Chain_HandleTypeDef*);
-    void changeFX(AUDIOFX_Chain_HandleTypeDef*);
-
     virtual ~Screen1Presenter() {}
 
 private:
