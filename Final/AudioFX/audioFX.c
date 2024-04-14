@@ -230,7 +230,7 @@ void AUDIOFX_Apply_FX_Chain(AUDIOFX_Chain_HandleTypeDef* hfxchn) {
 
 	AUDIOFX_Update(hfxchn); // Update all the effect's parameters
 
-	for(int i = 0; i < AUDIOFX_BUFF_SIZE; i++) {
+	for(int i = 0; i < AUDIOFX_BUFF_SIZE/2; i++) {
 		audio_in 	= &hfxchn->p_in_buff[i];				// Initialize the input as the sample from the input DMA buffer
 
 		for(size_t i = 0; i < hfxchn->fx_count; i++) {		// Go through each effect in the chain
