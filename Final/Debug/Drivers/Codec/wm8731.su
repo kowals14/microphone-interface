@@ -1,6 +1,5 @@
-../Drivers/Codec/wm8731.c:16:13:I2Cx_Error	16	static
-../Drivers/Codec/wm8731.c:23:6:WM8731I2CCommand	32	static
-../Drivers/Codec/wm8731.c:34:6:WM8731_Init	8	static
-../Drivers/Codec/wm8731.c:53:6:WM8731_In_Vol	16	static
-../Drivers/Codec/wm8731.c:57:6:WM8731_In_Mute	8	static
-../Drivers/Codec/wm8731.c:61:6:WM8731_Out_Vol	16	static
+../Drivers/Codec/wm8731.c:23:6:WM8731I2CCommand	24	static
+../Drivers/Codec/wm8731.c:34:6:WM8731_Init	32	static
+../Drivers/Codec/wm8731.c:53:6:WM8731_In_Vol	24	static
+../Drivers/Codec/wm8731.c:57:6:WM8731_In_Mute	24	static
+../Drivers/Codec/wm8731.c:61:6:WM8731_Out_Vol	0	static

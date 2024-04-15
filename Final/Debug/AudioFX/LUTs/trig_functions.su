@@ -1,4 +1,4 @@
-../AudioFX/LUTs/trig_functions.c:10:7:LUT_Lin_Extrpltn	32	static
-../AudioFX/LUTs/trig_functions.c:17:7:LUT_Lin_Intrpltn	32	static
-../AudioFX/LUTs/trig_functions.c:28:6:LUT_Table_Init	32	static
+../AudioFX/LUTs/trig_functions.c:10:7:LUT_Lin_Extrpltn	0	static
+../AudioFX/LUTs/trig_functions.c:17:7:LUT_Lin_Intrpltn	0	static
+../AudioFX/LUTs/trig_functions.c:28:6:LUT_Table_Init	24	static
 ../AudioFX/LUTs/trig_functions.c:34:7:LUT_Table_Get	24	static

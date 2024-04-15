@@ -35,11 +35,10 @@ void DISTORT_SetParams(DISTORT_Params* d_p, float gap, float l_gain, float h_gai
 }
 
 void DISTORT_Init(DISTORT_Params* d_p){
-	d_p->thrshld_gap 	= 0.0f;
-	d_p->h_gain 	 	= 0.0f;
-	d_p->l_gain 	 	= 0.0f;
 	d_p->thrshld_noise	= 2000000.0f;
 	d_p->gain 			= 2.0f;
+
+	DISTORT_SetParams(d_p, 0.0f, 0.0f, 0.0f);
 }
 
 float DISTORT_Apply(float in_sample, DISTORT_Params* d_p){

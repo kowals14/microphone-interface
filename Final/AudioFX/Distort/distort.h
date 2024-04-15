@@ -23,9 +23,12 @@
 struct __DISTORT_Params_ {
 
 	float thrshld_gap;
-	float thrshld_noise;
 	float h_gain;
 	float l_gain;
+
+	float temp[3];
+
+	float thrshld_noise;
 	float gain;
 
 } typedef DISTORT_Params;

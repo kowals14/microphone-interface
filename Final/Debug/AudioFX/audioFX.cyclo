@@ -1,3 +1,3 @@
-../AudioFX/audioFX.c:29:6:AUDIOFX_Chain_SwitchFX	11
-../AudioFX/audioFX.c:90:6:AUDIOFX_UserParams_SetParams	8
-../AudioFX/audioFX.c:170:6:AUDIOFX_Apply_FX_Chain	2
+../AudioFX/audioFX.c:32:6:AUDIOFX_SwitchFX	11
+../AudioFX/audioFX.c:94:6:AUDIOFX_SetParams	8
+../AudioFX/audioFX.c:185:6:AUDIOFX_Apply_FX_Chain	10

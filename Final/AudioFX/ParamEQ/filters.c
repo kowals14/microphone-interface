@@ -11,7 +11,7 @@ void FILTERS_SetParams(FILTERS_Params* f_p, float f0, float BW, float G) {
 
 	f_p->f0 = f0;
 	f_p->BW = BW;
-	f_p->G = G;
+	f_p->G  = G;
 
 	float wcT = 2.0f * tanf( M_PI* f0 * f_p->sampleTime_s);
 	float Q = f0/BW;

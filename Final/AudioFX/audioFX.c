@@ -23,10 +23,13 @@ extern DISTORT_Params 	ds_p;
 
 extern AUDIOFX_Type curr_fx;
 
+extern uint8_t update_flags;
+extern uint16_t timer_count[3];
+
 /**
  * Switch the current FX to be controlled
  */
-void AUDIOFX_Chain_SwitchFX(uint8_t dir) {
+void AUDIOFX_SwitchFX(uint8_t dir) {
 	if(dir) {
 		curr_fx++;
 	}
@@ -88,81 +91,92 @@ void AUDIOFX_Chain_SwitchFX(uint8_t dir) {
 	}
 }
 
-void AUDIOFX_UserParams_SetParams(AUDIOFX_Type type, float t0, float t1, float t2) {
+void AUDIOFX_SetParams(AUDIOFX_Type fx) {
 	float params[3];
 
-	params[0] = (1.0f - (t0 / (1.0f * AUDIOFX_CNTR_SIZE)));
-	params[1] = (t1 / (1.0f * AUDIOFX_CNTR_SIZE));
-	params[2] = (1.0f - (t0 / (1.0f * AUDIOFX_CNTR_SIZE)));
+	// convert timer counter to percentage
 
-	switch (type)
+	params[0] = (1.0f - (timer_count[0] / AUDIOFX_CNTR_SIZE));
+	params[1] = (timer_count[1] / AUDIOFX_CNTR_SIZE);
+	params[2] = (1.0f - (timer_count[2] / AUDIOFX_CNTR_SIZE));
+
+	// set the new parameters as temporary and set the update flag for the corresponding effect
+
+	switch (fx)
 	{
 		case AUDIOFX_DELAY:
 		{
-			float mix			= params[0] * 1.0;
-			float feedback		= params[1] * 1.0;
-			uint32_t sample_len	= (uint32_t) (params[3] * DELAY_LINE_SIZE);
+			dl_p.temp[0] = params[0] * 1.0;		// mix
+			dl_p.temp[1] = params[1] * 1.0;		// feedback
+			dl_p.temp[2] = params[3] * 1000.0;	// delay time
 
-			DELAY_SetParams(&dl_p, mix, feedback, sample_len);
+			update_flags |= UPDATE_DELAY;
+
 			break;
 		}
 		case AUDIOFX_DISTORTION:
 		{
-			float gap 		= params[0] * 10000000.0f;
-			float l_gain 	= params[1] + 1.0;
-			float h_gain 	= params[2] * 0.9f + 0.01f;
+			ds_p.temp[0] = params[0] * 10000000.0f;		// threshold gap
+			ds_p.temp[1] = params[1] + 1.0;				// l_gain
+			ds_p.temp[2] = params[2] * 0.9f + 0.01f;	// h_gain
 
-			DISTORT_SetParams(&ds_p, gap, l_gain, h_gain);
+			update_flags |= UPDATE_DISTORT;
+
 			break;
 		}
 		case AUDIOFX_PKNG0:
 		{
 
-			float f0 = params[0] * 12000.0f + 20.0f;
-			float BW = params[1] * 500.0f + 1.0f;
-			float G  = params[2] * 10.0;
+			f_p0.temp[0] = params[0] * 12000.0f + 20.0f;	// center frequency
+			f_p0.temp[1] = params[1] * 500.0f + 1.0f;		// bandwidth
+			f_p0.temp[2] = params[2] * 10.0;				// boost/cut
 
-			FILTERS_SetParams(&f_p0, f0, BW, G);
+			update_flags |= UPDATE_FILTER0;
+
 			break;
 		}
 		case AUDIOFX_PKNG1:
 		{
 
-			float f0 = params[0] * 12000.0f + 20.0f;
-			float BW = params[1] * 500.0f + 1.0f;
-			float G  = params[2] * 10.0;
+			f_p1.temp[0] = params[0] * 12000.0f + 20.0f;	// center frequency
+			f_p1.temp[1] = params[1] * 500.0f + 1.0f;		// bandwidth
+			f_p1.temp[2] = params[2] * 10.0;				// boost/cut
 
-			FILTERS_SetParams(&f_p1, f0, BW, G);
+			update_flags |= UPDATE_FILTER1;
+
 			break;
 		}
 		case AUDIOFX_PKNG2:
 		{
 
-			float f0 = params[0] * 12000.0f + 20.0f;
-			float BW = params[1] * 500.0f + 1.0f;
-			float G  = params[2] * 10.0;
+			f_p2.temp[0] = params[0] * 12000.0f + 20.0f;	// center frequency
+			f_p2.temp[1] = params[1] * 500.0f + 1.0f;		// bandwidth
+			f_p2.temp[2] = params[2] * 10.0;				// boost/cut
 
-			FILTERS_SetParams(&f_p2, f0, BW, G);
+			update_flags |= UPDATE_FILTER2;
+
 			break;
 		}
 		case AUDIOFX_PKNG3:
 		{
 
-			float f0 = params[0] * 12000.0f + 20.0f;
-			float BW = params[1] * 500.0f + 1.0f;
-			float G  = params[2] * 10.0;
+			f_p3.temp[0] = params[0] * 12000.0f + 20.0f;	// center frequency
+			f_p3.temp[1] = params[1] * 500.0f + 1.0f;		// bandwidth
+			f_p3.temp[2] = params[2] * 10.0;				// boost/cut
 
-			FILTERS_SetParams(&f_p3, f0, BW, G);
+			update_flags |= UPDATE_FILTER3;
+
 			break;
 		}
 		case AUDIOFX_PKNG4:
 		{
 
-			float f0 = params[0] * 12000.0f + 20.0f;
-			float BW = params[1] * 500.0f + 1.0f;
-			float G  = params[2] * 10.0;
+			f_p4.temp[0] = params[0] * 12000.0f + 20.0f;	// center frequency
+			f_p4.temp[1] = params[1] * 500.0f + 1.0f;		// bandwidth
+			f_p4.temp[2] = params[2] * 10.0;				// boost/cut
 
-			FILTERS_SetParams(&f_p4, f0, BW, G);
+			update_flags |= UPDATE_FILTER4;
+
 			break;
 		}
 	}
@@ -175,24 +189,52 @@ void AUDIOFX_Apply_FX_Chain(void) {
 	int16_t left_out;
 	int16_t right_out;
 
+	if(update_flags) {
+		// check the update flags
+		if(update_flags & UPDATE_DELAY) {
+			DELAY_SetParams(&dl_p, dl_p.temp[0], dl_p.temp[1], dl_p.temp[2]);
+		}
+		if(update_flags & UPDATE_DISTORT) {
+			DISTORT_SetParams(&ds_p, ds_p.temp[0], ds_p.temp[1], ds_p.temp[2]);
+		}
+		if(update_flags & UPDATE_FILTER0) {
+			FILTERS_SetParams(&f_p0, f_p0.temp[0], f_p0.temp[1], f_p0.temp[2]);
+		}
+		if(update_flags & UPDATE_FILTER1) {
+			FILTERS_SetParams(&f_p1, f_p1.temp[0], f_p1.temp[1], f_p1.temp[2]);
+		}
+		if(update_flags & UPDATE_FILTER2) {
+			FILTERS_SetParams(&f_p2, f_p2.temp[0], f_p2.temp[1], f_p2.temp[2]);
+		}
+		if(update_flags & UPDATE_FILTER3) {
+			FILTERS_SetParams(&f_p3, f_p3.temp[0], f_p3.temp[1], f_p3.temp[2]);
+		}
+		if(update_flags & UPDATE_FILTER4) {
+			FILTERS_SetParams(&f_p4, f_p4.temp[0], f_p4.temp[1], f_p4.temp[2]);
+		}
+
+		// clear the flags
+		update_flags = 0;
+	}
+
 	for(uint8_t n = 0; n < (AUDIOFX_BUFF_SIZE/2) - 1; n += 2) {
 		left_in		= INT16_TO_FLOAT * ((float) p_in_buff[n]);
 		right_in	= INT16_TO_FLOAT * ((float) p_in_buff[n + 1]);
 
-//		left_in		= FILTERS_Apply(left_in, &f_p0);
-//		right_in 	= FILTERS_Apply(right_in, &f_p0);
+		left_in		= FILTERS_Apply(left_in, &f_p0);
+		right_in 	= FILTERS_Apply(right_in, &f_p0);
 
-//		left_in		= FILTERS_Apply(left_in, &f_p1);
-//		right_in 	= FILTERS_Apply(right_in, &f_p1);
+		left_in		= FILTERS_Apply(left_in, &f_p1);
+		right_in 	= FILTERS_Apply(right_in, &f_p1);
 
-//		left_in		= FILTERS_Apply(left_in, &f_p2);
-//		right_in 	= FILTERS_Apply(right_in, &f_p2);
+		left_in		= FILTERS_Apply(left_in, &f_p2);
+		right_in 	= FILTERS_Apply(right_in, &f_p2);
 
-//		left_in		= FILTERS_Apply(left_in, &f_p3);
-//		right_in 	= FILTERS_Apply(right_in, &f_p3);
+		left_in		= FILTERS_Apply(left_in, &f_p3);
+		right_in 	= FILTERS_Apply(right_in, &f_p3);
 
-//		left_in		= FILTERS_Apply(left_in, &f_p4);
-//		right_in 	= FILTERS_Apply(right_in, &f_p4);
+		left_in		= FILTERS_Apply(left_in, &f_p4);
+		right_in 	= FILTERS_Apply(right_in, &f_p4);
 
 //		left_in		= DISTORT_Apply(left_in, &ds_p);
 //		right_in 	= DISTORT_Apply(right_in, &ds_p);

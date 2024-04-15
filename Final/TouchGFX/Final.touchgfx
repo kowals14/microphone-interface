@@ -3,6 +3,7 @@
     "Screens": [
       {
         "Name": "Screen1",
+        "Includes": "",
         "Components": [
           {
             "Type": "BoxWithBorder",
@@ -17,9 +18,9 @@
               "Blue": 34
             },
             "BorderColor": {
-              "Red": 31,
-              "Green": 25,
-              "Blue": 25
+              "Red": 81,
+              "Green": 209,
+              "Blue": 69
             },
             "BorderSize": 5
           },
@@ -249,9 +250,354 @@
             "Width": 96,
             "Height": 45,
             "CustomContainerDefinitionName": "FilterParams"
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "bandButton_1",
+            "X": 7,
+            "Y": 127,
+            "Width": 90,
+            "Height": 106,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 90,
+                "Height": 106,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "bandButton_2",
+            "X": 7,
+            "Y": 7,
+            "Width": 90,
+            "Height": 106,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 90,
+                "Height": 106,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "bandButton_3",
+            "X": 115,
+            "Y": 7,
+            "Width": 90,
+            "Height": 106,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 90,
+                "Height": 106,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "bandButton_4",
+            "X": 222,
+            "Y": 7,
+            "Width": 90,
+            "Height": 106,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 90,
+                "Height": 106,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "bandButton_5",
+            "X": 221,
+            "Y": 127,
+            "Width": 90,
+            "Height": 106,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 90,
+                "Height": 106,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Band1Click",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bandButton_1"
+            },
+            "Action": {
+              "Type": "ActionSetBorderColor",
+              "Color": {
+                "Red": 81,
+                "Green": 209,
+                "Blue": 69
+              },
+              "ActionComponent": "PKNG0_Box"
+            }
+          },
+          {
+            "InteractionName": "Band2Click",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bandButton_2"
+            },
+            "Action": {
+              "Type": "ActionSetBorderColor",
+              "Color": {
+                "Red": 81,
+                "Green": 209,
+                "Blue": 69
+              },
+              "ActionComponent": "PKNG1_Box"
+            }
+          },
+          {
+            "InteractionName": "Band3Click",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bandButton_3"
+            },
+            "Action": {
+              "Type": "ActionSetBorderColor",
+              "Color": {
+                "Red": 81,
+                "Green": 209,
+                "Blue": 69
+              },
+              "ActionComponent": "PKNG2_Box"
+            }
+          },
+          {
+            "InteractionName": "Band4Click",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bandButton_4"
+            },
+            "Action": {
+              "Type": "ActionSetBorderColor",
+              "Color": {
+                "Red": 81,
+                "Green": 209,
+                "Blue": 69
+              },
+              "ActionComponent": "PKNG3_Box"
+            }
+          },
+          {
+            "InteractionName": "Band5Click",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bandButton_5"
+            },
+            "Action": {
+              "Type": "ActionSetBorderColor",
+              "Color": {
+                "Red": 81,
+                "Green": 209,
+                "Blue": 69
+              },
+              "ActionComponent": "PKNG4_Box"
+            }
+          },
+          {
+            "InteractionName": "ClearBox1",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "Band1Click"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "clearCurrentBox"
+            }
+          },
+          {
+            "InteractionName": "ClearBox2",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "Band2Click"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "clearCurrentBox"
+            }
+          },
+          {
+            "InteractionName": "ClearBox3",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "Band3Click"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "clearCurrentBox"
+            }
+          },
+          {
+            "InteractionName": "ClearBox4",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "Band4Click"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "clearCurrentBox"
+            }
+          },
+          {
+            "InteractionName": "ClearBox5",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "Band5Click"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "clearCurrentBox"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          }
+        ]
       },
       {
         "Name": "Screen2",

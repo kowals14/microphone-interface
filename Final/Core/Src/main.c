@@ -85,7 +85,7 @@ int16_t* p_out_buff;
 uint8_t change_pg_flag;
 
 // parameter change variables
-uint16_t prev_count[3];
+uint16_t timer_count[3];
 
 FILTERS_Params f_p0;
 FILTERS_Params f_p1;
@@ -98,6 +98,8 @@ DELAY_Params dl_p;
 DISTORT_Params ds_p;
 
 AUDIOFX_Type curr_fx;
+
+uint8_t update_flags;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -150,25 +152,23 @@ void HAL_SAI_RxCpltCallback(SAI_HandleTypeDef *hsai) {
 }
 
 void Param_Change(){
-	if(TIM1->CNT != prev_count[0] || TIM3->CNT != prev_count[1] || TIM4->CNT != prev_count[2]) {
+	if(TIM1->CNT != timer_count[0] || TIM3->CNT != timer_count[1] || TIM4->CNT != timer_count[2]) {
+		// store counter values
+		timer_count[0] = TIM1->CNT;
+		timer_count[1] = TIM3->CNT;
+		timer_count[2] = TIM4->CNT;
 
-	  // call the calc function to get new coefficients, update the current parameter values
-	  AUDIOFX_UserParams_SetParams(curr_fx, (float) TIM1->CNT, (float) TIM3->CNT, (float) TIM4->CNT);
-
-	  // save previous counter values
-	  prev_count[0] = TIM1->CNT;
-	  prev_count[1] = TIM3->CNT;
-	  prev_count[2] = TIM4->CNT;
+		AUDIOFX_SetParams(curr_fx);
 	}
 }
 
 void FX_Change() {
 	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_2) == 1){
-		AUDIOFX_Chain_SwitchFX(0);
+		AUDIOFX_SwitchFX(0);
 
 	}
 	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_3) == 1){
-		AUDIOFX_Chain_SwitchFX(1);
+		AUDIOFX_SwitchFX(1);
 	}
 }
 
@@ -218,7 +218,8 @@ int main(void)
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
-  curr_fx = AUDIOFX_PKNG0;
+  update_flags 	= 0;
+  curr_fx 	  	= AUDIOFX_PKNG0;
 
   FILTERS_Init(&f_p0);
   FILTERS_Init(&f_p1);
@@ -244,9 +245,9 @@ int main(void)
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
   HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_ALL);
 
-  prev_count[0] = TIM1->CNT;
-  prev_count[1] = TIM3->CNT;
-  prev_count[2] = TIM4->CNT;
+  timer_count[0] = TIM1->CNT;
+  timer_count[1] = TIM3->CNT;
+  timer_count[2] = TIM4->CNT;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -275,7 +276,7 @@ void SystemClock_Config(void)
   /** Configure the main internal regulator output voltage
   */
   __HAL_RCC_PWR_CLK_ENABLE();
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -285,7 +286,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 12;
-  RCC_OscInitStruct.PLL.PLLN = 108;
+  RCC_OscInitStruct.PLL.PLLN = 216;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
@@ -306,10 +307,10 @@ void SystemClock_Config(void)
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
   {
     Error_Handler();
   }

@@ -2,7 +2,6 @@
 #define MODELLISTENER_HPP
 
 #include <gui/model/Model.hpp>
-#include <../../../../AudioFX/audioFX.h>
 
 
 class ModelListener

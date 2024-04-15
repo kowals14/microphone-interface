@@ -21,16 +21,21 @@
  * Delay specific variables
  */
 struct __DELAY_Params_ {
+
 	float mix;		// wet mix
 	float feedback;
+	float time_ms;
+
+	float temp[3];
 
 	uint32_t sample_len;
 	uint32_t delay_line_index;
 
 	float delay_line[DELAY_LINE_SIZE];
+
 } typedef DELAY_Params;
 
-void DELAY_SetParams(DELAY_Params* d_p, float, float, uint32_t);
+void DELAY_SetParams(DELAY_Params* d_p, float, float, float);
 
 void DELAY_Init(DELAY_Params* d_p);
 

@@ -1,6 +1,5 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
-#include <../../../../AudioFX/audioFX.h>
 #include <stdint.h>
 
 class ModelListener;

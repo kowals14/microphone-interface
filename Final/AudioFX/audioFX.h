@@ -22,10 +22,10 @@ typedef int8_t AUDIOFX_Type;
 
 #define AUDIOFX_MAX_CHAIN 	 7
 
-#define AUDIOFX_CNTR_SIZE			400
+#define AUDIOFX_CNTR_SIZE			400.0f
 
-void AUDIOFX_Chain_SwitchFX(uint8_t);
+void AUDIOFX_SwitchFX(uint8_t);
 void AUDIOFX_Apply_FX_Chain(void);
-void AUDIOFX_UserParams_SetParams(AUDIOFX_Type type, float p0, float p1, float p2);
+void AUDIOFX_SetParams(AUDIOFX_Type);
 
 #endif /* INC_AUDIOFX_H_ */

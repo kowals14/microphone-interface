@@ -5,6 +5,8 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 O_SRCS += \
+../TouchGFX/build/MINGW32_NT-6.2/gui/src/containers/DelayParams.o \
+../TouchGFX/build/MINGW32_NT-6.2/gui/src/containers/DistortionParams.o \
 ../TouchGFX/build/MINGW32_NT-6.2/gui/src/containers/FilterParams.o 
 
 

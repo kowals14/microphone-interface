@@ -25,6 +25,8 @@ struct __FILTERS_Params_ {
 	float G;	// boost/cut
 	float BW;	// bandwidth in Hz
 
+	float temp[3];
+
 	float sampleTime_s;
 
 	// Previous outputs/inputs

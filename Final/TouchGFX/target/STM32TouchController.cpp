@@ -66,7 +66,7 @@ bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
 	            uint16_t _x, _y;
 	            tsDriver->GetXY(0x38<<1, &_y, &_x);
 	            x = (int32_t)_x;
-	            y = (int32_t)_y;
+	            y = 240 - (int32_t)_y;
 	            return true;
 	        }
 	    }
