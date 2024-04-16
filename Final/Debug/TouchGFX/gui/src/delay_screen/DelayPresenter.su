@@ -1,0 +1,15 @@
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:37:18:virtual void touchgfx::Presenter::activate()	16	static
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:47:18:virtual void touchgfx::Presenter::deactivate()	16	static
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:52:13:touchgfx::Presenter::~Presenter()	16	static
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:52:13:virtual touchgfx::Presenter::~Presenter()	16	static
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:58:5:touchgfx::Presenter::Presenter()	16	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:9:5:ModelListener::ModelListener()	16	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:11:13:ModelListener::~ModelListener()	16	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:11:13:virtual ModelListener::~ModelListener()	16	static
+../TouchGFX/gui/include/gui/delay_screen/DelayPresenter.hpp:31:13:DelayPresenter::~DelayPresenter()	16	static
+../TouchGFX/gui/include/gui/delay_screen/DelayPresenter.hpp:31:13:virtual DelayPresenter::~DelayPresenter()	16	static
+../TouchGFX/gui/src/delay_screen/DelayPresenter.cpp:4:1:DelayPresenter::DelayPresenter(DelayView&)	16	static
+../TouchGFX/gui/src/delay_screen/DelayPresenter.cpp:10:6:virtual void DelayPresenter::activate()	16	static
+../TouchGFX/gui/src/delay_screen/DelayPresenter.cpp:20:6:virtual void DelayPresenter::deactivate()	16	static
+../TouchGFX/gui/src/delay_screen/DelayPresenter.cpp:25:6:virtual void DelayPresenter::update_fx(AUDIOFX_Type)	16	static
+../TouchGFX/gui/src/delay_screen/DelayPresenter.cpp:35:6:void DelayPresenter::update_curr(AUDIOFX_Type)	16	static

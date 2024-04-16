@@ -1,3 +1,4 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:91:5:touchgfx::colortype::colortype(uint32_t)	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:327:18:virtual void touchgfx::Drawable::setY(int16_t)	16	static
@@ -11,8 +12,12 @@
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Unicode.hpp:404:25:static touchgfx::Unicode::UnicodeChar* touchgfx::Unicode::snprintfFloat(touchgfx::Unicode::UnicodeChar*, uint16_t, const char*, float)	24	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	16	static
-../TouchGFX/gui/include/gui/containers/FilterParams.hpp:10:13:FilterParams::~FilterParams()	16	static
-../TouchGFX/gui/include/gui/containers/FilterParams.hpp:10:13:virtual FilterParams::~FilterParams()	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp:61:10:void touchgfx::BoxWithBorder::setBorderColor(touchgfx::colortype)	16	static
+../TouchGFX/gui/include/gui/containers/FilterParams.hpp:11:13:FilterParams::~FilterParams()	16	static
+../TouchGFX/gui/include/gui/containers/FilterParams.hpp:11:13:virtual FilterParams::~FilterParams()	16	static
 ../TouchGFX/gui/src/containers/FilterParams.cpp:4:1:FilterParams::FilterParams()	16	static
 ../TouchGFX/gui/src/containers/FilterParams.cpp:9:6:virtual void FilterParams::initialize()	16	static
-../TouchGFX/gui/src/containers/FilterParams.cpp:14:6:void FilterParams::setBuffer(int, float)	24	static
+../TouchGFX/gui/src/containers/FilterParams.cpp:14:6:void FilterParams::switchFX()	16	static
+../TouchGFX/gui/src/containers/FilterParams.cpp:17:6:void FilterParams::setBox()	32	static
+../TouchGFX/gui/src/containers/FilterParams.cpp:22:6:void FilterParams::clearBox()	32	static
+../TouchGFX/gui/src/containers/FilterParams.cpp:27:6:void FilterParams::setBuffer(int, float)	24	static

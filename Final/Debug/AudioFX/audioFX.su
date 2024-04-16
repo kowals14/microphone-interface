@@ -1,3 +1,4 @@
-../AudioFX/audioFX.c:32:6:AUDIOFX_SwitchFX	8	static
-../AudioFX/audioFX.c:105:6:AUDIOFX_SetParams	24	static
-../AudioFX/audioFX.c:188:6:AUDIOFX_Apply_FX_Chain	40	static
+../AudioFX/audioFX.c:29:6:AUDIOFX_UpdateCounters	8	static
+../AudioFX/audioFX.c:91:6:AUDIOFX_SwitchFX	8	static
+../AudioFX/audioFX.c:109:6:AUDIOFX_SetParams	24	static
+../AudioFX/audioFX.c:192:6:AUDIOFX_Apply_FX_Chain	64	static

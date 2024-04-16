@@ -142,9 +142,6 @@
     <Filter Include="Source Files\gui\model">
       <UniqueIdentifier>9EFEE2C8-3453-BFF0-40A4-11B7EAD927DB</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\screen1_screen">
-      <UniqueIdentifier>AFA3A490-D071-EBF2-464E-7AE20ED3A54B</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\generated\gui_generated">
       <UniqueIdentifier>6911760F-8B3A-3683-CA17-78F350F7833C</UniqueIdentifier>
     </Filter>
@@ -159,12 +156,6 @@
     </Filter>
     <Filter Include="Source Files\gui\common">
       <UniqueIdentifier>BBD1213F-F811-ABB9-D983-6695ECBF360F</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>11BF2D66-E5A1-860A-0F8B-BBD90FDFE067</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>AAC47DD4-A946-873A-2A83-5D1AF7A75EC9</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\generated\simulator\include">
       <UniqueIdentifier>CB548892-11DA-9068-6F95-F72A1E1BB54E</UniqueIdentifier>
@@ -196,17 +187,29 @@
     <Filter Include="Source Files\generated\gui_generated\containers">
       <UniqueIdentifier>10EBB9BE-C633-4540-73D3-227B8353D8BC</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\screen2_screen">
-      <UniqueIdentifier>59FB3BAB-4C3E-A8F3-7AC9-512E5FD75B81</UniqueIdentifier>
+    <Filter Include="Source Files\gui\delay_screen">
+      <UniqueIdentifier>E995DAA8-BCB0-1870-F1CD-FCDE5B63399B</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\screen2_screen">
-      <UniqueIdentifier>9E2C89EF-7A03-139E-6E32-76CAE3196686</UniqueIdentifier>
+    <Filter Include="Header Files\gui\delay_screen">
+      <UniqueIdentifier>8120E376-B3EE-9594-8E3C-2159F671ECAC</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen2_screen">
-      <UniqueIdentifier>A6EFCB73-8B87-584E-0A07-374F9DC93A3F</UniqueIdentifier>
+    <Filter Include="Header Files\gui\eq_screen">
+      <UniqueIdentifier>81D1A6C9-7284-145C-E183-085D9CECCDEB</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen2_screen">
-      <UniqueIdentifier>BCAAAEC4-6331-FCBA-EDE6-31132D91CA79</UniqueIdentifier>
+    <Filter Include="Source Files\gui\eq_screen">
+      <UniqueIdentifier>883ECEA5-AADA-FA11-17C0-5F515193CAEE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\delay_screen">
+      <UniqueIdentifier>A41909F7-C3BB-E5B0-FE65-7C0B9566EDF6</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\delay_screen">
+      <UniqueIdentifier>3C7A41FB-564C-3439-52FD-A289F0B0FF37</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\eq_screen">
+      <UniqueIdentifier>DC10E190-E6D4-0F04-17F2-3A6614C3253E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\eq_screen">
+      <UniqueIdentifier>1D655F46-2ACB-1794-258F-4D29212AA1BA</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -237,15 +240,6 @@
     <ClCompile Include="..\..\gui\src\model\Model.cpp">
       <Filter>Source Files\gui\model</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp">
-      <Filter>Source Files\gui\screen1_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp">
-      <Filter>Source Files\gui\screen1_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen1_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp">
       <Filter>Source Files\generated\simulator\video</Filter>
     </ClCompile>
@@ -255,26 +249,71 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\FilterParamsBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\TitleBoxParamEQ.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\TitleBoxParamEQBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\DelayParams.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\DelayParamsBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\containers\DistortionParams.cpp">
+    <ClCompile Include="..\..\gui\src\delay_screen\DelayPresenter.cpp">
+      <Filter>Source Files\gui\delay_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\delay_screen\DelayView.cpp">
+      <Filter>Source Files\gui\delay_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\delay_screen\DelayViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\delay_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\DistoritonLowpass.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\DistortionParamsBase.cpp">
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\DistoritonLowpassBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen2_screen\Screen2Presenter.cpp">
-      <Filter>Source Files\gui\screen2_screen</Filter>
+    <ClCompile Include="..\..\gui\src\eq_screen\EQPresenter.cpp">
+      <Filter>Source Files\gui\eq_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen2_screen\Screen2View.cpp">
-      <Filter>Source Files\gui\screen2_screen</Filter>
+    <ClCompile Include="..\..\gui\src\eq_screen\EQView.cpp">
+      <Filter>Source Files\gui\eq_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen2_screen\Screen2ViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen2_screen</Filter>
+    <ClCompile Include="..\..\generated\gui_generated\src\eq_screen\EQViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\eq_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\NextPageDelay.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\NextPageDelayBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\NextPageEQ.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\NextPageEQBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\TitleBoxDelay.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\TitleBoxDelayBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\TitleBoxDistort.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\TitleBoxDistortBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\DistortParams.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\DistortParamsBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -718,9 +757,6 @@
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp">
       <Filter>Header Files\gui\screen1_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen1_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
     </ClInclude>
@@ -733,26 +769,71 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\FilterParamsBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\TitleBoxParamEQ.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\TitleBoxParamEQBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\containers\DelayParams.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DelayParamsBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\DistortionParams.hpp">
+    <ClInclude Include="..\..\gui\include\gui\delay_screen\DelayPresenter.hpp">
+      <Filter>Header Files\gui\delay_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\delay_screen\DelayView.hpp">
+      <Filter>Header Files\gui\delay_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\delay_screen\DelayViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\delay_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\DistoritonLowpass.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DistortionParamsBase.hpp">
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DistoritonLowpassBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2Presenter.hpp">
-      <Filter>Header Files\gui\screen2_screen</Filter>
+    <ClInclude Include="..\..\gui\include\gui\eq_screen\EQPresenter.hpp">
+      <Filter>Header Files\gui\eq_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen2_screen\Screen2View.hpp">
-      <Filter>Header Files\gui\screen2_screen</Filter>
+    <ClInclude Include="..\..\gui\include\gui\eq_screen\EQView.hpp">
+      <Filter>Header Files\gui\eq_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen2_screen\Screen2ViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen2_screen</Filter>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\eq_screen\EQViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\eq_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\NextPageDelay.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\NextPageDelayBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\NextPageEQ.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\NextPageEQBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\TitleBoxDelay.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\TitleBoxDelayBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\TitleBoxDistort.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\TitleBoxDistortBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\DistortParams.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DistortParamsBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

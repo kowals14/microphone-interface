@@ -2,290 +2,99 @@
   "Application": {
     "Screens": [
       {
-        "Name": "Screen1",
+        "Name": "EQ",
         "Includes": "",
         "Components": [
           {
-            "Type": "BoxWithBorder",
-            "Name": "PKNG0_Box",
-            "X": 1,
-            "Y": 120,
-            "Width": 106,
-            "Height": 120,
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 320,
+            "Height": 240,
             "Color": {
-              "Red": 41,
-              "Green": 34,
-              "Blue": 34
-            },
-            "BorderColor": {
-              "Red": 31,
-              "Green": 25,
-              "Blue": 25
-            },
-            "BorderSize": 5
-          },
-          {
-            "Type": "BoxWithBorder",
-            "Name": "Title_Box",
-            "X": 107,
-            "Y": 120,
-            "Width": 106,
-            "Height": 120,
-            "Color": {
-              "Red": 41,
-              "Green": 34,
-              "Blue": 34
-            },
-            "BorderColor": {
-              "Red": 31,
-              "Green": 25,
-              "Blue": 25
-            },
-            "BorderSize": 5
-          },
-          {
-            "Type": "BoxWithBorder",
-            "Name": "PKNG4_Box",
-            "X": 213,
-            "Y": 120,
-            "Width": 106,
-            "Height": 120,
-            "Color": {
-              "Red": 41,
-              "Green": 34,
-              "Blue": 34
-            },
-            "BorderColor": {
-              "Red": 31,
-              "Green": 25,
-              "Blue": 25
-            },
-            "BorderSize": 5
-          },
-          {
-            "Type": "BoxWithBorder",
-            "Name": "PKNG1_Box",
-            "X": 1,
-            "Width": 106,
-            "Height": 120,
-            "Color": {
-              "Red": 41,
-              "Green": 34,
-              "Blue": 34
-            },
-            "BorderColor": {
-              "Red": 31,
-              "Green": 25,
-              "Blue": 25
-            },
-            "BorderSize": 5
-          },
-          {
-            "Type": "BoxWithBorder",
-            "Name": "PKNG2_Box",
-            "X": 107,
-            "Width": 106,
-            "Height": 120,
-            "Color": {
-              "Red": 41,
-              "Green": 34,
-              "Blue": 34
-            },
-            "BorderColor": {
-              "Red": 31,
-              "Green": 25,
-              "Blue": 25
-            },
-            "BorderSize": 5
-          },
-          {
-            "Type": "BoxWithBorder",
-            "Name": "PKNG3_Box",
-            "X": 213,
-            "Width": 106,
-            "Height": 120,
-            "Color": {
-              "Red": 41,
-              "Green": 34,
-              "Blue": 34
-            },
-            "BorderColor": {
-              "Red": 31,
-              "Green": 25,
-              "Blue": 25
-            },
-            "BorderSize": 5
-          },
-          {
-            "Type": "TextArea",
-            "Name": "Subtitle2_3",
-            "X": 36,
-            "Y": 6,
-            "Width": 39,
-            "Height": 15,
-            "TextId": "__SingleUse_2VZQ",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 18,
+              "Green": 14,
+              "Blue": 14
             }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "Subtitle2_3_1_1",
-            "X": 248,
-            "Y": 127,
-            "Width": 39,
-            "Height": 15,
-            "TextId": "__SingleUse_UCK5",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "Subtitle2_3_1_1_1",
-            "X": 248,
-            "Y": 6,
-            "Width": 39,
-            "Height": 15,
-            "TextId": "__SingleUse_AZKU",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "Subtitle2_3_1_1_1_1",
-            "X": 141,
-            "Y": 6,
-            "Width": 39,
-            "Height": 15,
-            "TextId": "__SingleUse_S08W",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "Subtitle2",
-            "X": 36,
-            "Y": 127,
-            "Width": 39,
-            "Height": 15,
-            "TextId": "__SingleUse_G3P0",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "Subtitle2_2",
-            "X": 122,
-            "Y": 160,
-            "Width": 76,
-            "Height": 15,
-            "TextId": "__SingleUse_OG3J",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "currentEffect",
-            "X": 122,
-            "Y": 188,
-            "Width": 76,
-            "Height": 15,
-            "TextId": "__SingleUse_ABJA",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Wildcard1": {
-              "UseBuffer": true,
-              "BufferSize": 32
-            }
-          },
-          {
-            "Type": "CustomContainerInstance",
-            "Name": "peaking_filter_1",
-            "X": 7,
-            "Y": 38,
-            "Width": 96,
-            "Height": 45,
-            "CustomContainerDefinitionName": "FilterParams"
           },
           {
             "Type": "CustomContainerInstance",
             "Name": "peaking_filter_0",
-            "X": 7,
-            "Y": 158,
-            "Width": 96,
-            "Height": 45,
+            "X": 17,
+            "Y": 66,
+            "Width": 143,
+            "Height": 55,
+            "CustomContainerDefinitionName": "FilterParams"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "peaking_filter_1",
+            "X": 160,
+            "Y": 66,
+            "Width": 143,
+            "Height": 55,
             "CustomContainerDefinitionName": "FilterParams"
           },
           {
             "Type": "CustomContainerInstance",
             "Name": "peaking_filter_2",
-            "X": 113,
-            "Y": 38,
-            "Width": 96,
-            "Height": 45,
+            "X": 17,
+            "Y": 120,
+            "Width": 143,
+            "Height": 55,
             "CustomContainerDefinitionName": "FilterParams"
           },
           {
             "Type": "CustomContainerInstance",
             "Name": "peaking_filter_3",
-            "X": 219,
-            "Y": 38,
-            "Width": 96,
-            "Height": 45,
+            "X": 160,
+            "Y": 120,
+            "Width": 143,
+            "Height": 55,
             "CustomContainerDefinitionName": "FilterParams"
           },
           {
             "Type": "CustomContainerInstance",
             "Name": "peaking_filter_4",
-            "X": 219,
-            "Y": 158,
-            "Width": 96,
-            "Height": 45,
+            "X": 17,
+            "Y": 175,
+            "Width": 143,
+            "Height": 55,
             "CustomContainerDefinitionName": "FilterParams"
           },
           {
+            "Type": "CustomContainerInstance",
+            "Name": "titleBox1",
+            "X": 17,
+            "Y": 11,
+            "Width": 286,
+            "Height": 55,
+            "CustomContainerDefinitionName": "TitleBoxParamEQ"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "nextPageDelay1",
+            "X": 160,
+            "Y": 175,
+            "Width": 143,
+            "Height": 55,
+            "CustomContainerDefinitionName": "NextPageDelay"
+          },
+          {
             "Type": "FlexButton",
-            "Name": "bandButton_1",
-            "X": 7,
-            "Y": 127,
-            "Width": 90,
-            "Height": 106,
-            "Alpha": 0,
+            "Name": "button0",
+            "X": 17,
+            "Y": 66,
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 16,
             "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
+              "Type": "TouchButtonTrigger"
             },
             "ButtonStyles": [
               {
                 "Type": "BoxWithBorderButtonStyle",
-                "Width": 90,
-                "Height": 106,
+                "Width": 143,
+                "Height": 55,
                 "LockToFlexButtonSize": true,
                 "BorderSize": 5,
                 "ColorReleased": {
@@ -310,20 +119,20 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "bandButton_2",
-            "X": 7,
-            "Y": 7,
-            "Width": 90,
-            "Height": 106,
-            "Alpha": 0,
+            "Name": "button1",
+            "X": 160,
+            "Y": 66,
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 16,
             "ButtonTrigger": {
               "Type": "ClickButtonTrigger"
             },
             "ButtonStyles": [
               {
                 "Type": "BoxWithBorderButtonStyle",
-                "Width": 90,
-                "Height": 106,
+                "Width": 143,
+                "Height": 55,
                 "LockToFlexButtonSize": true,
                 "BorderSize": 5,
                 "ColorReleased": {
@@ -348,20 +157,20 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "bandButton_3",
-            "X": 115,
-            "Y": 7,
-            "Width": 90,
-            "Height": 106,
-            "Alpha": 0,
+            "Name": "button2",
+            "X": 17,
+            "Y": 120,
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 16,
             "ButtonTrigger": {
               "Type": "ClickButtonTrigger"
             },
             "ButtonStyles": [
               {
                 "Type": "BoxWithBorderButtonStyle",
-                "Width": 90,
-                "Height": 106,
+                "Width": 143,
+                "Height": 55,
                 "LockToFlexButtonSize": true,
                 "BorderSize": 5,
                 "ColorReleased": {
@@ -386,20 +195,20 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "bandButton_4",
-            "X": 222,
-            "Y": 7,
-            "Width": 90,
-            "Height": 106,
-            "Alpha": 0,
+            "Name": "button3",
+            "X": 160,
+            "Y": 120,
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 16,
             "ButtonTrigger": {
               "Type": "ClickButtonTrigger"
             },
             "ButtonStyles": [
               {
                 "Type": "BoxWithBorderButtonStyle",
-                "Width": 90,
-                "Height": 106,
+                "Width": 143,
+                "Height": 55,
                 "LockToFlexButtonSize": true,
                 "BorderSize": 5,
                 "ColorReleased": {
@@ -424,20 +233,20 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "bandButton_5",
-            "X": 221,
-            "Y": 127,
-            "Width": 90,
-            "Height": 106,
-            "Alpha": 0,
+            "Name": "button4",
+            "X": 17,
+            "Y": 175,
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 16,
             "ButtonTrigger": {
               "Type": "ClickButtonTrigger"
             },
             "ButtonStyles": [
               {
                 "Type": "BoxWithBorderButtonStyle",
-                "Width": 90,
-                "Height": 106,
+                "Width": 143,
+                "Height": 55,
                 "LockToFlexButtonSize": true,
                 "BorderSize": 5,
                 "ColorReleased": {
@@ -461,112 +270,310 @@
             ]
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "button0Update",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button0"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call EQ UpdateCurFX",
+              "ParameterValue": "0",
+              "ActionComponent": "EQ"
+            }
+          },
+          {
+            "InteractionName": "button1Update",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call EQ UpdateCurFX",
+              "ParameterValue": "1",
+              "ActionComponent": "EQ"
+            }
+          },
+          {
+            "InteractionName": "button2Update",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button2"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call EQ UpdateCurFX",
+              "ParameterValue": "2",
+              "ActionComponent": "EQ"
+            }
+          },
+          {
+            "InteractionName": "button3Update",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button3"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call EQ UpdateCurFX",
+              "ParameterValue": "3",
+              "ActionComponent": "EQ"
+            }
+          },
+          {
+            "InteractionName": "button4Update",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button4"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call EQ UpdateCurFX",
+              "ParameterValue": "4",
+              "ActionComponent": "EQ"
+            }
+          },
+          {
+            "InteractionName": "goToDelay",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "Delay"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "UpdateCurFX",
+            "HasValue": true,
+            "ValueType": "uint8_t"
+          }
+        ]
       },
       {
-        "Name": "Screen2",
+        "Name": "Delay",
+        "Includes": "",
         "Components": [
           {
-            "Type": "BoxWithBorder",
-            "Name": "HPF_Box",
-            "X": 1,
-            "Y": 120,
-            "Width": 319,
-            "Height": 120,
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 320,
+            "Height": 240,
             "Color": {
-              "Red": 41,
-              "Green": 34,
-              "Blue": 34
-            },
-            "BorderColor": {
-              "Red": 31,
-              "Green": 25,
-              "Blue": 25
-            },
-            "BorderSize": 5
-          },
-          {
-            "Type": "BoxWithBorder",
-            "Name": "PKNG1_Box",
-            "X": 1,
-            "Width": 319,
-            "Height": 120,
-            "Color": {
-              "Red": 41,
-              "Green": 34,
-              "Blue": 34
-            },
-            "BorderColor": {
-              "Red": 31,
-              "Green": 25,
-              "Blue": 25
-            },
-            "BorderSize": 5
-          },
-          {
-            "Type": "TextArea",
-            "Name": "Subtitle2_3",
-            "X": 141,
-            "Y": 15,
-            "Width": 39,
-            "Height": 15,
-            "TextId": "__SingleUse_75SP",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 18,
+              "Green": 14,
+              "Blue": 14
             }
           },
           {
-            "Type": "TextArea",
-            "Name": "Subtitle2_3_1",
-            "X": 133,
-            "Y": 135,
-            "Width": 54,
-            "Height": 15,
-            "TextId": "__SingleUse_H4VD",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
+            "Type": "CustomContainerInstance",
+            "Name": "distortParams",
+            "X": 161,
+            "Y": 93,
+            "Width": 143,
+            "Height": 55,
+            "CustomContainerDefinitionName": "DistortParams"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "timeBoxDelay1",
+            "X": 17,
+            "Y": 38,
+            "Width": 143,
+            "Height": 55,
+            "CustomContainerDefinitionName": "TitleBoxDelay"
           },
           {
             "Type": "CustomContainerInstance",
             "Name": "delayParams1",
-            "X": 80,
-            "Y": 41,
-            "Width": 160,
-            "Height": 45,
+            "X": 17,
+            "Y": 93,
+            "Width": 143,
+            "Height": 55,
             "CustomContainerDefinitionName": "DelayParams"
           },
           {
             "Type": "CustomContainerInstance",
-            "Name": "distortionParams1",
+            "Name": "titleBoxDistort1",
+            "X": 161,
+            "Y": 38,
+            "Width": 143,
+            "Height": 55,
+            "CustomContainerDefinitionName": "TitleBoxDistort"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "nextPageEQ1",
             "X": 89,
-            "Y": 159,
-            "Width": 131,
-            "Height": 45,
-            "CustomContainerDefinitionName": "DistortionParams"
+            "Y": 148,
+            "Width": 143,
+            "Height": 55,
+            "CustomContainerDefinitionName": "NextPageEQ"
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "button0",
+            "X": 161,
+            "Y": 93,
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 16,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 143,
+                "Height": 55,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "button1",
+            "X": 17,
+            "Y": 93,
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 16,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 143,
+                "Height": 55,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "button0Update",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button0"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Delay UpdateCurFX",
+              "ParameterValue": "6",
+              "ActionComponent": "Delay"
+            }
+          },
+          {
+            "InteractionName": "button1Update",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Delay UpdateCurFX",
+              "ParameterValue": "5",
+              "ActionComponent": "Delay"
+            }
+          },
+          {
+            "InteractionName": "goToEQ",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "EQ"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "UpdateCurFX",
+            "HasValue": true,
+            "ValueType": "uint8_t"
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [
       {
-        "Name": "DistortionParams",
-        "Width": 131,
-        "Height": 45,
+        "Name": "DistortParams",
+        "Width": 143,
+        "Height": 55,
         "Components": [
           {
+            "Type": "BoxWithBorder",
+            "Name": "param_box",
+            "Width": 143,
+            "Height": 55,
+            "Color": {
+              "Red": 31,
+              "Green": 30,
+              "Blue": 30
+            },
+            "BorderColor": {
+              "Red": 23,
+              "Green": 20,
+              "Blue": 20
+            },
+            "BorderSize": 5
+          },
+          {
             "Type": "TextArea",
-            "Name": "LGain",
-            "Width": 84,
+            "Name": "PreAmp",
+            "X": 7,
+            "Y": 5,
+            "Width": 76,
             "Height": 15,
-            "TextId": "__SingleUse_19YG",
+            "TextId": "__SingleUse_OLJL",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -581,11 +588,12 @@
           },
           {
             "Type": "TextArea",
-            "Name": "HGain",
-            "Y": 15,
-            "Width": 84,
+            "Name": "Gain",
+            "X": 7,
+            "Y": 33,
+            "Width": 64,
             "Height": 15,
-            "TextId": "__SingleUse_HYF8",
+            "TextId": "__SingleUse_ZD56",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -600,12 +608,12 @@
           },
           {
             "Type": "TextArea",
-            "Name": "Threshold",
-            "X": 12,
-            "Y": 30,
+            "Name": "Mix",
+            "X": 11,
+            "Y": 20,
             "Width": 72,
             "Height": 15,
-            "TextId": "__SingleUse_EWXA",
+            "TextId": "__SingleUse_ER2V",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -617,22 +625,76 @@
               "UseBuffer": true,
               "BufferSize": 32
             }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "param_button",
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 143,
+                "Height": 55,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
           }
         ],
         "Interactions": []
       },
       {
         "Name": "DelayParams",
-        "Width": 160,
-        "Height": 45,
+        "Width": 143,
+        "Height": 55,
         "Components": [
           {
+            "Type": "BoxWithBorder",
+            "Name": "param_box",
+            "Width": 143,
+            "Height": 55,
+            "Color": {
+              "Red": 31,
+              "Green": 30,
+              "Blue": 30
+            },
+            "BorderColor": {
+              "Red": 23,
+              "Green": 20,
+              "Blue": 20
+            },
+            "BorderSize": 5
+          },
+          {
             "Type": "TextArea",
-            "Name": "Mix",
-            "X": 32,
-            "Width": 84,
+            "Name": "Time",
+            "X": 12,
+            "Y": 20,
+            "Width": 76,
             "Height": 15,
-            "TextId": "__SingleUse_01P3",
+            "TextId": "__SingleUse_CGKJ",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -648,11 +710,11 @@
           {
             "Type": "TextArea",
             "Name": "Feedback",
-            "X": 32,
-            "Y": 15,
-            "Width": 84,
+            "X": 12,
+            "Y": 5,
+            "Width": 69,
             "Height": 15,
-            "TextId": "__SingleUse_U823",
+            "TextId": "__SingleUse_J8FL",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -667,12 +729,12 @@
           },
           {
             "Type": "TextArea",
-            "Name": "Time",
-            "X": 53,
-            "Y": 30,
+            "Name": "Mix",
+            "X": 16,
+            "Y": 35,
             "Width": 72,
             "Height": 15,
-            "TextId": "__SingleUse_UMYH",
+            "TextId": "__SingleUse_0K6O",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -684,20 +746,175 @@
               "UseBuffer": true,
               "BufferSize": 32
             }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "param_button",
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 143,
+                "Height": 55,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "DistoritonLowpass",
+        "Width": 143,
+        "Height": 55,
+        "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Name": "param_box",
+            "Width": 143,
+            "Height": 55,
+            "Color": {
+              "Red": 31,
+              "Green": 30,
+              "Blue": 30
+            },
+            "BorderColor": {
+              "Red": 23,
+              "Green": 20,
+              "Blue": 20
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "TextArea",
+            "Name": "f0",
+            "X": 13,
+            "Y": 10,
+            "Width": 76,
+            "Height": 15,
+            "TextId": "__SingleUse_W6WV",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "ResourceId1",
+              "UseBuffer": true,
+              "BufferSize": 32
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "G",
+            "X": 13,
+            "Y": 25,
+            "Width": 76,
+            "Height": 19,
+            "TextId": "__SingleUse_LBJU",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "ResourceId1",
+              "UseBuffer": true,
+              "BufferSize": 32
+            }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "param_button",
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 143,
+                "Height": 55,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
           }
         ],
         "Interactions": []
       },
       {
         "Name": "FilterParams",
-        "Width": 96,
-        "Height": 45,
+        "Width": 143,
+        "Height": 55,
         "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Name": "param_box",
+            "Width": 143,
+            "Height": 55,
+            "Color": {
+              "Red": 31,
+              "Green": 30,
+              "Blue": 30
+            },
+            "BorderColor": {
+              "Red": 23,
+              "Green": 20,
+              "Blue": 20
+            },
+            "BorderSize": 5
+          },
           {
             "Type": "TextArea",
             "Name": "f0",
-            "X": 6,
-            "Width": 84,
+            "X": 10,
+            "Y": 5,
+            "Width": 76,
             "Height": 15,
             "TextId": "__SingleUse_TDSP",
             "TextRotation": "0",
@@ -714,10 +931,10 @@
           },
           {
             "Type": "TextArea",
-            "Name": "BW",
-            "X": 12,
-            "Y": 15,
-            "Width": 84,
+            "Name": "G",
+            "X": 10,
+            "Y": 35,
+            "Width": 64,
             "Height": 15,
             "TextId": "__SingleUse_VOJG",
             "TextRotation": "0",
@@ -734,9 +951,9 @@
           },
           {
             "Type": "TextArea",
-            "Name": "G",
-            "X": 6,
-            "Y": 30,
+            "Name": "BW",
+            "X": 14,
+            "Y": 20,
             "Width": 72,
             "Height": 15,
             "TextId": "__SingleUse_87CS",
@@ -754,6 +971,306 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "TitleBoxDistort",
+        "Width": 143,
+        "Height": 55,
+        "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Name": "param_box",
+            "Width": 143,
+            "Height": 55,
+            "Color": {
+              "Red": 31,
+              "Green": 30,
+              "Blue": 30
+            },
+            "BorderColor": {
+              "Red": 23,
+              "Green": 20,
+              "Blue": 20
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "TextArea",
+            "Name": "Title",
+            "X": 4,
+            "Y": 18,
+            "Width": 135,
+            "Height": 19,
+            "TextId": "__SingleUse_0HWM",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "TitleBoxDelay",
+        "Width": 143,
+        "Height": 55,
+        "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Name": "param_box",
+            "Width": 143,
+            "Height": 55,
+            "Color": {
+              "Red": 31,
+              "Green": 30,
+              "Blue": 30
+            },
+            "BorderColor": {
+              "Red": 23,
+              "Green": 20,
+              "Blue": 20
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "TextArea",
+            "Name": "Title",
+            "X": 4,
+            "Y": 18,
+            "Width": 135,
+            "Height": 19,
+            "TextId": "__SingleUse_XXG6",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "TitleBoxParamEQ",
+        "Width": 286,
+        "Height": 55,
+        "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Name": "title_box",
+            "Width": 286,
+            "Height": 55,
+            "Color": {
+              "Red": 31,
+              "Green": 30,
+              "Blue": 30
+            },
+            "BorderColor": {
+              "Red": 23,
+              "Green": 20,
+              "Blue": 20
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "TextArea",
+            "Name": "Title",
+            "X": 76,
+            "Y": 18,
+            "Width": 135,
+            "Height": 19,
+            "TextId": "__SingleUse_AY8F",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "NextPageEQ",
+        "Width": 143,
+        "Height": 55,
+        "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Name": "next_page_box",
+            "Width": 143,
+            "Height": 55,
+            "Color": {
+              "Red": 31,
+              "Green": 30,
+              "Blue": 30
+            },
+            "BorderColor": {
+              "Red": 23,
+              "Green": 20,
+              "Blue": 20
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "TextArea",
+            "Name": "NextPage",
+            "X": 33,
+            "Y": 20,
+            "Width": 76,
+            "Height": 15,
+            "TextId": "__SingleUse_GLZD",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "next_page_button",
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 143,
+                "Height": 55,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "SwapScreen_EQ2Delay",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "next_page_button"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "EQ"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "NextPageDelay",
+        "Width": 143,
+        "Height": 55,
+        "Components": [
+          {
+            "Type": "BoxWithBorder",
+            "Name": "next_page_box",
+            "Width": 143,
+            "Height": 55,
+            "Color": {
+              "Red": 31,
+              "Green": 30,
+              "Blue": 30
+            },
+            "BorderColor": {
+              "Red": 23,
+              "Green": 20,
+              "Blue": 20
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "TextArea",
+            "Name": "NextPage",
+            "X": 33,
+            "Y": 20,
+            "Width": 76,
+            "Height": 15,
+            "TextId": "__SingleUse_9VHO",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "next_page_button",
+            "Width": 143,
+            "Height": 55,
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 143,
+                "Height": 55,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "SwapScreen_EQ2Delay",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "next_page_button"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "Delay"
+            }
+          }
+        ]
       }
     ],
     "Name": "MyApplication",
@@ -762,7 +1279,7 @@
       "Height": 240
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "Screen1",
+    "StartupScreenName": "EQ",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",

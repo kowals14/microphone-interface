@@ -2,6 +2,7 @@
 #define FILTERPARAMS_HPP
 
 #include <gui_generated/containers/FilterParamsBase.hpp>
+#include <Color.hpp>
 
 class FilterParams : public FilterParamsBase
 {
@@ -11,7 +12,12 @@ public:
 
     virtual void initialize();
 
+    void switchFX();
+
     void setBuffer(int, float);
+    void setBox();
+    void clearBox();
+
 protected:
 };
 

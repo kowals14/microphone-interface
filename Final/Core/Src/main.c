@@ -72,7 +72,7 @@ int select = 0; //LED Select
 int state[2] = {0, 0}; //States for LR Buttons
 int tDelay[3] = {50,50,50}; //Delays from Counters
 int ConfLvl[2] = {0,0};
-int ConfT = 250;
+int ConfT = 750;
 
 // DMA buffers
 int16_t audio_in[AUDIOFX_BUFF_SIZE];
@@ -81,8 +81,8 @@ int16_t audio_out[AUDIOFX_BUFF_SIZE];
 int16_t* p_in_buff;
 int16_t* p_out_buff;
 
-// change page flag
-uint8_t change_pg_flag;
+// change fx flag
+uint8_t change_fx_flag;
 
 // parameter change variables
 uint16_t timer_count[3];
@@ -151,7 +151,30 @@ void HAL_SAI_RxCpltCallback(SAI_HandleTypeDef *hsai) {
 	}
 }
 
-void Param_Change(){
+static void Param_Change(){
+	// Check for counter overflow or underflow
+	if(TIM1->CNT > AUDIOFX_CNTR_MAX) {
+		TIM1->CNT = AUDIOFX_CNTR_MAX;
+	}
+	else if(TIM1->CNT < AUDIOFX_CNTR_MIN) {
+		TIM1->CNT = AUDIOFX_CNTR_MIN;
+	}
+
+	if(TIM3->CNT > AUDIOFX_CNTR_MAX) {
+		TIM3->CNT = AUDIOFX_CNTR_MAX;
+	}
+	else if(TIM3->CNT < AUDIOFX_CNTR_MIN) {
+		TIM3->CNT = AUDIOFX_CNTR_MIN;
+	}
+
+	if(TIM4->CNT > AUDIOFX_CNTR_MAX) {
+		TIM4->CNT = AUDIOFX_CNTR_MAX;
+	}
+	else if(TIM4->CNT < AUDIOFX_CNTR_MIN) {
+		TIM4->CNT = AUDIOFX_CNTR_MIN;
+	}
+
+	// check for difference in timer values
 	if(TIM1->CNT != timer_count[0] || TIM3->CNT != timer_count[1] || TIM4->CNT != timer_count[2]) {
 		// store counter values
 		timer_count[0] = TIM1->CNT;
@@ -162,7 +185,7 @@ void Param_Change(){
 	}
 }
 
-void FX_Change() {
+static void FX_Change() {
 	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_2) == 1){
 		ConfLvl[0]++;
 		if(ConfLvl[0] > ConfT){
@@ -180,7 +203,14 @@ void FX_Change() {
 			AUDIOFX_SwitchFX(1);
 		}
 	}
+
+	// check if we changed current FX using touch screen
+	if(change_fx_flag) {
+		AUDIOFX_UpdateCounters();
+		change_fx_flag = 0;
+	}
 }
+
 
 /* USER CODE END 0 */
 
@@ -229,7 +259,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   update_flags 	= 0;
-  curr_fx 	  	= AUDIOFX_DISTORTION;
+  curr_fx 	  	= AUDIOFX_PKNG0;
 
   FILTERS_Init(&f_p0);
   FILTERS_Init(&f_p1);
@@ -254,6 +284,10 @@ int main(void)
   HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
   HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_ALL);
+
+  TIM1->CNT = AUDIOFX_CNTR_MIN;
+  TIM3->CNT = AUDIOFX_CNTR_MIN;
+  TIM4->CNT = AUDIOFX_CNTR_MIN;
 
   timer_count[0] = TIM1->CNT;
   timer_count[1] = TIM3->CNT;
@@ -589,7 +623,7 @@ static void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 0;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 700;
+  htim1.Init.Period = 600;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -598,7 +632,7 @@ static void MX_TIM1_Init(void)
   sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC1Filter = 10;
-  sConfig.IC2Polarity = TIM_ICPOLARITY_RISING;
+  sConfig.IC2Polarity = TIM_ICPOLARITY_FALLING;
   sConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC2Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC2Filter = 10;
@@ -684,7 +718,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 0;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 700;
+  htim3.Init.Period = 600;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   sConfig.EncoderMode = TIM_ENCODERMODE_TI12;
@@ -733,7 +767,7 @@ static void MX_TIM4_Init(void)
   htim4.Instance = TIM4;
   htim4.Init.Prescaler = 0;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 400;
+  htim4.Init.Period = 600;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   sConfig.EncoderMode = TIM_ENCODERMODE_TI12;
@@ -741,7 +775,7 @@ static void MX_TIM4_Init(void)
   sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC1Filter = 10;
-  sConfig.IC2Polarity = TIM_ICPOLARITY_RISING;
+  sConfig.IC2Polarity = TIM_ICPOLARITY_FALLING;
   sConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC2Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC2Filter = 10;

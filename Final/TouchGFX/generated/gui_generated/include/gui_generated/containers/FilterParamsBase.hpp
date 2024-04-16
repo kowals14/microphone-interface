@@ -6,6 +6,7 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class FilterParamsBase : public touchgfx::Container
@@ -23,19 +24,20 @@ protected:
     /*
      * Member Declarations
      */
+    touchgfx::BoxWithBorder param_box;
     touchgfx::TextAreaWithOneWildcard f0;
-    touchgfx::TextAreaWithOneWildcard BW;
     touchgfx::TextAreaWithOneWildcard G;
+    touchgfx::TextAreaWithOneWildcard BW;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t F0_SIZE = 32;
     touchgfx::Unicode::UnicodeChar f0Buffer[F0_SIZE];
-    static const uint16_t BW_SIZE = 32;
-    touchgfx::Unicode::UnicodeChar BWBuffer[BW_SIZE];
     static const uint16_t G_SIZE = 32;
     touchgfx::Unicode::UnicodeChar GBuffer[G_SIZE];
+    static const uint16_t BW_SIZE = 32;
+    touchgfx::Unicode::UnicodeChar BWBuffer[BW_SIZE];
 
 private:
 

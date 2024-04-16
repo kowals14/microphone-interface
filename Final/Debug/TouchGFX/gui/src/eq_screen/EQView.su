@@ -1,0 +1,13 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
+../TouchGFX/gui/include/gui/eq_screen/EQView.hpp:11:13:EQView::~EQView()	16	static
+../TouchGFX/gui/include/gui/eq_screen/EQView.hpp:11:13:virtual EQView::~EQView()	16	static
+../TouchGFX/gui/src/eq_screen/EQView.cpp:17:1:EQView::EQView()	16	static
+../TouchGFX/gui/src/eq_screen/EQView.cpp:22:6:virtual void EQView::setupScreen()	16	static
+../TouchGFX/gui/src/eq_screen/EQView.cpp:27:6:virtual void EQView::tearDownScreen()	16	static
+../TouchGFX/gui/src/eq_screen/EQView.cpp:32:6:void EQView::clearBox(AUDIOFX_Type)	16	static
+../TouchGFX/gui/src/eq_screen/EQView.cpp:55:6:void EQView::setBox(AUDIOFX_Type)	16	static
+../TouchGFX/gui/src/eq_screen/EQView.cpp:79:6:void EQView::updateParameters(AUDIOFX_Type)	16	static
+../TouchGFX/gui/src/eq_screen/EQView.cpp:112:6:virtual void EQView::UpdateCurFX(uint8_t)	16	static

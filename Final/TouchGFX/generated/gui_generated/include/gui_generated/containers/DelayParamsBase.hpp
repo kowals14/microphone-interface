@@ -6,7 +6,9 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
 
 class DelayParamsBase : public touchgfx::Container
 {
@@ -23,19 +25,21 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::TextAreaWithOneWildcard Mix;
-    touchgfx::TextAreaWithOneWildcard Feedback;
+    touchgfx::BoxWithBorder param_box;
     touchgfx::TextAreaWithOneWildcard Time;
+    touchgfx::TextAreaWithOneWildcard Feedback;
+    touchgfx::TextAreaWithOneWildcard Mix;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  param_button;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t MIX_SIZE = 32;
-    touchgfx::Unicode::UnicodeChar MixBuffer[MIX_SIZE];
-    static const uint16_t FEEDBACK_SIZE = 32;
-    touchgfx::Unicode::UnicodeChar FeedbackBuffer[FEEDBACK_SIZE];
     static const uint16_t TIME_SIZE = 32;
     touchgfx::Unicode::UnicodeChar TimeBuffer[TIME_SIZE];
+    static const uint16_t FEEDBACK_SIZE = 32;
+    touchgfx::Unicode::UnicodeChar FeedbackBuffer[FEEDBACK_SIZE];
+    static const uint16_t MIX_SIZE = 32;
+    touchgfx::Unicode::UnicodeChar MixBuffer[MIX_SIZE];
 
 private:
 

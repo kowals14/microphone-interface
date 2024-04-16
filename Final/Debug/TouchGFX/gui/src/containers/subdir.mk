@@ -6,18 +6,36 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../TouchGFX/gui/src/containers/DelayParams.cpp \
-../TouchGFX/gui/src/containers/DistortionParams.cpp \
-../TouchGFX/gui/src/containers/FilterParams.cpp 
+../TouchGFX/gui/src/containers/DistoritonLowpass.cpp \
+../TouchGFX/gui/src/containers/DistortParams.cpp \
+../TouchGFX/gui/src/containers/FilterParams.cpp \
+../TouchGFX/gui/src/containers/NextPageDelay.cpp \
+../TouchGFX/gui/src/containers/NextPageEQ.cpp \
+../TouchGFX/gui/src/containers/TitleBoxDelay.cpp \
+../TouchGFX/gui/src/containers/TitleBoxDistort.cpp \
+../TouchGFX/gui/src/containers/TitleBoxParamEQ.cpp 
 
 OBJS += \
 ./TouchGFX/gui/src/containers/DelayParams.o \
-./TouchGFX/gui/src/containers/DistortionParams.o \
-./TouchGFX/gui/src/containers/FilterParams.o 
+./TouchGFX/gui/src/containers/DistoritonLowpass.o \
+./TouchGFX/gui/src/containers/DistortParams.o \
+./TouchGFX/gui/src/containers/FilterParams.o \
+./TouchGFX/gui/src/containers/NextPageDelay.o \
+./TouchGFX/gui/src/containers/NextPageEQ.o \
+./TouchGFX/gui/src/containers/TitleBoxDelay.o \
+./TouchGFX/gui/src/containers/TitleBoxDistort.o \
+./TouchGFX/gui/src/containers/TitleBoxParamEQ.o 
 
 CPP_DEPS += \
 ./TouchGFX/gui/src/containers/DelayParams.d \
-./TouchGFX/gui/src/containers/DistortionParams.d \
-./TouchGFX/gui/src/containers/FilterParams.d 
+./TouchGFX/gui/src/containers/DistoritonLowpass.d \
+./TouchGFX/gui/src/containers/DistortParams.d \
+./TouchGFX/gui/src/containers/FilterParams.d \
+./TouchGFX/gui/src/containers/NextPageDelay.d \
+./TouchGFX/gui/src/containers/NextPageEQ.d \
+./TouchGFX/gui/src/containers/TitleBoxDelay.d \
+./TouchGFX/gui/src/containers/TitleBoxDistort.d \
+./TouchGFX/gui/src/containers/TitleBoxParamEQ.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -27,7 +45,7 @@ TouchGFX/gui/src/containers/%.o TouchGFX/gui/src/containers/%.su TouchGFX/gui/sr
 clean: clean-TouchGFX-2f-gui-2f-src-2f-containers
 
 clean-TouchGFX-2f-gui-2f-src-2f-containers:
-	-$(RM) ./TouchGFX/gui/src/containers/DelayParams.cyclo ./TouchGFX/gui/src/containers/DelayParams.d ./TouchGFX/gui/src/containers/DelayParams.o ./TouchGFX/gui/src/containers/DelayParams.su ./TouchGFX/gui/src/containers/DistortionParams.cyclo ./TouchGFX/gui/src/containers/DistortionParams.d ./TouchGFX/gui/src/containers/DistortionParams.o ./TouchGFX/gui/src/containers/DistortionParams.su ./TouchGFX/gui/src/containers/FilterParams.cyclo ./TouchGFX/gui/src/containers/FilterParams.d ./TouchGFX/gui/src/containers/FilterParams.o ./TouchGFX/gui/src/containers/FilterParams.su
+	-$(RM) ./TouchGFX/gui/src/containers/DelayParams.cyclo ./TouchGFX/gui/src/containers/DelayParams.d ./TouchGFX/gui/src/containers/DelayParams.o ./TouchGFX/gui/src/containers/DelayParams.su ./TouchGFX/gui/src/containers/DistoritonLowpass.cyclo ./TouchGFX/gui/src/containers/DistoritonLowpass.d ./TouchGFX/gui/src/containers/DistoritonLowpass.o ./TouchGFX/gui/src/containers/DistoritonLowpass.su ./TouchGFX/gui/src/containers/DistortParams.cyclo ./TouchGFX/gui/src/containers/DistortParams.d ./TouchGFX/gui/src/containers/DistortParams.o ./TouchGFX/gui/src/containers/DistortParams.su ./TouchGFX/gui/src/containers/FilterParams.cyclo ./TouchGFX/gui/src/containers/FilterParams.d ./TouchGFX/gui/src/containers/FilterParams.o ./TouchGFX/gui/src/containers/FilterParams.su ./TouchGFX/gui/src/containers/NextPageDelay.cyclo ./TouchGFX/gui/src/containers/NextPageDelay.d ./TouchGFX/gui/src/containers/NextPageDelay.o ./TouchGFX/gui/src/containers/NextPageDelay.su ./TouchGFX/gui/src/containers/NextPageEQ.cyclo ./TouchGFX/gui/src/containers/NextPageEQ.d ./TouchGFX/gui/src/containers/NextPageEQ.o ./TouchGFX/gui/src/containers/NextPageEQ.su ./TouchGFX/gui/src/containers/TitleBoxDelay.cyclo ./TouchGFX/gui/src/containers/TitleBoxDelay.d ./TouchGFX/gui/src/containers/TitleBoxDelay.o ./TouchGFX/gui/src/containers/TitleBoxDelay.su ./TouchGFX/gui/src/containers/TitleBoxDistort.cyclo ./TouchGFX/gui/src/containers/TitleBoxDistort.d ./TouchGFX/gui/src/containers/TitleBoxDistort.o ./TouchGFX/gui/src/containers/TitleBoxDistort.su ./TouchGFX/gui/src/containers/TitleBoxParamEQ.cyclo ./TouchGFX/gui/src/containers/TitleBoxParamEQ.d ./TouchGFX/gui/src/containers/TitleBoxParamEQ.o ./TouchGFX/gui/src/containers/TitleBoxParamEQ.su
 
 .PHONY: clean-TouchGFX-2f-gui-2f-src-2f-containers
 

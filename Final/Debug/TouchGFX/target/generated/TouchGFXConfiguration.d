@@ -36,11 +36,8 @@ TouchGFX/target/generated/TouchGFXConfiguration.o: \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/DebugPrinter.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp \
- ../TouchGFX/gui/include/gui/common/FrontendApplication.hpp \
- ../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp \
- ../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp \
- ../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/SlideTransition.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/HAL.hpp \
  ../Middlewares/ST/touchgfx/framework/include/platform/core/MCUInstrumentation.hpp \
  ../Middlewares/ST/touchgfx/framework/include/platform/driver/button/ButtonController.hpp \
@@ -50,6 +47,12 @@ TouchGFX/target/generated/TouchGFXConfiguration.o: \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Atomic.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/FrameBufferAllocator.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Gestures.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/SnapshotWidget.hpp \
+ ../TouchGFX/gui/include/gui/common/FrontendApplication.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp \
  ../TouchGFX/gui/include/gui/model/Model.hpp \
  C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audioFX.h \
  ../Core/Inc/main.h ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
@@ -85,17 +88,22 @@ TouchGFX/target/generated/TouchGFXConfiguration.o: \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h \
- ../TouchGFX/gui/include/gui/screen1_screen/Screen1View.hpp \
- ../TouchGFX/generated/gui_generated/include/gui_generated/screen1_screen/Screen1ViewBase.hpp \
+ ../TouchGFX/gui/include/gui/eq_screen/EQView.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/eq_screen/EQViewBase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp \
- ../TouchGFX/gui/include/gui/screen1_screen/Screen1Presenter.hpp \
+ ../TouchGFX/gui/include/gui/eq_screen/EQPresenter.hpp \
  ../TouchGFX/gui/include/gui/model/ModelListener.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
  ../TouchGFX/gui/include/gui/containers/FilterParams.hpp \
  ../TouchGFX/generated/gui_generated/include/gui_generated/containers/FilterParamsBase.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
+ C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp \
+ ../TouchGFX/gui/include/gui/containers/TitleBoxParamEQ.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/TitleBoxParamEQBase.hpp \
+ ../TouchGFX/gui/include/gui/containers/NextPageDelay.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/NextPageDelayBase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/Buttons.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/AnimatedImageButtonStyle.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/AbstractButtonContainer.hpp \
@@ -113,14 +121,19 @@ TouchGFX/target/generated/TouchGFXConfiguration.o: \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TouchButtonTrigger.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp \
- C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp \
- ../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp \
- ../TouchGFX/generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp \
- ../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp \
+ ../TouchGFX/gui/include/gui/delay_screen/DelayView.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/delay_screen/DelayViewBase.hpp \
+ ../TouchGFX/gui/include/gui/delay_screen/DelayPresenter.hpp \
+ ../TouchGFX/gui/include/gui/containers/DistortParams.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/DistortParamsBase.hpp \
+ ../TouchGFX/gui/include/gui/containers/TitleBoxDelay.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/TitleBoxDelayBase.hpp \
  ../TouchGFX/gui/include/gui/containers/DelayParams.hpp \
  ../TouchGFX/generated/gui_generated/include/gui_generated/containers/DelayParamsBase.hpp \
- ../TouchGFX/gui/include/gui/containers/DistortionParams.hpp \
- ../TouchGFX/generated/gui_generated/include/gui_generated/containers/DistortionParamsBase.hpp \
+ ../TouchGFX/gui/include/gui/containers/TitleBoxDistort.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/TitleBoxDistortBase.hpp \
+ ../TouchGFX/gui/include/gui/containers/NextPageEQ.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/containers/NextPageEQBase.hpp \
  ../TouchGFX/generated/images/include/BitmapDatabase.hpp \
  ../TouchGFX/generated/images/include/images/BitmapDatabase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/platform/driver/lcd/LCD16bpp.hpp \
@@ -166,11 +179,8 @@ TouchGFX/target/generated/TouchGFXConfiguration.o: \
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/DebugPrinter.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Callback.hpp:
-../TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
-../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:
-../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:
-../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:
-../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/SlideTransition.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/HAL.hpp:
 ../Middlewares/ST/touchgfx/framework/include/platform/core/MCUInstrumentation.hpp:
 ../Middlewares/ST/touchgfx/framework/include/platform/driver/button/ButtonController.hpp:
@@ -180,6 +190,12 @@ TouchGFX/target/generated/TouchGFXConfiguration.o: \
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Atomic.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/FrameBufferAllocator.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Gestures.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/SnapshotWidget.hpp:
+../TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp:
+../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp:
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:
 ../TouchGFX/gui/include/gui/model/Model.hpp:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audioFX.h:
 ../Core/Inc/main.h:
@@ -216,17 +232,22 @@ C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audioFX.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi_ex.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h:
-../TouchGFX/gui/include/gui/screen1_screen/Screen1View.hpp:
-../TouchGFX/generated/gui_generated/include/gui_generated/screen1_screen/Screen1ViewBase.hpp:
+../TouchGFX/gui/include/gui/eq_screen/EQView.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/eq_screen/EQViewBase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:
-../TouchGFX/gui/include/gui/screen1_screen/Screen1Presenter.hpp:
+../TouchGFX/gui/include/gui/eq_screen/EQPresenter.hpp:
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
-../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp:
-../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
-../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
 ../TouchGFX/gui/include/gui/containers/FilterParams.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/containers/FilterParamsBase.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
+C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:
+../TouchGFX/gui/include/gui/containers/TitleBoxParamEQ.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/TitleBoxParamEQBase.hpp:
+../TouchGFX/gui/include/gui/containers/NextPageDelay.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/NextPageDelayBase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/Buttons.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/AnimatedImageButtonStyle.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/AbstractButtonContainer.hpp:
@@ -244,14 +265,19 @@ C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audioFX.h:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TouchButtonTrigger.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp:
-C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:
-../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp:
-../TouchGFX/generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp:
-../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp:
+../TouchGFX/gui/include/gui/delay_screen/DelayView.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/delay_screen/DelayViewBase.hpp:
+../TouchGFX/gui/include/gui/delay_screen/DelayPresenter.hpp:
+../TouchGFX/gui/include/gui/containers/DistortParams.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/DistortParamsBase.hpp:
+../TouchGFX/gui/include/gui/containers/TitleBoxDelay.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/TitleBoxDelayBase.hpp:
 ../TouchGFX/gui/include/gui/containers/DelayParams.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/containers/DelayParamsBase.hpp:
-../TouchGFX/gui/include/gui/containers/DistortionParams.hpp:
-../TouchGFX/generated/gui_generated/include/gui_generated/containers/DistortionParamsBase.hpp:
+../TouchGFX/gui/include/gui/containers/TitleBoxDistort.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/TitleBoxDistortBase.hpp:
+../TouchGFX/gui/include/gui/containers/NextPageEQ.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/containers/NextPageEQBase.hpp:
 ../TouchGFX/generated/images/include/BitmapDatabase.hpp:
 ../TouchGFX/generated/images/include/images/BitmapDatabase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/platform/driver/lcd/LCD16bpp.hpp:

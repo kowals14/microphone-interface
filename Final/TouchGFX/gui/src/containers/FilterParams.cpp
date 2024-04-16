@@ -11,6 +11,19 @@ void FilterParams::initialize()
     FilterParamsBase::initialize();
 }
 
+void FilterParams::switchFX() {
+}
+
+void FilterParams::setBox() {       
+    this->param_box.setBorderColor(Color::getColorFromRGB(54,143,93));
+    this->invalidate();
+}
+
+void FilterParams::clearBox() {
+    this->param_box.setBorderColor(Color::getColorFromRGB(23,20,20));
+    this->invalidate();
+}
+
 void FilterParams::setBuffer(int param, float val) {
     switch (param)
     {
@@ -29,6 +42,5 @@ void FilterParams::setBuffer(int param, float val) {
     default:
         break;
     }
-
     this->invalidate();
 }

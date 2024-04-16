@@ -6,18 +6,36 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.cpp \
-../TouchGFX/generated/gui_generated/src/containers/DistortionParamsBase.cpp \
-../TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.cpp 
+../TouchGFX/generated/gui_generated/src/containers/DistoritonLowpassBase.cpp \
+../TouchGFX/generated/gui_generated/src/containers/DistortParamsBase.cpp \
+../TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.cpp \
+../TouchGFX/generated/gui_generated/src/containers/NextPageDelayBase.cpp \
+../TouchGFX/generated/gui_generated/src/containers/NextPageEQBase.cpp \
+../TouchGFX/generated/gui_generated/src/containers/TitleBoxDelayBase.cpp \
+../TouchGFX/generated/gui_generated/src/containers/TitleBoxDistortBase.cpp \
+../TouchGFX/generated/gui_generated/src/containers/TitleBoxParamEQBase.cpp 
 
 OBJS += \
 ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.o \
-./TouchGFX/generated/gui_generated/src/containers/DistortionParamsBase.o \
-./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.o 
+./TouchGFX/generated/gui_generated/src/containers/DistoritonLowpassBase.o \
+./TouchGFX/generated/gui_generated/src/containers/DistortParamsBase.o \
+./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.o \
+./TouchGFX/generated/gui_generated/src/containers/NextPageDelayBase.o \
+./TouchGFX/generated/gui_generated/src/containers/NextPageEQBase.o \
+./TouchGFX/generated/gui_generated/src/containers/TitleBoxDelayBase.o \
+./TouchGFX/generated/gui_generated/src/containers/TitleBoxDistortBase.o \
+./TouchGFX/generated/gui_generated/src/containers/TitleBoxParamEQBase.o 
 
 CPP_DEPS += \
 ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.d \
-./TouchGFX/generated/gui_generated/src/containers/DistortionParamsBase.d \
-./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.d 
+./TouchGFX/generated/gui_generated/src/containers/DistoritonLowpassBase.d \
+./TouchGFX/generated/gui_generated/src/containers/DistortParamsBase.d \
+./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.d \
+./TouchGFX/generated/gui_generated/src/containers/NextPageDelayBase.d \
+./TouchGFX/generated/gui_generated/src/containers/NextPageEQBase.d \
+./TouchGFX/generated/gui_generated/src/containers/TitleBoxDelayBase.d \
+./TouchGFX/generated/gui_generated/src/containers/TitleBoxDistortBase.d \
+./TouchGFX/generated/gui_generated/src/containers/TitleBoxParamEQBase.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -27,7 +45,7 @@ TouchGFX/generated/gui_generated/src/containers/%.o TouchGFX/generated/gui_gener
 clean: clean-TouchGFX-2f-generated-2f-gui_generated-2f-src-2f-containers
 
 clean-TouchGFX-2f-generated-2f-gui_generated-2f-src-2f-containers:
-	-$(RM) ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.d ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.o ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.su ./TouchGFX/generated/gui_generated/src/containers/DistortionParamsBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/DistortionParamsBase.d ./TouchGFX/generated/gui_generated/src/containers/DistortionParamsBase.o ./TouchGFX/generated/gui_generated/src/containers/DistortionParamsBase.su ./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.d ./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.o ./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.su
+	-$(RM) ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.d ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.o ./TouchGFX/generated/gui_generated/src/containers/DelayParamsBase.su ./TouchGFX/generated/gui_generated/src/containers/DistoritonLowpassBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/DistoritonLowpassBase.d ./TouchGFX/generated/gui_generated/src/containers/DistoritonLowpassBase.o ./TouchGFX/generated/gui_generated/src/containers/DistoritonLowpassBase.su ./TouchGFX/generated/gui_generated/src/containers/DistortParamsBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/DistortParamsBase.d ./TouchGFX/generated/gui_generated/src/containers/DistortParamsBase.o ./TouchGFX/generated/gui_generated/src/containers/DistortParamsBase.su ./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.d ./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.o ./TouchGFX/generated/gui_generated/src/containers/FilterParamsBase.su ./TouchGFX/generated/gui_generated/src/containers/NextPageDelayBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/NextPageDelayBase.d ./TouchGFX/generated/gui_generated/src/containers/NextPageDelayBase.o ./TouchGFX/generated/gui_generated/src/containers/NextPageDelayBase.su ./TouchGFX/generated/gui_generated/src/containers/NextPageEQBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/NextPageEQBase.d ./TouchGFX/generated/gui_generated/src/containers/NextPageEQBase.o ./TouchGFX/generated/gui_generated/src/containers/NextPageEQBase.su ./TouchGFX/generated/gui_generated/src/containers/TitleBoxDelayBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/TitleBoxDelayBase.d ./TouchGFX/generated/gui_generated/src/containers/TitleBoxDelayBase.o ./TouchGFX/generated/gui_generated/src/containers/TitleBoxDelayBase.su ./TouchGFX/generated/gui_generated/src/containers/TitleBoxDistortBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/TitleBoxDistortBase.d ./TouchGFX/generated/gui_generated/src/containers/TitleBoxDistortBase.o ./TouchGFX/generated/gui_generated/src/containers/TitleBoxDistortBase.su ./TouchGFX/generated/gui_generated/src/containers/TitleBoxParamEQBase.cyclo ./TouchGFX/generated/gui_generated/src/containers/TitleBoxParamEQBase.d ./TouchGFX/generated/gui_generated/src/containers/TitleBoxParamEQBase.o ./TouchGFX/generated/gui_generated/src/containers/TitleBoxParamEQBase.su
 
 .PHONY: clean-TouchGFX-2f-generated-2f-gui_generated-2f-src-2f-containers
 

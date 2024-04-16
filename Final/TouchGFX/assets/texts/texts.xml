@@ -6,62 +6,59 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_ABJA" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">Current: &lt;value&gt;</Translation>
+      <Text Id="__SingleUse_GLZD" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">Next Page</Translation>
       </Text>
-      <Text Id="__SingleUse_EWXA" Alignment="Right" TypographyId="Typography_00">
-        <Translation Language="GB">Threshold: &lt;value&gt;</Translation>
+      <Text Id="__SingleUse_G6O1" Alignment="Center" TypographyId="Title">
+        <Translation Language="GB">Delay&#10;</Translation>
       </Text>
-      <Text Id="__SingleUse_HYF8" Alignment="Right" TypographyId="Typography_00">
-        <Translation Language="GB">High Gain: &lt;value&gt;</Translation>
+      <Text Id="__SingleUse_0HWM" Alignment="Center" TypographyId="Title">
+        <Translation Language="GB">Distortion&#10;</Translation>
       </Text>
-      <Text Id="__SingleUse_19YG" Alignment="Right" TypographyId="Typography_00">
-        <Translation Language="GB">Low Gain: &lt;value&gt;</Translation>
+      <Text Id="__SingleUse_LBJU" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Threshold: &lt;value&gt; % </Translation>
       </Text>
-      <Text Id="__SingleUse_H4VD" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Distortion</Translation>
+      <Text Id="__SingleUse_W6WV" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Lowpass: &lt;value&gt; Hz</Translation>
       </Text>
-      <Text Id="__SingleUse_75SP" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Delay</Translation>
+      <Text Id="__SingleUse_XXG6" Alignment="Center" TypographyId="Title">
+        <Translation Language="GB">Delay&#10;</Translation>
       </Text>
-      <Text Id="__SingleUse_UMYH" Alignment="Left" TypographyId="Typography_00">
+      <Text Id="__SingleUse_ER2V" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Mix: &lt;value&gt; %</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZD56" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Post Gain: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_OLJL" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Pre Amp: &lt;value&gt;    </Translation>
+      </Text>
+      <Text Id="__SingleUse_0K6O" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Mix: &lt;value&gt; %  </Translation>
+      </Text>
+      <Text Id="__SingleUse_J8FL" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Feedback: &lt;value&gt;   &#10;</Translation>
+      </Text>
+      <Text Id="__SingleUse_CGKJ" Alignment="Right" TypographyId="Typography_00">
         <Translation Language="GB">Time: &lt;value&gt; ms</Translation>
       </Text>
-      <Text Id="__SingleUse_U823" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">Feedback: &lt;value&gt;</Translation>
+      <Text Id="__SingleUse_AY8F" Alignment="Center" TypographyId="Title">
+        <Translation Language="GB">Parametric Equalizer</Translation>
       </Text>
-      <Text Id="__SingleUse_01P3" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">  Wet Mix: &lt;value&gt; %</Translation>
-      </Text>
-      <Text Id="__SingleUse_S08W" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Band 3</Translation>
-      </Text>
-      <Text Id="__SingleUse_AZKU" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Band 4</Translation>
-      </Text>
-      <Text Id="__SingleUse_UCK5" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Band 5</Translation>
-      </Text>
-      <Text Id="__SingleUse_2VZQ" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Band 2</Translation>
-      </Text>
-      <Text Id="__SingleUse_OG3J" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Parametric EQ</Translation>
+      <Text Id="__SingleUse_9VHO" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">Next Page</Translation>
       </Text>
       <Text Id="ResourceId1" Alignment="Center" TypographyId="Typography_00">
         <Translation Language="GB">0.0</Translation>
       </Text>
-      <Text Id="__SingleUse_TDSP" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">  f0: &lt;value&gt; Hz</Translation>
+      <Text Id="__SingleUse_TDSP" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">f0: &lt;value&gt; Hz</Translation>
       </Text>
-      <Text Id="__SingleUse_VOJG" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">G: &lt;value&gt; </Translation>
+      <Text Id="__SingleUse_VOJG" Alignment="Right" TypographyId="Typography_00">
+        <Translation Language="GB">Boost/Cut: &lt;value&gt; </Translation>
       </Text>
-      <Text Id="__SingleUse_87CS" Alignment="Left" TypographyId="Typography_00">
+      <Text Id="__SingleUse_87CS" Alignment="Right" TypographyId="Typography_00">
         <Translation Language="GB">BW: &lt;value&gt; Hz</Translation>
-      </Text>
-      <Text Id="__SingleUse_G3P0" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">Band 1</Translation>
       </Text>
     </TextGroup>
   </Texts>
@@ -70,5 +67,6 @@
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Typography_00" Font="SegUIVar.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
+    <Typography Id="Title" Font="SegUIVar.ttf" Size="14" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>

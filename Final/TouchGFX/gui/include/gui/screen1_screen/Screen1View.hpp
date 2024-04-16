@@ -16,7 +16,6 @@ public:
     void clearBox(AUDIOFX_Type FX);
     void setBox(AUDIOFX_Type FX);
     void updateParameters(AUDIOFX_Type FX);
-    void showCurr(AUDIOFX_Type FX);
 protected:
 };
 

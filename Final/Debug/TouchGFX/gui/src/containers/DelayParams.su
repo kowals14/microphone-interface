@@ -1,3 +1,4 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:91:5:touchgfx::colortype::colortype(uint32_t)	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:327:18:virtual void touchgfx::Drawable::setY(int16_t)	16	static
@@ -9,8 +10,13 @@
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:490:18:virtual void touchgfx::Drawable::handleDragEvent(const touchgfx::DragEvent&)	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:501:18:virtual void touchgfx::Drawable::handleTickEvent()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Unicode.hpp:404:25:static touchgfx::Unicode::UnicodeChar* touchgfx::Unicode::snprintfFloat(touchgfx::Unicode::UnicodeChar*, uint16_t, const char*, float)	24	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	16	static
-../TouchGFX/gui/include/gui/containers/DelayParams.hpp:10:13:DelayParams::~DelayParams()	16	static
-../TouchGFX/gui/include/gui/containers/DelayParams.hpp:10:13:virtual DelayParams::~DelayParams()	16	static
-../TouchGFX/gui/src/containers/DelayParams.cpp:3:1:DelayParams::DelayParams()	16	static
-../TouchGFX/gui/src/containers/DelayParams.cpp:8:6:virtual void DelayParams::initialize()	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp:61:10:void touchgfx::BoxWithBorder::setBorderColor(touchgfx::colortype)	16	static
+../TouchGFX/gui/include/gui/containers/DelayParams.hpp:12:13:DelayParams::~DelayParams()	16	static
+../TouchGFX/gui/include/gui/containers/DelayParams.hpp:12:13:virtual DelayParams::~DelayParams()	16	static
+../TouchGFX/gui/src/containers/DelayParams.cpp:4:1:DelayParams::DelayParams()	16	static
+../TouchGFX/gui/src/containers/DelayParams.cpp:9:6:virtual void DelayParams::initialize()	16	static
+../TouchGFX/gui/src/containers/DelayParams.cpp:14:6:void DelayParams::setBox()	32	static
+../TouchGFX/gui/src/containers/DelayParams.cpp:19:6:void DelayParams::clearBox()	32	static
+../TouchGFX/gui/src/containers/DelayParams.cpp:24:6:void DelayParams::setBuffer(int, float)	24	static

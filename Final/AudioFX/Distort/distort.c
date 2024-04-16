@@ -45,7 +45,7 @@ void DISTORT_Init(DISTORT_Params* d_p){
 	d_p->l_gain 		= 2.0f;
 	d_p->h_gain			= 0.5f;
 
-	DISTORT_SetParams(d_p, 1.0f, 1.0f, 1.0f);
+	DISTORT_SetParams(d_p, 1.0f, 0.0f, 1.0f);
 }
 
 float DISTORT_Apply(float in_sample, DISTORT_Params* d_p){
