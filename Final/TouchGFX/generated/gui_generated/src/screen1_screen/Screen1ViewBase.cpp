@@ -5,8 +5,7 @@
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
-Screen1ViewBase::Screen1ViewBase() :
-    flexButtonCallback(this, &Screen1ViewBase::flexButtonCallbackHandler)
+Screen1ViewBase::Screen1ViewBase()
 {
     __background.setPosition(0, 0, 320, 240);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -14,7 +13,7 @@ Screen1ViewBase::Screen1ViewBase() :
 
     PKNG0_Box.setPosition(1, 120, 106, 120);
     PKNG0_Box.setColor(touchgfx::Color::getColorFromRGB(41, 34, 34));
-    PKNG0_Box.setBorderColor(touchgfx::Color::getColorFromRGB(81, 209, 69));
+    PKNG0_Box.setBorderColor(touchgfx::Color::getColorFromRGB(31, 25, 25));
     PKNG0_Box.setBorderSize(5);
     add(PKNG0_Box);
 
@@ -78,11 +77,19 @@ Screen1ViewBase::Screen1ViewBase() :
     Subtitle2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_G3P0));
     add(Subtitle2);
 
-    Subtitle2_2.setPosition(122, 173, 76, 15);
+    Subtitle2_2.setPosition(122, 160, 76, 15);
     Subtitle2_2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     Subtitle2_2.setLinespacing(0);
     Subtitle2_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OG3J));
     add(Subtitle2_2);
+
+    currentEffect.setPosition(122, 188, 76, 15);
+    currentEffect.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    currentEffect.setLinespacing(0);
+    currentEffectBuffer[0] = 0;
+    currentEffect.setWildcard(currentEffectBuffer);
+    currentEffect.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ABJA));
+    add(currentEffect);
 
     peaking_filter_1.setXY(7, 38);
     add(peaking_filter_1);
@@ -103,7 +110,6 @@ Screen1ViewBase::Screen1ViewBase() :
     bandButton_1.setBorderSize(5);
     bandButton_1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
     bandButton_1.setAlpha(0);
-    bandButton_1.setAction(flexButtonCallback);
     bandButton_1.setPosition(7, 127, 90, 106);
     add(bandButton_1);
 
@@ -111,7 +117,6 @@ Screen1ViewBase::Screen1ViewBase() :
     bandButton_2.setBorderSize(5);
     bandButton_2.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
     bandButton_2.setAlpha(0);
-    bandButton_2.setAction(flexButtonCallback);
     bandButton_2.setPosition(7, 7, 90, 106);
     add(bandButton_2);
 
@@ -119,7 +124,6 @@ Screen1ViewBase::Screen1ViewBase() :
     bandButton_3.setBorderSize(5);
     bandButton_3.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
     bandButton_3.setAlpha(0);
-    bandButton_3.setAction(flexButtonCallback);
     bandButton_3.setPosition(115, 7, 90, 106);
     add(bandButton_3);
 
@@ -127,7 +131,6 @@ Screen1ViewBase::Screen1ViewBase() :
     bandButton_4.setBorderSize(5);
     bandButton_4.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
     bandButton_4.setAlpha(0);
-    bandButton_4.setAction(flexButtonCallback);
     bandButton_4.setPosition(222, 7, 90, 106);
     add(bandButton_4);
 
@@ -135,7 +138,6 @@ Screen1ViewBase::Screen1ViewBase() :
     bandButton_5.setBorderSize(5);
     bandButton_5.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
     bandButton_5.setAlpha(0);
-    bandButton_5.setAction(flexButtonCallback);
     bandButton_5.setPosition(221, 127, 90, 106);
     add(bandButton_5);
 }
@@ -152,73 +154,4 @@ void Screen1ViewBase::setupScreen()
     peaking_filter_2.initialize();
     peaking_filter_3.initialize();
     peaking_filter_4.initialize();
-}
-
-void Screen1ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
-{
-    if (&src == &bandButton_1)
-    {
-        //Band1Click
-        //When bandButton_1 clicked change border color of PKNG0_Box
-        //Set RGB border color R:81, G:209, B:69 on PKNG0_Box
-        PKNG0_Box.setBorderColor(touchgfx::Color::getColorFromRGB(81, 209, 69));
-        PKNG0_Box.invalidate();
-    
-        //ClearBox1
-        //When Band1Click completed call virtual function
-        //Call clearCurrentBox
-        clearCurrentBox();
-    }
-    if (&src == &bandButton_2)
-    {
-        //Band2Click
-        //When bandButton_2 clicked change border color of PKNG1_Box
-        //Set RGB border color R:81, G:209, B:69 on PKNG1_Box
-        PKNG1_Box.setBorderColor(touchgfx::Color::getColorFromRGB(81, 209, 69));
-        PKNG1_Box.invalidate();
-    
-        //ClearBox2
-        //When Band2Click completed call virtual function
-        //Call clearCurrentBox
-        clearCurrentBox();
-    }
-    if (&src == &bandButton_3)
-    {
-        //Band3Click
-        //When bandButton_3 clicked change border color of PKNG2_Box
-        //Set RGB border color R:81, G:209, B:69 on PKNG2_Box
-        PKNG2_Box.setBorderColor(touchgfx::Color::getColorFromRGB(81, 209, 69));
-        PKNG2_Box.invalidate();
-    
-        //ClearBox3
-        //When Band3Click completed call virtual function
-        //Call clearCurrentBox
-        clearCurrentBox();
-    }
-    if (&src == &bandButton_4)
-    {
-        //Band4Click
-        //When bandButton_4 clicked change border color of PKNG3_Box
-        //Set RGB border color R:81, G:209, B:69 on PKNG3_Box
-        PKNG3_Box.setBorderColor(touchgfx::Color::getColorFromRGB(81, 209, 69));
-        PKNG3_Box.invalidate();
-    
-        //ClearBox4
-        //When Band4Click completed call virtual function
-        //Call clearCurrentBox
-        clearCurrentBox();
-    }
-    if (&src == &bandButton_5)
-    {
-        //Band5Click
-        //When bandButton_5 clicked change border color of PKNG4_Box
-        //Set RGB border color R:81, G:209, B:69 on PKNG4_Box
-        PKNG4_Box.setBorderColor(touchgfx::Color::getColorFromRGB(81, 209, 69));
-        PKNG4_Box.invalidate();
-    
-        //ClearBox5
-        //When Band5Click completed call virtual function
-        //Call clearCurrentBox
-        clearCurrentBox();
-    }
 }

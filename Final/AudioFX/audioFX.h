@@ -22,7 +22,13 @@ typedef int8_t AUDIOFX_Type;
 
 #define AUDIOFX_MAX_CHAIN 	 7
 
-#define AUDIOFX_CNTR_SIZE			400.0f
+#define AUDIOFX_CNTR_SIZE	700
+
+#define CNTR_TO_PRCNT(CNTR) 	(CNTR /(AUDIOFX_CNTR_SIZE * 1.0f))
+#define PRCNT_TO_CNTR(PRCNT) 	(PRCNT * AUDIOFX_CNTR_SIZE)
+
+#define CNTR_TO_PARAM(MAX,MIN,CNTR) 	(float)		((CNTR_TO_PRCNT(CNTR)*MAX)+MIN)
+#define PARAM_TO_CNTR(MAX,MIN,PARAM) 	(uint32_t) 	(PRCNT_TO_CNTR((PARAM - MIN) / MAX))
 
 void AUDIOFX_SwitchFX(uint8_t);
 void AUDIOFX_Apply_FX_Chain(void);

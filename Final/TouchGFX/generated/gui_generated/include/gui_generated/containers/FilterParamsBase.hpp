@@ -24,18 +24,18 @@ protected:
      * Member Declarations
      */
     touchgfx::TextAreaWithOneWildcard f0;
-    touchgfx::TextAreaWithOneWildcard G;
     touchgfx::TextAreaWithOneWildcard BW;
+    touchgfx::TextAreaWithOneWildcard G;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t F0_SIZE = 32;
     touchgfx::Unicode::UnicodeChar f0Buffer[F0_SIZE];
-    static const uint16_t G_SIZE = 32;
-    touchgfx::Unicode::UnicodeChar GBuffer[G_SIZE];
     static const uint16_t BW_SIZE = 32;
     touchgfx::Unicode::UnicodeChar BWBuffer[BW_SIZE];
+    static const uint16_t G_SIZE = 32;
+    touchgfx::Unicode::UnicodeChar GBuffer[G_SIZE];
 
 private:
 

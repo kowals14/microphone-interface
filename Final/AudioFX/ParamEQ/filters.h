@@ -15,6 +15,14 @@
 #include "main.h"
 #include <math.h>
 
+#define FILTERS_MAX_FREQ	19980.0
+#define FILTERS_MAX_G		10.0
+#define FILTERS_MAX_BW		500.0
+
+#define FILTERS_MIN_FREQ	20.0
+#define FILTERS_MIN_G		0.0
+#define FILTERS_MIN_BW		1.0
+
 
 /**
  * Filter Specific Variables

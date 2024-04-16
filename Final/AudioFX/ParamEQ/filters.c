@@ -34,7 +34,7 @@ void FILTERS_Init(FILTERS_Params* f_p) {
 		f_p->y[n] = 0.0f;
 	}
 
-	FILTERS_SetParams(f_p, 1.0f, 0.0f, 1.0f);
+	FILTERS_SetParams(f_p, 20.0f, 1.0f, 1.0f);
 }
 
 

@@ -3,7 +3,6 @@
 
 #include <gui/model/Model.hpp>
 
-
 class ModelListener
 {
 public:
@@ -15,6 +14,8 @@ public:
     {
         model = m;
     }
+
+    virtual void update_fx(AUDIOFX_Type fx) = 0;
 
 protected:
     Model* model;

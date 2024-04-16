@@ -17,6 +17,7 @@
 #define  DELAY_MAX	(1.0f)
 #define  DELAY_LINE_SIZE (int) (AUDIOFX_SAMPLING_RATE * DELAY_MAX)
 
+
 /**
  * Delay specific variables
  */

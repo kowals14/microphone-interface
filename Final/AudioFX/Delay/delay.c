@@ -19,7 +19,7 @@ void DELAY_SetParams(DELAY_Params* d_p, float mix, float feedback, float time_ms
 void DELAY_Init(DELAY_Params* d_p) {
 	d_p->delay_line_index	= 0;
 
-	DELAY_SetParams(d_p, 0.0f, 0.0f, 0.0f);
+	DELAY_SetParams(d_p, 0.5f, 0.8f, 1000.0f);
 
 	for(int i = 0; i < DELAY_LINE_SIZE; i++) {
 		d_p->delay_line[i] = 0;
@@ -35,5 +35,5 @@ float DELAY_Apply(float in_sample, DELAY_Params* d_p) {
 		d_p->delay_line_index = 0;
 	}
 
-	return (in_sample * (1.0 - d_p->mix)) + (delayed_sample * d_p->mix);;
+	return in_sample + (delayed_sample * d_p->mix);
 }

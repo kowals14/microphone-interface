@@ -23,6 +23,7 @@
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/HAL.hpp:1063:21:virtual touchgfx::DMAType touchgfx::HAL::getDMAType()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/HAL.hpp:1162:18:virtual void touchgfx::HAL::performDisplayOrientationChange()	24	static
 ../TouchGFX/target/generated/TouchGFXGeneratedHAL.hpp:106:18:virtual void TouchGFXGeneratedHAL::flushFrameBuffer()	16	static
+../Drivers/CMSIS/Include/core_cm7.h:2427:22:void SCB_CleanInvalidateDCache()	24	static,ignoring_inline_asm
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintImpl.hpp:32:6:void touchgfx::paint::setL8Palette(const uint8_t*)	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintImpl.hpp:37:6:void touchgfx::paint::tearDown()	4	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintRGB565Impl.hpp:85:6:void touchgfx::paint::rgb565::lineFromColor(uint16_t*, unsigned int, uint32_t, uint8_t, uint32_t)	48	static
@@ -30,7 +31,6 @@
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintRGB565Impl.hpp:127:6:void touchgfx::paint::rgb565::lineFromARGB8888(uint16_t*, const uint32_t*, unsigned int, uint8_t)	72	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintRGB565Impl.hpp:149:6:void touchgfx::paint::rgb565::lineFromL8RGB888(uint16_t*, const uint8_t*, unsigned int, uint8_t)	80	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/PaintRGB565Impl.hpp:185:6:void touchgfx::paint::rgb565::lineFromL8ARGB8888(uint16_t*, const uint8_t*, unsigned int, uint8_t)	72	static
-../Drivers/CMSIS/Include/core_cm7.h:2427:22:void SCB_CleanInvalidateDCache()	24	static,ignoring_inline_asm
 ../TouchGFX/target/generated/TouchGFXGeneratedHAL.cpp:52:6:virtual void TouchGFXGeneratedHAL::initialize()	24	static
 ../TouchGFX/target/generated/TouchGFXGeneratedHAL.cpp:63:6:virtual void TouchGFXGeneratedHAL::configureInterrupts()	16	static
 ../TouchGFX/target/generated/TouchGFXGeneratedHAL.cpp:67:6:virtual void TouchGFXGeneratedHAL::enableInterrupts()	16	static

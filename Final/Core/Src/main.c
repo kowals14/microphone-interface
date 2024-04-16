@@ -164,11 +164,21 @@ void Param_Change(){
 
 void FX_Change() {
 	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_2) == 1){
-		AUDIOFX_SwitchFX(0);
+		ConfLvl[0]++;
+		if(ConfLvl[0] > ConfT){
+			while(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_2) == 1)
+			ConfLvl[0] = 0;
+			AUDIOFX_SwitchFX(0);
+		}
 
 	}
 	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_3) == 1){
-		AUDIOFX_SwitchFX(1);
+		ConfLvl[1]++;
+		if(ConfLvl[1] > ConfT){
+			while(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_3) == 1)
+			ConfLvl[1] = 0;
+			AUDIOFX_SwitchFX(1);
+		}
 	}
 }
 
@@ -219,7 +229,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   update_flags 	= 0;
-  curr_fx 	  	= AUDIOFX_PKNG0;
+  curr_fx 	  	= AUDIOFX_DISTORTION;
 
   FILTERS_Init(&f_p0);
   FILTERS_Init(&f_p1);
@@ -308,7 +318,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
   {
@@ -579,7 +589,7 @@ static void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 0;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 400;
+  htim1.Init.Period = 700;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -628,7 +638,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 72-1;
+  htim2.Init.Prescaler = 216-1;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 16667-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -674,7 +684,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 0;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 400;
+  htim3.Init.Period = 700;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   sConfig.EncoderMode = TIM_ENCODERMODE_TI12;

@@ -25,11 +25,13 @@ public:
      */
     virtual void deactivate();
 
+    void update_fx(AUDIOFX_Type fx);
+
     virtual ~Screen1Presenter() {}
 
 private:
     Screen1Presenter();
-
+    AUDIOFX_Type curr_fx;
     Screen1View& view;
 };
 

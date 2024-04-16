@@ -1,6 +1,7 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 #include <stdint.h>
+#include <audioFX.h>
 
 class ModelListener;
 
@@ -13,6 +14,8 @@ public:
     {
         modelListener = listener;
     }
+   
+    void update_screen(AUDIOFX_Type);
 
     void tick();
 protected:

@@ -3,6 +3,8 @@
 
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
+#include <audioFX.h>
+#include <Color.hpp>
 
 class Screen1View : public Screen1ViewBase
 {
@@ -11,9 +13,11 @@ public:
     virtual ~Screen1View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-    void clearCurrentBox();
+    void clearBox(AUDIOFX_Type FX);
+    void setBox(AUDIOFX_Type FX);
+    void updateParameters(AUDIOFX_Type FX);
+    void showCurr(AUDIOFX_Type FX);
 protected:
-    touchgfx::BoxWithBorder curr_box;
 };
 
 #endif // SCREEN1VIEW_HPP

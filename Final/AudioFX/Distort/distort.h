@@ -17,19 +17,32 @@
 #include "main.h"
 #include "trig_functions.h"
 
+#define DISTORT_MAX_GAIN	2.0
+#define DISTORT_MAX_MIX		1.0
+#define DISTORT_MAX_PREAMP	2.0
+
+#define DISTORT_MIN_GAIN	0.0
+#define DISTORT_MIN_MIX		0.0
+#define DISTORT_MIN_PREAMP	0.0
+
  /**
  * Distortion specific variables
  */
 struct __DISTORT_Params_ {
 
-	float thrshld_gap;
+	float thrshld_lower;
+	float thrshld_higher;
+	float thrshld_noise;
+
 	float h_gain;
 	float l_gain;
 
+	float pre_amp;
+	float mix;
+	float gain;
+
 	float temp[3];
 
-	float thrshld_noise;
-	float gain;
 
 } typedef DISTORT_Params;
 

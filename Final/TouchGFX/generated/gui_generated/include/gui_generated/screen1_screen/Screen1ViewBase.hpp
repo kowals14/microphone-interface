@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <gui/containers/FilterParams.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
 
@@ -19,14 +20,6 @@ public:
     Screen1ViewBase();
     virtual ~Screen1ViewBase();
     virtual void setupScreen();
-
-    /*
-     * Virtual Action Handlers
-     */
-    virtual void clearCurrentBox()
-    {
-        // Override and implement this function in Screen1
-    }
 
 protected:
     FrontendApplication& application() {
@@ -49,6 +42,7 @@ protected:
     touchgfx::TextArea Subtitle2_3_1_1_1_1;
     touchgfx::TextArea Subtitle2;
     touchgfx::TextArea Subtitle2_2;
+    touchgfx::TextAreaWithOneWildcard currentEffect;
     FilterParams peaking_filter_1;
     FilterParams peaking_filter_0;
     FilterParams peaking_filter_2;
@@ -60,17 +54,13 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  bandButton_4;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  bandButton_5;
 
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t CURRENTEFFECT_SIZE = 32;
+    touchgfx::Unicode::UnicodeChar currentEffectBuffer[CURRENTEFFECT_SIZE];
+
 private:
-
-    /*
-     * Callback Declarations
-     */
-    touchgfx::Callback<Screen1ViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
-
-    /*
-     * Callback Handler Declarations
-     */
-    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 
