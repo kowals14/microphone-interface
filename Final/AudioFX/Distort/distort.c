@@ -32,36 +32,34 @@ void DISTORT_SetParams(DISTORT_Params* d_p, float pre_amp, float mix, float gain
 	d_p->pre_amp 	= pre_amp;
 	d_p->mix		= mix;
 	d_p->gain		= gain;
-
 }
 
 void DISTORT_Init(DISTORT_Params* d_p){
+	d_p->gain 			= 2.0f;
+	d_p->l_gain 		= 3.0f;
+	d_p->h_gain			= 0.1f;
 
 	d_p->thrshld_noise	= 0.1f;
-	d_p->thrshld_lower 	= 0.2f;
-	d_p->thrshld_higher = 0.5f;
+	d_p->thrshld_lower 	= 0.5f;
+	d_p->thrshld_higher = 0.8f;
 
-	d_p->gain 			= 2.0f;
-	d_p->l_gain 		= 2.0f;
-	d_p->h_gain			= 0.5f;
-
-	DISTORT_SetParams(d_p, 1.0f, 0.0f, 1.0f);
+	DISTORT_SetParams(d_p, 0.1f, 0.0f, 1.0f);
 }
 
 float DISTORT_Apply(float in_sample, DISTORT_Params* d_p){
 	float distorted_sample;
+	float amped_sample 		= in_sample * d_p->pre_amp;
+	float abs_sample 		= fabs(amped_sample);
 
-	in_sample = in_sample * d_p->pre_amp;
-
-	if (fabs(in_sample) < d_p->thrshld_lower && fabs(in_sample) > d_p->thrshld_noise ){
-		distorted_sample = d_p->gain * in_sample * d_p->l_gain;
+	if (abs_sample < d_p->thrshld_lower && abs_sample > d_p->thrshld_noise ){
+		distorted_sample = in_sample * d_p->l_gain;
 	}
-	else if (fabs(in_sample) > d_p->thrshld_higher){
-		distorted_sample = d_p->gain * in_sample * d_p->h_gain;
+	else if (abs_sample > d_p->thrshld_higher){
+		distorted_sample = in_sample * d_p->h_gain;
 	}
 	else{
-		distorted_sample = d_p->gain * in_sample;
+		distorted_sample = in_sample;
 	}
 
-	return (distorted_sample * d_p->mix) + (in_sample * (1 - d_p->mix));
+	return ((distorted_sample * d_p->mix) + (in_sample * (1 - d_p->mix))) * (d_p->gain);
 }

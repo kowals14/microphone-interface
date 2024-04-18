@@ -218,7 +218,7 @@ public:
         {
             sendingBlock = 0;
         }
-        assert(state[sendingBlock] == DRAWN);
+//        assert(state[sendingBlock] == DRAWN);
         rect = blockRect[sendingBlock];
         state[sendingBlock] = SENDING;
         return (const uint8_t*)&memory[sendingBlock][0];

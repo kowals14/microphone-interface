@@ -15,8 +15,8 @@
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/BoxWithBorder.hpp:61:10:void touchgfx::BoxWithBorder::setBorderColor(touchgfx::colortype)	1
 ../TouchGFX/gui/include/gui/containers/DelayParams.hpp:12:13:DelayParams::~DelayParams()	1
 ../TouchGFX/gui/include/gui/containers/DelayParams.hpp:12:13:virtual DelayParams::~DelayParams()	1
-../TouchGFX/gui/src/containers/DelayParams.cpp:4:1:DelayParams::DelayParams()	1
-../TouchGFX/gui/src/containers/DelayParams.cpp:9:6:virtual void DelayParams::initialize()	1
-../TouchGFX/gui/src/containers/DelayParams.cpp:14:6:void DelayParams::setBox()	1
-../TouchGFX/gui/src/containers/DelayParams.cpp:19:6:void DelayParams::clearBox()	1
-../TouchGFX/gui/src/containers/DelayParams.cpp:24:6:void DelayParams::setBuffer(int, float)	5
+../TouchGFX/gui/src/containers/DelayParams.cpp:5:1:DelayParams::DelayParams()	1
+../TouchGFX/gui/src/containers/DelayParams.cpp:10:6:virtual void DelayParams::initialize()	1
+../TouchGFX/gui/src/containers/DelayParams.cpp:15:6:void DelayParams::setBox()	1
+../TouchGFX/gui/src/containers/DelayParams.cpp:20:6:void DelayParams::clearBox()	1
+../TouchGFX/gui/src/containers/DelayParams.cpp:25:6:void DelayParams::setBuffer(int, float)	5

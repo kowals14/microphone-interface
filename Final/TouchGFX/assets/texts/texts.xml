@@ -28,16 +28,16 @@
         <Translation Language="GB">Mix: &lt;value&gt; %</Translation>
       </Text>
       <Text Id="__SingleUse_ZD56" Alignment="Right" TypographyId="Typography_00">
-        <Translation Language="GB">Post Gain: &lt;value&gt;</Translation>
+        <Translation Language="GB">Post Gain: &lt;value&gt; %</Translation>
       </Text>
       <Text Id="__SingleUse_OLJL" Alignment="Right" TypographyId="Typography_00">
-        <Translation Language="GB">Pre Amp: &lt;value&gt;    </Translation>
+        <Translation Language="GB">Pre Amp: &lt;value&gt; %</Translation>
       </Text>
       <Text Id="__SingleUse_0K6O" Alignment="Right" TypographyId="Typography_00">
-        <Translation Language="GB">Mix: &lt;value&gt; %  </Translation>
+        <Translation Language="GB">Mix: &lt;value&gt; %</Translation>
       </Text>
       <Text Id="__SingleUse_J8FL" Alignment="Right" TypographyId="Typography_00">
-        <Translation Language="GB">Feedback: &lt;value&gt;   &#10;</Translation>
+        <Translation Language="GB">Feedback: &lt;value&gt; %&#10;</Translation>
       </Text>
       <Text Id="__SingleUse_CGKJ" Alignment="Right" TypographyId="Typography_00">
         <Translation Language="GB">Time: &lt;value&gt; ms</Translation>

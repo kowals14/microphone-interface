@@ -16,13 +16,19 @@
 #include <math.h>
 
 #define FILTERS_MAX_FREQ	19980.0
-#define FILTERS_MAX_G		10.0
+#define FILTERS_MAX_G		50.0
 #define FILTERS_MAX_BW		500.0
 
 #define FILTERS_MIN_FREQ	20.0
 #define FILTERS_MIN_G		0.0
 #define FILTERS_MIN_BW		1.0
 
+typedef uint8_t	FILTERS_Type;
+
+#define FILTERS_PKF			(FILTERS_Type) 0
+#define FILTERS_HPF			(FILTERS_Type) 1
+#define FILTERS_LPF			(FILTERS_Type) 2
+#define FILTERS_BPF			(FILTERS_Type) 3
 
 /**
  * Filter Specific Variables
@@ -47,7 +53,9 @@ struct __FILTERS_Params_ {
 
 } typedef FILTERS_Params;
 
-void FILTERS_SetParams(FILTERS_Params* f_p, float f0, float BW, float G);
+void FILTERS_SetParams_PKNG(FILTERS_Params* f_p, float f0, float BW, float G);
+void FILTERS_SetParams_LPF(FILTERS_Params* f_p, float f0, float BW, float G);
+void FILTERS_SetParams_HPF(FILTERS_Params* f_p, float f0, float BW, float G);
 
 void FILTERS_Init(FILTERS_Params* f_p);
 

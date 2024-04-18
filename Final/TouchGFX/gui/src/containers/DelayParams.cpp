@@ -1,5 +1,6 @@
 #include <gui/containers/DelayParams.hpp>
 #include "string.h"
+#include "delay.h"
 
 DelayParams::DelayParams()
 {
@@ -29,8 +30,8 @@ void DelayParams::setBuffer(int param, float val) {
         Unicode::snprintfFloat(MixBuffer, sizeof(MixBuffer), "%.1f", (val*100));
         break;
     case 1:
-        memset(&FeedbackBuffer, val, sizeof(FeedbackBuffer));
-        Unicode::snprintfFloat(FeedbackBuffer, sizeof(FeedbackBuffer), "%.1f", val);
+        memset(&FeedbackBuffer, (val*100), sizeof(FeedbackBuffer));
+        Unicode::snprintfFloat(FeedbackBuffer, sizeof(FeedbackBuffer), "%.1f", (val*100));
         break;
     case 2:
         memset(&TimeBuffer, val, sizeof(TimeBuffer));

@@ -23,41 +23,41 @@ extern DISTORT_Params 	ds_p;
 
 extern AUDIOFX_Type curr_fx;
 
-extern uint8_t update_flags;
+extern uint8_t 	update_flags;
 extern uint16_t timer_count[3];
 
 void AUDIOFX_UpdateCounters() {
 	// convert the current fx parameters to corresponding timer values
 	switch(curr_fx) {
-		case AUDIOFX_PKNG0:
+		case AUDIOFX_FILTER0:
 				{
 					TIM1->CNT = PARAM_TO_CNTR(FILTERS_MAX_FREQ, FILTERS_MIN_FREQ,	f_p0.f0);
 					TIM3->CNT = PARAM_TO_CNTR(FILTERS_MAX_BW, 	FILTERS_MIN_BW, 	f_p0.BW);
 					TIM4->CNT = PARAM_TO_CNTR(FILTERS_MAX_G, 	FILTERS_MIN_G, 		f_p0.G);
 					break;
 				}
-		case AUDIOFX_PKNG1:
+		case AUDIOFX_FILTER1:
 				{
 					TIM1->CNT = PARAM_TO_CNTR(FILTERS_MAX_FREQ, FILTERS_MIN_FREQ, 	f_p1.f0);
 					TIM3->CNT = PARAM_TO_CNTR(FILTERS_MAX_BW, 	FILTERS_MIN_BW, 	f_p1.BW);
 					TIM4->CNT = PARAM_TO_CNTR(FILTERS_MAX_G, 	FILTERS_MIN_G, 		f_p1.G);
 					break;
 				}
-		case AUDIOFX_PKNG2:
+		case AUDIOFX_FILTER2:
 				{
 					TIM1->CNT = PARAM_TO_CNTR(FILTERS_MAX_FREQ, FILTERS_MIN_FREQ, 	f_p2.f0);
 					TIM3->CNT = PARAM_TO_CNTR(FILTERS_MAX_BW, 	FILTERS_MIN_BW, 	f_p2.BW);
 					TIM4->CNT = PARAM_TO_CNTR(FILTERS_MAX_G, 	FILTERS_MIN_G, 		f_p2.G);
 					break;
 				}
-		case AUDIOFX_PKNG3:
+		case AUDIOFX_FILTER3:
 				{
 					TIM1->CNT = PARAM_TO_CNTR(FILTERS_MAX_FREQ, FILTERS_MIN_FREQ, 	f_p3.f0);
 					TIM3->CNT = PARAM_TO_CNTR(FILTERS_MAX_BW, 	FILTERS_MIN_BW, 	f_p3.BW);
 					TIM4->CNT = PARAM_TO_CNTR(FILTERS_MAX_G, 	FILTERS_MIN_G, 		f_p3.G);
 					break;
 				}
-		case AUDIOFX_PKNG4:
+		case AUDIOFX_FILTER4:
 				{
 					TIM1->CNT = PARAM_TO_CNTR(FILTERS_MAX_FREQ, FILTERS_MIN_FREQ, 	f_p4.f0);
 					TIM3->CNT = PARAM_TO_CNTR(FILTERS_MAX_BW, 	FILTERS_MIN_BW,		f_p4.BW);
@@ -66,16 +66,16 @@ void AUDIOFX_UpdateCounters() {
 				}
 		case AUDIOFX_DELAY:
 				{
-					TIM1->CNT = (uint32_t) ((dl_p.mix + 1.0f) 							 * AUDIOFX_CNTR_SIZE);
-					TIM3->CNT = (uint32_t) (dl_p.feedback 								 * AUDIOFX_CNTR_SIZE);
-					TIM4->CNT = (uint32_t) (((dl_p.sample_len / DELAY_LINE_SIZE) + 1.0f) * AUDIOFX_CNTR_SIZE);
+					TIM1->CNT = PARAM_TO_CNTR(DELAY_MAX_MIX,		DELAY_MIN_MIX,		dl_p.mix);	// mix
+					TIM3->CNT = PARAM_TO_CNTR(DELAY_MAX_FEEDBACK,	DELAY_MIN_FEEDBACK,	dl_p.feedback);	// feedback
+					TIM4->CNT = PARAM_TO_CNTR(DELAY_MAX_TIME_MS,	DELAY_MIN_TIME_MS,	dl_p.time_ms);	// delay time
 					break;
 				}
 		case AUDIOFX_DISTORTION:
 				{
-					TIM1->CNT = PARAM_TO_CNTR(DISTORT_MAX_PREAMP, 	DISTORT_MIN_PREAMP, 	ds_p.pre_amp);
-					TIM3->CNT = PARAM_TO_CNTR(DISTORT_MAX_MIX, 		DISTORT_MIN_MIX, 		ds_p.mix);
-					TIM4->CNT = PARAM_TO_CNTR(DISTORT_MAX_GAIN, 	DISTORT_MIN_GAIN, 		ds_p.gain);
+					TIM1->CNT = PARAM_TO_CNTR(DISTORT_MAX_PREAMP, 	DISTORT_MIN_PREAMP, ds_p.pre_amp);
+					TIM3->CNT = PARAM_TO_CNTR(DISTORT_MAX_MIX, 		DISTORT_MIN_MIX, 	ds_p.mix);
+					TIM4->CNT = PARAM_TO_CNTR(DISTORT_MAX_GAIN, 	DISTORT_MIN_GAIN, 	ds_p.gain);
 					break;
 				}
 	}
@@ -113,11 +113,11 @@ void AUDIOFX_SetParams(AUDIOFX_Type fx) {
 	{
 		case AUDIOFX_DELAY:
 		{
-//			dl_p.temp[0] = params[0] * 1.0;		// mix
-//			dl_p.temp[1] = params[1] * 1.0;		// feedback
-//			dl_p.temp[2] = params[2] * 1000.0;	// delay time
+			dl_p.temp[0] = CNTR_TO_PARAM(DELAY_MAX_MIX,			DELAY_MIN_MIX,		(timer_count[0]));	// mix
+			dl_p.temp[1] = CNTR_TO_PARAM(DELAY_MAX_FEEDBACK,	DELAY_MIN_FEEDBACK,	(timer_count[1]));	// feedback
+			dl_p.temp[2] = CNTR_TO_PARAM(DELAY_MAX_TIME_MS,		DELAY_MIN_TIME_MS,	(timer_count[2]));	// delay time
 //
-//			update_flags |= UPDATE_DELAY;
+			update_flags |= UPDATE_DELAY;
 
 			break;
 		}
@@ -131,7 +131,7 @@ void AUDIOFX_SetParams(AUDIOFX_Type fx) {
 
 			break;
 		}
-		case AUDIOFX_PKNG0:
+		case AUDIOFX_FILTER0:
 		{
 
 			f_p0.temp[0] = CNTR_TO_PARAM(FILTERS_MAX_FREQ,	FILTERS_MIN_FREQ,	(timer_count[0]));	// center frequency
@@ -142,7 +142,7 @@ void AUDIOFX_SetParams(AUDIOFX_Type fx) {
 
 			break;
 		}
-		case AUDIOFX_PKNG1:
+		case AUDIOFX_FILTER1:
 		{
 
 			f_p1.temp[0] = CNTR_TO_PARAM(FILTERS_MAX_FREQ,	FILTERS_MIN_FREQ,	(timer_count[0]));	// center frequency
@@ -153,33 +153,33 @@ void AUDIOFX_SetParams(AUDIOFX_Type fx) {
 
 			break;
 		}
-		case AUDIOFX_PKNG2:
+		case AUDIOFX_FILTER2:
 		{
 
 			f_p2.temp[0] = CNTR_TO_PARAM(FILTERS_MAX_FREQ,	FILTERS_MIN_FREQ,	(timer_count[0]));	// center frequency
-			f_p2.temp[1] = CNTR_TO_PARAM(FILTERS_MAX_BW,	FILTERS_MIN_BW,		(timer_count[1]));						// bandwidth
+			f_p2.temp[1] = CNTR_TO_PARAM(FILTERS_MAX_BW,	FILTERS_MIN_BW,		(timer_count[1]));	// bandwidth
 			f_p2.temp[2] = CNTR_TO_PARAM(FILTERS_MAX_G,		FILTERS_MIN_G,		(timer_count[2]));	// boost/cut
 
 			update_flags |= UPDATE_FILTER2;
 
 			break;
 		}
-		case AUDIOFX_PKNG3:
+		case AUDIOFX_FILTER3:
 		{
 
 			f_p3.temp[0] = CNTR_TO_PARAM(FILTERS_MAX_FREQ,	FILTERS_MIN_FREQ,	(timer_count[0]));	// center frequency
-			f_p3.temp[1] = CNTR_TO_PARAM(FILTERS_MAX_BW,	FILTERS_MIN_BW,		(timer_count[1]));						// bandwidth
+			f_p3.temp[1] = CNTR_TO_PARAM(FILTERS_MAX_BW,	FILTERS_MIN_BW,		(timer_count[1]));	// bandwidth
 			f_p3.temp[2] = CNTR_TO_PARAM(FILTERS_MAX_G,		FILTERS_MIN_G,		(timer_count[2]));	// boost/cut
 
 			update_flags |= UPDATE_FILTER3;
 
 			break;
 		}
-		case AUDIOFX_PKNG4:
+		case AUDIOFX_FILTER4:
 		{
 
 			f_p4.temp[0] = CNTR_TO_PARAM(FILTERS_MAX_FREQ,	FILTERS_MIN_FREQ,	(timer_count[0]));	// center frequency
-			f_p4.temp[1] = CNTR_TO_PARAM(FILTERS_MAX_BW,	FILTERS_MIN_BW,		(timer_count[1]));						// bandwidth
+			f_p4.temp[1] = CNTR_TO_PARAM(FILTERS_MAX_BW,	FILTERS_MIN_BW,		(timer_count[1]));	// bandwidth
 			f_p4.temp[2] = CNTR_TO_PARAM(FILTERS_MAX_G,		FILTERS_MIN_G,		(timer_count[2]));	// boost/cut
 
 			update_flags |= UPDATE_FILTER4;
@@ -205,19 +205,19 @@ void AUDIOFX_Apply_FX_Chain(void) {
 			DISTORT_SetParams(&ds_p, ds_p.temp[0], ds_p.temp[1], ds_p.temp[2]);
 		}
 		if(update_flags & UPDATE_FILTER0) {
-			FILTERS_SetParams(&f_p0, f_p0.temp[0], f_p0.temp[1], f_p0.temp[2]);
+			FILTERS_SetParams_PKNG(&f_p0, f_p0.temp[0], f_p0.temp[1], f_p0.temp[2]);
 		}
 		if(update_flags & UPDATE_FILTER1) {
-			FILTERS_SetParams(&f_p1, f_p1.temp[0], f_p1.temp[1], f_p1.temp[2]);
+			FILTERS_SetParams_PKNG(&f_p1, f_p1.temp[0], f_p1.temp[1], f_p1.temp[2]);
 		}
 		if(update_flags & UPDATE_FILTER2) {
-			FILTERS_SetParams(&f_p2, f_p2.temp[0], f_p2.temp[1], f_p2.temp[2]);
+			FILTERS_SetParams_PKNG(&f_p2, f_p2.temp[0], f_p2.temp[1], f_p2.temp[2]);
 		}
 		if(update_flags & UPDATE_FILTER3) {
-			FILTERS_SetParams(&f_p3, f_p3.temp[0], f_p3.temp[1], f_p3.temp[2]);
+			FILTERS_SetParams_PKNG(&f_p3, f_p3.temp[0], f_p3.temp[1], f_p3.temp[2]);
 		}
 		if(update_flags & UPDATE_FILTER4) {
-			FILTERS_SetParams(&f_p4, f_p4.temp[0], f_p4.temp[1], f_p4.temp[2]);
+			FILTERS_SetParams_PKNG(&f_p4, f_p4.temp[0], f_p4.temp[1], f_p4.temp[2]);
 		}
 
 		// clear the flags
@@ -227,6 +227,9 @@ void AUDIOFX_Apply_FX_Chain(void) {
 	for(uint8_t n = 0; n < (AUDIOFX_BUFF_SIZE/2) - 1; n += 2) {
 		left_in		= INT16_TO_FLOAT * ((float) p_in_buff[n]);
 		right_in	= INT16_TO_FLOAT * ((float) p_in_buff[n + 1]);
+
+		left_in		= DISTORT_Apply(left_in, &ds_p);
+		right_in 	= DISTORT_Apply(right_in, &ds_p);
 
 		left_in		= FILTERS_Apply(left_in, &f_p0);
 		right_in 	= FILTERS_Apply(right_in, &f_p0);
@@ -243,11 +246,8 @@ void AUDIOFX_Apply_FX_Chain(void) {
 		left_in		= FILTERS_Apply(left_in, &f_p4);
 		right_in 	= FILTERS_Apply(right_in, &f_p4);
 
-		left_in		= DISTORT_Apply(left_in, &ds_p);
-		right_in 	= DISTORT_Apply(right_in, &ds_p);
-
-//		left_in		= DELAY_Apply(left_in, &dl_p);
-//		right_in 	= DELAY_Apply(right_in, &dl_p);
+		left_in		= DELAY_Apply(left_in, &dl_p);
+		right_in 	= DELAY_Apply(right_in, &dl_p);
 
 		left_out	= (int16_t) (FLOAT_TO_INT16 * left_in);
 		right_out 	= (int16_t) (FLOAT_TO_INT16 * right_in);

@@ -29,6 +29,7 @@
 #include "delay.h"
 #include "distort.h"
 #include "ili9341.h"
+#include "trig_functions.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -152,7 +153,7 @@ void HAL_SAI_RxCpltCallback(SAI_HandleTypeDef *hsai) {
 }
 
 static void Param_Change(){
-	// Check for counter overflow or underflow
+	// Check that counter is in the accepted range
 	if(TIM1->CNT > AUDIOFX_CNTR_MAX) {
 		TIM1->CNT = AUDIOFX_CNTR_MAX;
 	}
@@ -193,7 +194,6 @@ static void FX_Change() {
 			ConfLvl[0] = 0;
 			AUDIOFX_SwitchFX(0);
 		}
-
 	}
 	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_3) == 1){
 		ConfLvl[1]++;
@@ -259,7 +259,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   update_flags 	= 0;
-  curr_fx 	  	= AUDIOFX_PKNG0;
+  curr_fx 	  	= AUDIOFX_FILTER0;
 
   FILTERS_Init(&f_p0);
   FILTERS_Init(&f_p1);
@@ -279,19 +279,12 @@ int main(void)
   HAL_SAI_Transmit_DMA(&hsai_BlockB1, (uint8_t*) audio_out, AUDIOFX_BUFF_SIZE);
 
   HAL_TIM_Base_Start_IT(&htim2);
-  HAL_TIM_Base_Start_IT(&htim14);
 
   HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
   HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_ALL);
 
-  TIM1->CNT = AUDIOFX_CNTR_MIN;
-  TIM3->CNT = AUDIOFX_CNTR_MIN;
-  TIM4->CNT = AUDIOFX_CNTR_MIN;
-
-  timer_count[0] = TIM1->CNT;
-  timer_count[1] = TIM3->CNT;
-  timer_count[2] = TIM4->CNT;
+  AUDIOFX_UpdateCounters();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -932,26 +925,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (htim->Instance == TIM2) {
 		touchgfxSignalVSync();
 	}
-  // Check which version of the timer triggered this callback and toggle LED
-  if (htim == &htim14){
-	if((HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_2) == 1)){
-		ConfLvl[0]++;
-		if(ConfLvl[0] > ConfT){
-			while(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_2) == 1)
-			ConfLvl[0] = 0;
-			crement_select(-1);
-		}
-	}
-  	if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_3) == 1){
-		ConfLvl[1]++;
-		if(ConfLvl[1] > ConfT){
-			while(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_3) == 1)
-			ConfLvl[1] = 0;
-			crement_select(1);
-		}
-  	}
-  }
-
 }
 /* USER CODE END 4 */
 

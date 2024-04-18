@@ -28,8 +28,8 @@ void FilterParams::setBuffer(int param, float val) {
     switch (param)
     {
     case 0:
-        memset(&f0Buffer, val, sizeof(f0Buffer));
-        Unicode::snprintfFloat(f0Buffer, sizeof(f0Buffer), "%.1f", val);
+        memset(&f0Buffer, (val*1.0), sizeof(f0Buffer));
+        Unicode::snprintfFloat(f0Buffer, sizeof(f0Buffer), "%.1f", (val*1.0));
         break;
     case 1:
         memset(&GBuffer, val, sizeof(GBuffer));

@@ -15,7 +15,7 @@ DistortParamsBase::DistortParamsBase()
     param_box.setBorderSize(5);
     add(param_box);
 
-    PreAmp.setPosition(7, 5, 76, 15);
+    PreAmp.setPosition(6, 2, 80, 18);
     PreAmp.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     PreAmp.setLinespacing(0);
     Unicode::snprintf(PreAmpBuffer, PREAMP_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());
@@ -23,7 +23,7 @@ DistortParamsBase::DistortParamsBase()
     PreAmp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OLJL));
     add(PreAmp);
 
-    Gain.setPosition(7, 33, 64, 15);
+    Gain.setPosition(6, 32, 80, 23);
     Gain.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     Gain.setLinespacing(0);
     Unicode::snprintf(GainBuffer, GAIN_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());
@@ -31,7 +31,7 @@ DistortParamsBase::DistortParamsBase()
     Gain.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ZD56));
     add(Gain);
 
-    Mix.setPosition(11, 20, 72, 15);
+    Mix.setPosition(10, 17, 76, 18);
     Mix.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     Mix.setLinespacing(0);
     Unicode::snprintf(MixBuffer, MIX_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());

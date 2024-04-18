@@ -1,4 +1,4 @@
 ../AudioFX/audioFX.c:29:6:AUDIOFX_UpdateCounters	8
 ../AudioFX/audioFX.c:91:6:AUDIOFX_SwitchFX	11
-../AudioFX/audioFX.c:109:6:AUDIOFX_SetParams	7
+../AudioFX/audioFX.c:109:6:AUDIOFX_SetParams	8
 ../AudioFX/audioFX.c:192:6:AUDIOFX_Apply_FX_Chain	10

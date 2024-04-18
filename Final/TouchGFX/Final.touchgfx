@@ -375,8 +375,8 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "distortParams",
-            "X": 161,
-            "Y": 93,
+            "X": 162,
+            "Y": 65,
             "Width": 143,
             "Height": 55,
             "CustomContainerDefinitionName": "DistortParams"
@@ -384,8 +384,8 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "timeBoxDelay1",
-            "X": 17,
-            "Y": 38,
+            "X": 18,
+            "Y": 10,
             "Width": 143,
             "Height": 55,
             "CustomContainerDefinitionName": "TitleBoxDelay"
@@ -393,8 +393,8 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "delayParams1",
-            "X": 17,
-            "Y": 93,
+            "X": 18,
+            "Y": 65,
             "Width": 143,
             "Height": 55,
             "CustomContainerDefinitionName": "DelayParams"
@@ -402,8 +402,8 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "titleBoxDistort1",
-            "X": 161,
-            "Y": 38,
+            "X": 162,
+            "Y": 10,
             "Width": 143,
             "Height": 55,
             "CustomContainerDefinitionName": "TitleBoxDistort"
@@ -411,8 +411,8 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "nextPageEQ1",
-            "X": 89,
-            "Y": 148,
+            "X": 161,
+            "Y": 175,
             "Width": 143,
             "Height": 55,
             "CustomContainerDefinitionName": "NextPageEQ"
@@ -420,8 +420,8 @@
           {
             "Type": "FlexButton",
             "Name": "button0",
-            "X": 161,
-            "Y": 93,
+            "X": 162,
+            "Y": 65,
             "Width": 143,
             "Height": 55,
             "Alpha": 16,
@@ -458,8 +458,8 @@
           {
             "Type": "FlexButton",
             "Name": "button1",
-            "X": 17,
-            "Y": 93,
+            "X": 18,
+            "Y": 65,
             "Width": 143,
             "Height": 55,
             "Alpha": 16,
@@ -569,10 +569,10 @@
           {
             "Type": "TextArea",
             "Name": "PreAmp",
-            "X": 7,
-            "Y": 5,
-            "Width": 76,
-            "Height": 15,
+            "X": 6,
+            "Y": 2,
+            "Width": 80,
+            "Height": 18,
             "TextId": "__SingleUse_OLJL",
             "TextRotation": "0",
             "Color": {
@@ -589,10 +589,10 @@
           {
             "Type": "TextArea",
             "Name": "Gain",
-            "X": 7,
-            "Y": 33,
-            "Width": 64,
-            "Height": 15,
+            "X": 6,
+            "Y": 32,
+            "Width": 80,
+            "Height": 23,
             "TextId": "__SingleUse_ZD56",
             "TextRotation": "0",
             "Color": {
@@ -609,10 +609,10 @@
           {
             "Type": "TextArea",
             "Name": "Mix",
-            "X": 11,
-            "Y": 20,
-            "Width": 72,
-            "Height": 15,
+            "X": 10,
+            "Y": 17,
+            "Width": 76,
+            "Height": 18,
             "TextId": "__SingleUse_ER2V",
             "TextRotation": "0",
             "Color": {
@@ -690,8 +690,8 @@
           {
             "Type": "TextArea",
             "Name": "Time",
-            "X": 12,
-            "Y": 20,
+            "X": 13,
+            "Y": 35,
             "Width": 76,
             "Height": 15,
             "TextId": "__SingleUse_CGKJ",
@@ -710,9 +710,9 @@
           {
             "Type": "TextArea",
             "Name": "Feedback",
-            "X": 12,
-            "Y": 5,
-            "Width": 69,
+            "X": 7,
+            "Y": 20,
+            "Width": 78,
             "Height": 15,
             "TextId": "__SingleUse_J8FL",
             "TextRotation": "0",
@@ -730,8 +730,8 @@
           {
             "Type": "TextArea",
             "Name": "Mix",
-            "X": 16,
-            "Y": 35,
+            "X": 13,
+            "Y": 5,
             "Width": 72,
             "Height": 15,
             "TextId": "__SingleUse_0K6O",

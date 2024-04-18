@@ -32,19 +32,19 @@ void EQView::tearDownScreen()
 void EQView::clearBox(AUDIOFX_Type FX) {
     switch (FX)
     {
-    case AUDIOFX_PKNG0:
+    case AUDIOFX_FILTER0:
         peaking_filter_0.clearBox();
         break;
-    case AUDIOFX_PKNG1:
+    case AUDIOFX_FILTER1:
         peaking_filter_1.clearBox();
         break;
-    case AUDIOFX_PKNG2:
+    case AUDIOFX_FILTER2:
         peaking_filter_2.clearBox();
         break;
-    case AUDIOFX_PKNG3:
+    case AUDIOFX_FILTER3:
         peaking_filter_3.clearBox();
         break;
-    case AUDIOFX_PKNG4:
+    case AUDIOFX_FILTER4:
         peaking_filter_4.clearBox();
         break;
     default:
@@ -55,19 +55,19 @@ void EQView::clearBox(AUDIOFX_Type FX) {
 void EQView::setBox(AUDIOFX_Type FX) {
     switch (FX)
     {
-    case AUDIOFX_PKNG0:
+    case AUDIOFX_FILTER0:
         peaking_filter_0.setBox();
         break;
-    case AUDIOFX_PKNG1:
+    case AUDIOFX_FILTER1:
         peaking_filter_1.setBox();
         break;
-    case AUDIOFX_PKNG2:
+    case AUDIOFX_FILTER2:
         peaking_filter_2.setBox();
         break;
-    case AUDIOFX_PKNG3:
+    case AUDIOFX_FILTER3:
         peaking_filter_3.setBox();
         break;
-    case AUDIOFX_PKNG4:
+    case AUDIOFX_FILTER4:
         peaking_filter_4.setBox();
         break;
     default:
@@ -79,27 +79,27 @@ void EQView::setBox(AUDIOFX_Type FX) {
 void EQView::updateParameters(AUDIOFX_Type FX) {
     switch (FX)
     {
-    case AUDIOFX_PKNG0:
+    case AUDIOFX_FILTER0:
         peaking_filter_0.setBuffer(0, f_p0.f0);
         peaking_filter_0.setBuffer(1, f_p0.G);
         peaking_filter_0.setBuffer(2, f_p0.BW);
         break;
-    case AUDIOFX_PKNG1:
+    case AUDIOFX_FILTER1:
         peaking_filter_1.setBuffer(0, f_p1.f0);
         peaking_filter_1.setBuffer(1, f_p1.G);
         peaking_filter_1.setBuffer(2, f_p1.BW);
         break;
-    case AUDIOFX_PKNG2:
+    case AUDIOFX_FILTER2:
         peaking_filter_2.setBuffer(0, f_p2.f0);
         peaking_filter_2.setBuffer(1, f_p2.G);
         peaking_filter_2.setBuffer(2, f_p2.BW);
         break;
-    case AUDIOFX_PKNG3:
+    case AUDIOFX_FILTER3:
         peaking_filter_3.setBuffer(0, f_p3.f0);
         peaking_filter_3.setBuffer(1, f_p3.G);
         peaking_filter_3.setBuffer(2, f_p3.BW);
         break;
-    case AUDIOFX_PKNG4:
+    case AUDIOFX_FILTER4:
         peaking_filter_4.setBuffer(0, f_p4.f0);
         peaking_filter_4.setBuffer(1, f_p4.G);
         peaking_filter_4.setBuffer(2, f_p4.BW);

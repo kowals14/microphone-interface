@@ -33,15 +33,15 @@ void LUT_Table_Init(float* table, double(*trig_func)(double)) {
 
 float LUT_Table_Get(float input, float* table) {
 	// for values greater than supported by the table
-	while(input > M_TWOPI) {
-		input -= M_TWOPI;
-	}
-
 	float indx = ((input) / LUT_STEP);
 
-	if(indx > (int) indx){
-		return LUT_Lin_Intrpltn(table, indx, (int)indx, ((int)indx)+1);
+	if(indx >= LUT_SIZE){
+		return table[(uint16_t) LUT_SIZE-1];
 	}
 
-	return table[(int) indx];
+	if(indx > (uint16_t) indx){
+		return LUT_Lin_Intrpltn(table, indx, (uint16_t)indx, ((uint16_t)indx)+1);
+	}
+
+	return table[(uint16_t) indx];
 }

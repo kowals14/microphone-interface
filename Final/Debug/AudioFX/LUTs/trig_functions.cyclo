@@ -1,4 +1,4 @@
 ../AudioFX/LUTs/trig_functions.c:10:7:LUT_Lin_Extrpltn	1
 ../AudioFX/LUTs/trig_functions.c:17:7:LUT_Lin_Intrpltn	2
 ../AudioFX/LUTs/trig_functions.c:28:6:LUT_Table_Init	2
-../AudioFX/LUTs/trig_functions.c:34:7:LUT_Table_Get	5
+../AudioFX/LUTs/trig_functions.c:34:7:LUT_Table_Get	4

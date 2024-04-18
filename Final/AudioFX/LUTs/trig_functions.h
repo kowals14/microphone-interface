@@ -12,7 +12,7 @@
 #include "main.h"
 
 #define LUT_SIZE	2048
-#define LUT_STEP  	((M_TWOPI) / (LUT_SIZE - 1))
+#define LUT_STEP  	(2.0f / (LUT_SIZE - 1.0f))
 
 float LUT_Lin_Extrpltn(float*, float, int, int);
 float LUT_Lin_Intrpltn(float*, float, int, int);

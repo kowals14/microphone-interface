@@ -17,6 +17,15 @@
 #define  DELAY_MAX	(1.0f)
 #define  DELAY_LINE_SIZE (int) (AUDIOFX_SAMPLING_RATE * DELAY_MAX)
 
+#define DELAY_MAX_FEEDBACK	1.0f
+#define DELAY_MIN_FEEDBACK	0.0f
+
+#define DELAY_MAX_MIX		1.0f
+#define DELAY_MIN_MIX		0.0f
+
+#define DELAY_MAX_TIME_MS	1000.0f
+#define DELAY_MIN_TIME_MS	0.0f
+
 
 /**
  * Delay specific variables

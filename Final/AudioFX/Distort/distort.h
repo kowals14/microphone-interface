@@ -19,11 +19,11 @@
 
 #define DISTORT_MAX_GAIN	2.0
 #define DISTORT_MAX_MIX		1.0
-#define DISTORT_MAX_PREAMP	2.0
+#define DISTORT_MAX_PREAMP	10.0
 
 #define DISTORT_MIN_GAIN	0.0
 #define DISTORT_MIN_MIX		0.0
-#define DISTORT_MIN_PREAMP	0.0
+#define DISTORT_MIN_PREAMP	1.0
 
  /**
  * Distortion specific variables

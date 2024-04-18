@@ -100,7 +100,8 @@ TouchGFX/gui/src/containers/DelayParams.o: \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TouchButtonTrigger.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp \
- C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp
+ C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp \
+ C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Delay/delay.h
 ../TouchGFX/gui/include/gui/containers/DelayParams.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/containers/DelayParamsBase.hpp:
 ../TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
@@ -203,3 +204,4 @@ C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/audioFX.h:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/TwoWildcardTextButtonStyle.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/WildcardTextButtonStyle.hpp:
 C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:
+C:/Users/Kuba/STM32CubeIDE/workspace_1.14.0/Final/AudioFX/Delay/delay.h:

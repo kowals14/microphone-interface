@@ -15,7 +15,7 @@ DelayParamsBase::DelayParamsBase()
     param_box.setBorderSize(5);
     add(param_box);
 
-    Time.setPosition(12, 20, 76, 15);
+    Time.setPosition(13, 35, 76, 15);
     Time.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     Time.setLinespacing(0);
     Unicode::snprintf(TimeBuffer, TIME_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());
@@ -23,7 +23,7 @@ DelayParamsBase::DelayParamsBase()
     Time.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CGKJ));
     add(Time);
 
-    Feedback.setPosition(12, 5, 69, 15);
+    Feedback.setPosition(7, 20, 78, 15);
     Feedback.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     Feedback.setLinespacing(0);
     Unicode::snprintf(FeedbackBuffer, FEEDBACK_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());
@@ -31,7 +31,7 @@ DelayParamsBase::DelayParamsBase()
     Feedback.setTypedText(touchgfx::TypedText(T___SINGLEUSE_J8FL));
     add(Feedback);
 
-    Mix.setPosition(16, 35, 72, 15);
+    Mix.setPosition(13, 5, 72, 15);
     Mix.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     Mix.setLinespacing(0);
     Unicode::snprintf(MixBuffer, MIX_SIZE, "%s", touchgfx::TypedText(T_RESOURCEID1).getText());

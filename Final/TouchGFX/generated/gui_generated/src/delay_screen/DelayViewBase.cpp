@@ -15,19 +15,19 @@ DelayViewBase::DelayViewBase() :
     box1.setColor(touchgfx::Color::getColorFromRGB(18, 14, 14));
     add(box1);
 
-    distortParams.setXY(161, 93);
+    distortParams.setXY(162, 65);
     add(distortParams);
 
-    timeBoxDelay1.setXY(17, 38);
+    timeBoxDelay1.setXY(18, 10);
     add(timeBoxDelay1);
 
-    delayParams1.setXY(17, 93);
+    delayParams1.setXY(18, 65);
     add(delayParams1);
 
-    titleBoxDistort1.setXY(161, 38);
+    titleBoxDistort1.setXY(162, 10);
     add(titleBoxDistort1);
 
-    nextPageEQ1.setXY(89, 148);
+    nextPageEQ1.setXY(161, 175);
     add(nextPageEQ1);
 
     button0.setBoxWithBorderPosition(0, 0, 143, 55);
@@ -35,7 +35,7 @@ DelayViewBase::DelayViewBase() :
     button0.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
     button0.setAlpha(16);
     button0.setAction(flexButtonCallback);
-    button0.setPosition(161, 93, 143, 55);
+    button0.setPosition(162, 65, 143, 55);
     add(button0);
 
     button1.setBoxWithBorderPosition(0, 0, 143, 55);
@@ -43,7 +43,7 @@ DelayViewBase::DelayViewBase() :
     button1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
     button1.setAlpha(16);
     button1.setAction(flexButtonCallback);
-    button1.setPosition(17, 93, 143, 55);
+    button1.setPosition(18, 65, 143, 55);
     add(button1);
 }
 

@@ -13,11 +13,11 @@ void EQPresenter::activate()
 
     view.setBox(curr_fx);
 
-    view.updateParameters(AUDIOFX_PKNG0);
-    view.updateParameters(AUDIOFX_PKNG1);
-    view.updateParameters(AUDIOFX_PKNG2);
-    view.updateParameters(AUDIOFX_PKNG3);
-    view.updateParameters(AUDIOFX_PKNG4);
+    view.updateParameters(AUDIOFX_FILTER0);
+    view.updateParameters(AUDIOFX_FILTER1);
+    view.updateParameters(AUDIOFX_FILTER2);
+    view.updateParameters(AUDIOFX_FILTER3);
+    view.updateParameters(AUDIOFX_FILTER4);
 }
 
 void EQPresenter::deactivate()
