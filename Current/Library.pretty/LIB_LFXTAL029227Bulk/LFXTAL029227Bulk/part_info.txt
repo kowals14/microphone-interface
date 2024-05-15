@@ -1,0 +1,9 @@
+Manufacturer=IQD
+PartNumber=LFXTAL029227Bulk
+PartCategory=Crystal or Oscillator
+PackageCategory=Other
+PinCount=2
+Version=1.3
+Released=2024-02-24 07:23:08
+Downloaded=2024-02-25 18:19:12
+3D=N

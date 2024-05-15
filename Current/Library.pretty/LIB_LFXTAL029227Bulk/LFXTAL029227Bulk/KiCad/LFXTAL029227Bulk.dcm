@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP LFXTAL029227Bulk
+D Crystals 12.288MHz 16pF -20C 70C
+K
+F https://www.iqdfrequencyproducts.fr/products/pn/LFXTAL029227Bulk.pdf
+$ENDCMP
+#
+#End Doc Library

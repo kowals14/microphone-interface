@@ -1,0 +1,17 @@
+.LFXTAL029227Bulk :1 ;Crystals 12.288MHz 16pF -20C 70C
+LFXTAL029227Bulk
+*STM Y
+*NGS
+*PLB 1="1" 2="2"
+*MXP 2
+*DFN LFXTAL029227Bulk
+~!Manufacturer_Name (IQD)
+~!Manufacturer_Part_Number (LFXTAL029227Bulk)
+~!Mouser Part Number (449-LFXTAL029227BULK)
+~!Link Mouser Price/Stock (https://www.mouser.com/Search/Refine.aspx?Keyword=449-LFXTAL029227BULK)
+~!Arrow Part Number (-)
+~!Arrow Price/Stock (-)
+~!Link Datasheet (https://www.iqdfrequencyproducts.fr/products/pn/LFXTAL029227Bulk.pdf)
+~!Height (4.1mm)
+LFXTAL029227Bulk
+1.1!U 2.1!U 

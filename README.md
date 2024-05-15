@@ -35,3 +35,7 @@ Microphone Interface is a microphone interface intended to be used with analog a
 
 ## STRETCH PSDRS:
 * PSDR #6 (hardware): An ability to control parameters and interact with the user interface via capacitive touch screen.
+
+## Files
+* Final - STM32 Cube project containing the final version of the project.
+* Current - Folder containing schematic and pcb files for Kicad
